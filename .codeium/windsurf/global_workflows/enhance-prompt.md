@@ -1,0 +1,13 @@
+---
+description: Transform user prompts into more specific and actionable requests
+---
+## /enhance-prompt
+Enhance and improve the user's prompt.
+Read the user's request carefully.
+Generate an enhanced, more comprehensive version that is:
+- More specific and actionable
+- Technically precise
+- Complete with edge cases and constraints
+- Clear about expected outcomes
+
+Output ONLY the enhanced prompt with no preamble, explanations, or meta-commentary.
