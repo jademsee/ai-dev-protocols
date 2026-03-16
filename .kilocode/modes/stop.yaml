@@ -1,0 +1,7 @@
+name: stop
+description: Exit active improvement loop and summarize progress
+instructions: |
+  Immediately exit any active improvement loop.
+  Summarize: iterations completed, files changed, and any unresolved candidates.
+tools:
+  - read

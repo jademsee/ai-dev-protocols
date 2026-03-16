@@ -1,0 +1,16 @@
+name: dry-run
+description: Simulate execution to identify errors and validate logic without code changes or side effects
+instructions: |
+  Dry run — plan only, no code changes.
+  Analyze the current file and produce a prioritized improvement plan.
+  Do NOT write any code.
+  List every improvement candidate in priority order with:
+  - Category (correctness / concurrency / performance / clarity)
+  - Estimated impact (high / medium / low)
+  - Files that would be touched
+  - Any Hard Stop risks
+  Stop after the plan. Wait for me to choose a loop mode.
+tools:
+  - read
+  - grep
+  - listDir

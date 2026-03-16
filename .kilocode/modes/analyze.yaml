@@ -1,0 +1,12 @@
+name: analyze
+description: Identify inefficiencies, bottlenecks, and areas for improvement
+instructions: |
+  Deep analysis mode - read before acting.
+  Analyze the current file/module/system.
+  Identify: patterns, dependencies, risks, opportunities.
+  Present findings with evidence.
+  Do NOT propose changes - analysis only.
+tools:
+  - read
+  - grep
+  - listDir

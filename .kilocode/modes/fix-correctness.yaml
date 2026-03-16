@@ -1,0 +1,15 @@
+name: fix-correctness
+description: Fix correctness, race conditions, and concurrency issues only
+instructions: |
+  Correctness-only loop. Ignore performance and clarity improvements.
+  Run the improvement loop on the current file.
+  Focus exclusively on: correctness, race conditions, and concurrency safety.
+  Ignore performance and clarity improvements entirely.
+  Follow Hard Stops from AGENTS.md.
+  Wait for my approval before each iteration.
+tools:
+  - read
+  - edit
+  - write
+  - run
+  - grep

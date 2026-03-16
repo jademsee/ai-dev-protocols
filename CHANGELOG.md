@@ -150,6 +150,7 @@ When adding changes to this project:
 
 - [Project README](README.md)
 - [Configuration Guide](.codeium/windsurf/README.md)
-- [Skills Map](.codeium/windsurf/SKILLS_MAP.md)
-- [Change Checklists](.codeium/windsurf/CHANGE_CHECKLISTS.md)
-- [Maintenance Guide](.codeium/windsurf/MAINTENANCE_GUIDE.md)
+- [Skills Map](docs/SKILLS_MAP.md)
+- [Change Checklists](docs/CHANGE_CHECKLISTS.md)
+- [Maintenance Guide](docs/MAINTENANCE_GUIDE.md)
+- [Agent Feature Mapping](docs/AI_AGENT_FEATURE_MAPPING.md)
