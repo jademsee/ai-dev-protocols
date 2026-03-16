@@ -51,6 +51,142 @@ function, class, or feature.
 - No real network calls — mock at transport layer
 - Each test must be independently runnable
 
+## Testing Frameworks by Language
+
+### JavaScript/TypeScript
+**Unit Testing:**
+- **Jest** — most popular, batteries-included
+- **Vitest** — fast Vite-native alternative
+- **Mocha** + **Chai** — flexible, composable
+
+**Mocking:**
+- Jest built-in mocks
+- **Sinon.js** — spies, stubs, mocks
+
+**E2E/Integration:**
+- **Playwright** — modern browser automation
+- **Cypress** — developer-friendly E2E
+
+### Python
+**Unit Testing:**
+- **pytest** — de facto standard, fixture-based
+- **unittest** — built-in, xUnit-style
+
+**Mocking:**
+- **unittest.mock** — built-in mocking
+- **pytest-mock** — pytest wrapper for mock
+
+**Property-Based:**
+- **Hypothesis** — generative testing
+
+### Go
+**Unit Testing:**
+- **testing** package — built-in, table-driven tests
+- **testify** — assertions and mocking
+
+**Mocking:**
+- **gomock** — official mock framework
+- **testify/mock** — simpler alternative
+
+**Race Detection:**
+- `go test -race` — built-in race detector
+
+### Rust
+**Unit Testing:**
+- Built-in `#[test]` and `#[cfg(test)]`
+- **rstest** — fixture-based testing
+
+**Mocking:**
+- **mockall** — mock object library
+- **mockito** — HTTP mocking
+
+**Property-Based:**
+- **proptest** — property-based testing
+- **quickcheck** — QuickCheck port
+
+### Java
+**Unit Testing:**
+- **JUnit 5** — standard framework
+- **TestNG** — alternative with more features
+
+**Mocking:**
+- **Mockito** — most popular mocking
+- **JMockit** — advanced mocking
+
+**Property-Based:**
+- **jqwik** — property-based testing
+
+**Integration:**
+- **Spring Test** — Spring integration testing
+- **Testcontainers** — Docker-based integration tests
+
+### C#/.NET
+**Unit Testing:**
+- **xUnit** — modern, recommended
+- **NUnit** — mature alternative
+- **MSTest** — Microsoft's framework
+
+**Mocking:**
+- **Moq** — most popular
+- **NSubstitute** — simpler syntax
+
+**Integration:**
+- **WebApplicationFactory** — ASP.NET Core testing
+
+### C/C++
+**Unit Testing:**
+- **Google Test (gtest)** — most popular
+- **Catch2** — header-only, BDD-style
+- **Doctest** — fastest compile times
+
+**Mocking:**
+- **Google Mock (gmock)** — works with gtest
+- **FakeIt** — header-only mocking
+
+**Memory Testing:**
+- **Valgrind** — memory leak detection
+- **AddressSanitizer** — memory error detector
+
+### Swift
+**Unit Testing:**
+- **XCTest** — built-in framework
+- **Quick** + **Nimble** — BDD-style
+
+**Mocking:**
+- **Cuckoo** — mock generator
+- Manual protocol-based mocking
+
+**UI Testing:**
+- **XCUITest** — UI automation
+
+### Kotlin
+**Unit Testing:**
+- **JUnit 5** — same as Java
+- **Kotest** — Kotlin-native framework
+
+**Mocking:**
+- **MockK** — Kotlin-first mocking
+- **Mockito-Kotlin** — Mockito wrapper
+
+**Coroutine Testing:**
+- **kotlinx-coroutines-test** — coroutine testing utilities
+
+### Dart/Flutter
+**Unit Testing:**
+- **test** package — built-in Dart testing
+- **flutter_test** — Flutter widget testing
+
+**Mocking:**
+- **mockito** — Dart port
+- **mocktail** — null-safe alternative
+
+**Widget Testing:**
+- **flutter_test** — widget unit tests
+- **golden_toolkit** — screenshot testing
+
+**Integration:**
+- **integration_test** — Flutter integration tests
+
 ## Concurrency Testing [CONDITIONAL: skip if module has no concurrency]
 
 ### Detection Check — Answer BEFORE proceeding:
