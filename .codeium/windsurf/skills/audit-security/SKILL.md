@@ -169,6 +169,28 @@ Use **manage-secrets** to establish secrets infrastructure, then **audit-securit
 **Dependency Scanning:**
 - Same as Java (OWASP Dependency-Check, Snyk)
 
+### Dart/Flutter
+**Static Analysis:**
+- **dart analyze** — built-in static analyzer with security lints
+  - `dart analyze`
+- **flutter analyze** — Flutter-specific analysis
+  - `flutter analyze`
+- **Semgrep** with Dart rules
+  - `semgrep --config=auto`
+
+**Dependency Scanning:**
+- **osv-scanner** — Open Source Vulnerabilities scanner
+  - `osv-scanner --lockfile=pubspec.lock`
+- **Snyk** — supports Flutter/Dart
+  - `snyk test`
+- Manual review of pub.dev package scores (security, maintenance)
+
+**Flutter-Specific:**
+- Review platform-specific code (Android/iOS) with respective tools
+- Check for insecure deep link handling
+- Validate WebView configurations if used
+- Review permissions in AndroidManifest.xml and Info.plist
+
 ### Infrastructure as Code (IaC)
 **Terraform/CloudFormation/Kubernetes:**
 - **Checkov** — policy-as-code scanner
