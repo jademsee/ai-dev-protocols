@@ -8,7 +8,7 @@ This directory contains a comprehensive, production-grade configuration for Wind
 
 This configuration enforces rigorous engineering discipline through:
 - **Global Rules** - Core principles prioritizing correctness, performance, and architectural continuity
-- **Skills** - 13 specialized capabilities for different development tasks
+- **Skills** - 14 specialized capabilities for different development tasks
 - **Workflows** - 12 execution modes with varying autonomy levels
 - **Maintenance System** - Automated validation and change management
 
@@ -20,7 +20,7 @@ This configuration enforces rigorous engineering discipline through:
 .codeium/windsurf/
 ├── memories/
 │   └── global_rules.md          # Core engineering principles and rules
-├── skills/                       # 13 specialized skills
+├── skills/                       # 14 specialized skills
 │   ├── develop-api/              # API endpoint creation
 │   ├── design-architecture/      # Design and governance
 │   ├── audit-security/           # Security auditing
@@ -28,6 +28,7 @@ This configuration enforces rigorous engineering discipline through:
 │   ├── debug/                    # Bug diagnosis and fixing
 │   ├── manage-git/               # Git lifecycle management
 │   ├── maintain-consistency/     # Project-wide consistency validation
+│   ├── manage-dependencies/      # Dependency lifecycle management
 │   ├── manage-secrets/           # Secrets management architecture
 │   ├── optimize/                 # Performance optimization
 │   ├── recover-design/           # Reverse engineering
@@ -159,10 +160,10 @@ Workflows control execution mode:
 
 ### Comprehensive Skills
 
-**13 specialized skills** covering:
+**14 specialized skills** covering:
 - Development: create-item, develop-api, refactor, optimize
 - Quality: debug, write-tests, audit-security, maintain-consistency
-- Security: manage-secrets
+- Security: manage-secrets, manage-dependencies
 - Documentation: write-docs, design-architecture, recover-design
 - Operations: manage-git
 
@@ -181,6 +182,7 @@ Each skill includes:
 - Swift, Kotlin, Dart/Flutter
 
 **Tool categories:**
+- Dependency management (manage-dependencies skill)
 - Dependency analysis (design-architecture skill)
 - Performance profiling (optimize skill)
 - Security scanning (audit-security skill)
@@ -357,7 +359,7 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 ## Version History
 
 ### Current Version
-- 13 skills (Atomic, Composite, Orchestration)
+- 14 skills (Atomic, Composite, Orchestration)
 - 12 workflows (Analysis, Execution, Loop modes, Validation)
 - 10 languages supported
 - Automated validation system
@@ -377,6 +379,7 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 - Added CONFIGURATION CHANGE PROTOCOL to global_rules.md
 - Added SECRETS MANAGEMENT PROTOCOL to global_rules.md
 - Added manage-secrets skill for secrets architecture and best practices
+- Added manage-dependencies skill for full dependency lifecycle management
 - Added change checklists and maintenance guide
 - Replaced .windsurfrules with language-specific dependency tools
 - Fixed enhance-prompt.md workflow template variable issue

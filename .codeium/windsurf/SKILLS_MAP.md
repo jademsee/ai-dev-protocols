@@ -15,6 +15,7 @@ Skills that operate independently and can be invoked without requiring other ski
 - **refactor** - Restructure existing code
 - **optimize** - Profile and improve performance
 - **maintain-consistency** - Ensure all related files, tests, docs, and dependencies stay synchronized
+- **manage-dependencies** - Manage project dependencies across their full lifecycle
 - **manage-secrets** - Establish secrets management architecture and best practices
 
 ### Composite Skills (Reference atomic skills in checklists)
@@ -116,6 +117,14 @@ Skills that analyze, plan, and may recommend other skills in their output.
 4. manage-git - Commit the changes
 ```
 
+### Pattern 9: Dependency Management
+```
+1. manage-dependencies - Audit and update dependencies
+2. audit-security - Verify no vulnerabilities remain
+3. write-tests - Verify no regressions
+4. manage-git - Commit the changes
+```
+
 ---
 
 ## Skill Dependencies Matrix
@@ -133,6 +142,7 @@ Skills that analyze, plan, and may recommend other skills in their output.
 | manage-git     | None       | All skills    | -                 |
 | design-architecture | None  | -             | create-item, develop-api, refactor |
 | recover-design | None       | -             | write-docs, design-architecture |
+| manage-dependencies | None  | design-architecture, create-item | audit-security |
 | manage-secrets | None       | audit-security | write-docs        |
 | audit-security | None       | -             | debug, refactor   |
 
@@ -191,6 +201,7 @@ Skills that analyze, plan, and may recommend other skills in their output.
 - Check security → `audit-security`
 - Ensure everything stays synchronized → `maintain-consistency`
 - Setup or migrate secrets → `manage-secrets`
+- Manage or audit dependencies → `manage-dependencies`
 - Validate project integrity → `maintain-consistency` + `/validate` workflow
 
 ---

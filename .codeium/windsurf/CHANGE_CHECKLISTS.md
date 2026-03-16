@@ -114,6 +114,7 @@ If you **change coding standards**:
 - [ ] Update develop-api skill
 
 If you **change dependency rules**:
+- [ ] Update manage-dependencies.md skill
 - [ ] Update design-architecture.md skill
 - [ ] Update create-item.md skill
 
@@ -130,6 +131,7 @@ If you **change dependency rules**:
 ### When You Add a New Language to Any Skill
 
 **Files to Update:**
+- [ ] `manage-dependencies.md` - Add dependency management tools (package managers, vulnerability scanning, license compliance)
 - [ ] `design-architecture.md` - Add dependency analysis tools
 - [ ] `optimize.md` - Add profiling tools (CPU, memory, benchmarking)
 - [ ] `audit-security.md` - Add security analysis tools
@@ -244,7 +246,7 @@ If you **change dependency rules**:
 | A skill                  | SKILLS_MAP.md, workflows, other skills, global_rules.md   |
 | A workflow               | SKILLS_MAP.md, global_rules.md, other workflows           |
 | global_rules.md          | ALL skills, ALL workflows, SKILLS_MAP.md                  |
-| Added a language         | design-architecture.md, optimize.md, audit-security.md, write-tests.md |
+| Added a language         | manage-dependencies.md, design-architecture.md, optimize.md, audit-security.md, write-tests.md |
 | SKILLS_MAP.md            | Verify all references are valid                           |
 | Removed something        | Search ALL files for references before removing           |
 

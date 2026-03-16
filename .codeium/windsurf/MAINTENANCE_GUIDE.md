@@ -49,7 +49,7 @@ Fix any errors before committing the change.
 - [ ] Update tool recommendations if newer versions are available
 
 **Language Coverage Audit:**
-- [ ] Verify same languages across: design-architecture, optimize, audit-security, write-tests
+- [ ] Verify same languages across: manage-dependencies, design-architecture, optimize, audit-security, write-tests
 - [ ] Check if new popular languages should be added
 - [ ] Verify tool recommendations are still current
 
@@ -74,6 +74,7 @@ Fix any errors before committing the change.
 **Tool Updates:**
 - [ ] Research new profiling tools (optimize.md)
 - [ ] Research new security tools (audit-security.md)
+- [ ] Research new dependency management tools (manage-dependencies.md)
 - [ ] Research new dependency analysis tools (design-architecture.md)
 - [ ] Research new testing frameworks (write-tests.md)
 
@@ -126,6 +127,7 @@ Fix any errors before committing the change.
 **Step-by-Step:**
 
 1. **Identify which skills need the language:**
+   - manage-dependencies.md (dependency management tools)
    - design-architecture.md (dependency analysis tools)
    - optimize.md (profiling tools)
    - audit-security.md (security tools)
@@ -225,7 +227,7 @@ Run this checklist monthly or after major changes:
 - [ ] No orphaned files exist
 
 **Language Coverage Validation:**
-- [ ] Same languages across design-architecture, optimize, audit-security, write-tests
+- [ ] Same languages across manage-dependencies, design-architecture, optimize, audit-security, write-tests
 - [ ] Tool recommendations are current
 - [ ] Command examples are accurate
 
