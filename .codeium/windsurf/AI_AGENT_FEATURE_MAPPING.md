@@ -118,14 +118,14 @@ Our global rules define core engineering principles, protocols, and behavioral g
 
 ## Skills System Mapping
 
-Our skills system provides 12 specialized capabilities organized into Atomic, Composite, and Orchestration categories.
+Our skills system provides 13 specialized capabilities organized into Atomic, Composite, and Orchestration categories.
 
 ### Windsurf/Cascade Configuration
 
-**Location:** `skills/` directory (12 subdirectories)
+**Location:** `skills/` directory (13 subdirectories)
 
 **Skill Categories:**
-- **Atomic**: debug, write-tests, write-docs, refactor, optimize, maintain-consistency
+- **Atomic**: debug, write-tests, write-docs, refactor, optimize, maintain-consistency, manage-secrets
 - **Composite**: develop-api, create-item, manage-git
 - **Orchestration**: design-architecture, recover-design, audit-security
 
@@ -133,7 +133,7 @@ Our skills system provides 12 specialized capabilities organized into Atomic, Co
 
 | Skill Category | Windsurf/Cascade | GitHub Copilot | Cursor | Continue | Kilo Code | Antigravity | Claude Code | Codex | Gemini CLI | Aider |
 |----------------|-----------------|---------------|--------|----------|-----------|-------------|-------------|-------|------------|-------|
-| **Atomic Skills** | `skills/` (6 custom) | Not supported | File-specific rules in `.cursor/rules/` | Custom slash commands in `config.yaml` | 5 built-in modes + custom modes | Built-in + custom agents | Skills in `.claude/skills/` | Not supported | MCP tools | Not supported |
+| **Atomic Skills** | `skills/` (7 custom) | Not supported | File-specific rules in `.cursor/rules/` | Custom slash commands in `config.yaml` | 5 built-in modes + custom modes | Built-in + custom agents | Skills in `.claude/skills/` | Not supported | MCP tools | Not supported |
 | **debug** | ✅ `skills/debug/` (Custom) | Built-in | Built-in | Built-in | ✅ Built-in `/debug` mode | Built-in agent | Built-in skill | Built-in | Built-in | Built-in |
 | **write-tests** | ✅ `skills/write-tests/` (Custom) | Via instructions | Via `.cursorrules` | Custom command | Custom mode or skill | Custom agent | Custom skill | Via instructions | Via MCP | `--test` flag |
 | **write-docs** | ✅ `skills/write-docs/` (Custom) | Via instructions | Via `.cursorrules` | Custom command | Custom mode or skill | Custom agent | Custom skill | Via instructions | Via MCP | Via `--message` |
@@ -153,7 +153,7 @@ Our skills system provides 12 specialized capabilities organized into Atomic, Co
 
 | Agent | Skills Config Location | Format | Notes | Custom Options |
 |-------|----------------------|--------|-------|----------------|
-| **Windsurf/Cascade** | `skills/*/SKILL.md` | Markdown + YAML frontmatter | 12 custom skills, organized by category | Custom: Full skill system with YAML metadata, checklists, pre-submit checks |
+| **Windsurf/Cascade** | `skills/*/SKILL.md` | Markdown + YAML frontmatter | 13 custom skills, organized by category | Custom: Full skill system with YAML metadata, checklists, pre-submit checks |
 | **GitHub Copilot** | `.github/copilot-instructions.md` | Markdown | Define in instructions, no separate skills | Instructions only, no skill structure |
 | **Cursor** | `.cursorrules` (project), `.cursor/rules/*.md` (file-specific) | Markdown | Single file or directory-based rules | File-pattern matching rules, agent auto-selects from `.cursor/rules/` |
 | **Continue** | `~/.continue/config.yaml` → `slashCommands` | YAML | Custom slash commands act as skills | Define custom commands with prompts, context providers, MCP servers |
@@ -396,13 +396,13 @@ Our workflows system provides 12 execution modes with varying autonomy levels an
 
 ### Windsurf/Cascade (Reference)
 - **Type**: Mostly custom configuration + 1 built-in workflow
-- **Strengths**: Most comprehensive skills (12 custom), workflows (12 custom + 1 built-in), structured documentation
+- **Strengths**: Most comprehensive skills (13 custom), workflows (12 custom + 1 built-in), structured documentation
 - **Unique Features**: maintain-consistency skill, validation workflow, SKILLS_MAP, CHANGE_CHECKLISTS
 - **Best For**: Rigorous engineering discipline, project-wide consistency
 - **Config**: `memories/global_rules.md`, `skills/*/SKILL.md`, `global_workflows/*.md`
 - **Custom Options**: Full YAML frontmatter system, Markdown-based skills/workflows, pre-submit checklists
 - **Built-in**: `/review` workflow (native to Windsurf)
-- **Note**: All 12 skills and 12 workflows are custom-created; `/review` is built into Windsurf
+- **Note**: All 13 skills and 12 workflows are custom-created; `/review` is built into Windsurf
 
 ### GitHub Copilot
 - **Strengths**: Ubiquitous, well-documented, simple, IDE-integrated, Copilot Chat with built-in modes (explain, fix, test, review)
@@ -471,7 +471,7 @@ Our workflows system provides 12 execution modes with varying autonomy levels an
 ## Conclusion
 
 Our Windsurf/Cascade configuration provides broad coverage across:
-- Structured skills system (12 custom skills)
+- Structured skills system (13 custom skills)
 - Workflow variety (12 custom + 1 built-in = 13 total execution modes)
 - Documentation and organization (SKILLS_MAP, CHANGE_CHECKLISTS)
 
@@ -496,8 +496,8 @@ This mapping serves as both a reference for understanding our configuration's po
 
 **Summary:**
 - **10 agents compared**: Windsurf/Cascade (reference) + 9 others
-- **3 feature categories mapped**: Global Rules, Skills (12 custom), Workflows (12 custom + 1 built-in)
+- **3 feature categories mapped**: Global Rules, Skills (13 custom), Workflows (12 custom + 1 built-in)
 - **Custom configuration options documented** for each agent
-- **Windsurf/Cascade coverage**: 13 total workflows, 12 skills
+- **Windsurf/Cascade coverage**: 13 total workflows, 13 skills
 - **Most similar structure**: Claude Code (skills with SKILL.md + YAML)
 - **Comparable agents**: Claude Code, Kilo Code; Antigravity [UNVERIFIED]

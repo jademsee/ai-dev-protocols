@@ -15,6 +15,7 @@ Skills that operate independently and can be invoked without requiring other ski
 - **refactor** - Restructure existing code
 - **optimize** - Profile and improve performance
 - **maintain-consistency** - Ensure all related files, tests, docs, and dependencies stay synchronized
+- **manage-secrets** - Establish secrets management architecture and best practices
 
 ### Composite Skills (Reference atomic skills in checklists)
 Skills that may reference other skills in their pre-submit checklists but don't invoke them directly.
@@ -44,6 +45,7 @@ Skills that analyze, plan, and may recommend other skills in their output.
 
 - **audit-security** - Security analysis
   - May recommend: refactor, debug (for fixing vulnerabilities)
+  - References: manage-secrets (for proactive secrets infrastructure)
   - Pattern: Audit → report findings → propose fixes
 
 ---
@@ -106,6 +108,14 @@ Skills that analyze, plan, and may recommend other skills in their output.
 4. manage-git - Commit the endpoint
 ```
 
+### Pattern 8: Secrets Management
+```
+1. manage-secrets - Setup secrets infrastructure
+2. audit-security - Verify no leaks remain
+3. write-docs - Document procedures and runbooks
+4. manage-git - Commit the changes
+```
+
 ---
 
 ## Skill Dependencies Matrix
@@ -123,6 +133,7 @@ Skills that analyze, plan, and may recommend other skills in their output.
 | manage-git     | None       | All skills    | -                 |
 | design-architecture | None  | -             | create-item, develop-api, refactor |
 | recover-design | None       | -             | write-docs, design-architecture |
+| manage-secrets | None       | audit-security | write-docs        |
 | audit-security | None       | -             | debug, refactor   |
 
 ---
@@ -179,6 +190,7 @@ Skills that analyze, plan, and may recommend other skills in their output.
 - Understand codebase → `recover-design`
 - Check security → `audit-security`
 - Ensure everything stays synchronized → `maintain-consistency`
+- Setup or migrate secrets → `manage-secrets`
 - Validate project integrity → `maintain-consistency` + `/validate` workflow
 
 ---
@@ -214,3 +226,4 @@ When adding a new skill:
 3. Update the dependency matrix
 4. Add to the skill selection guide
 5. Consider if it needs a workflow companion
+6. Follow CHANGE_CHECKLISTS.md → Checklist 1

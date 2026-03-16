@@ -59,7 +59,7 @@ Run the validation workflow to ensure everything is configured correctly:
 
 ### Core Components
 
-- **12 Skills** - Specialized capabilities (debug, optimize, write-tests, etc.)
+- **13 Skills** - Specialized capabilities (debug, optimize, write-tests, manage-secrets, etc.)
 - **12 Workflows** - Execution modes (analysis, loops, validation)
 - **Global Rules** - Engineering discipline (correctness > performance > elegance)
 - **Validation System** - Automated consistency checking
@@ -136,7 +136,7 @@ Global rules enforce:
 
 ### Comprehensive Skills
 
-12 specialized skills with:
+13 specialized skills with:
 - Clear trigger conditions
 - Step-by-step processes
 - Hard rules preventing mistakes

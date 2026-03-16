@@ -8,7 +8,7 @@ This directory contains a comprehensive, production-grade configuration for Wind
 
 This configuration enforces rigorous engineering discipline through:
 - **Global Rules** - Core principles prioritizing correctness, performance, and architectural continuity
-- **Skills** - 12 specialized capabilities for different development tasks
+- **Skills** - 13 specialized capabilities for different development tasks
 - **Workflows** - 12 execution modes with varying autonomy levels
 - **Maintenance System** - Automated validation and change management
 
@@ -20,7 +20,7 @@ This configuration enforces rigorous engineering discipline through:
 .codeium/windsurf/
 ├── memories/
 │   └── global_rules.md          # Core engineering principles and rules
-├── skills/                       # 12 specialized skills
+├── skills/                       # 13 specialized skills
 │   ├── develop-api/              # API endpoint creation
 │   ├── design-architecture/      # Design and governance
 │   ├── audit-security/           # Security auditing
@@ -28,6 +28,7 @@ This configuration enforces rigorous engineering discipline through:
 │   ├── debug/                    # Bug diagnosis and fixing
 │   ├── manage-git/               # Git lifecycle management
 │   ├── maintain-consistency/     # Project-wide consistency validation
+│   ├── manage-secrets/           # Secrets management architecture
 │   ├── optimize/                 # Performance optimization
 │   ├── recover-design/           # Reverse engineering
 │   ├── refactor/                 # Code restructuring
@@ -158,9 +159,10 @@ Workflows control execution mode:
 
 ### Comprehensive Skills
 
-**12 specialized skills** covering:
+**13 specialized skills** covering:
 - Development: create-item, develop-api, refactor, optimize
 - Quality: debug, write-tests, audit-security, maintain-consistency
+- Security: manage-secrets
 - Documentation: write-docs, design-architecture, recover-design
 - Operations: manage-git
 
@@ -355,7 +357,7 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 ## Version History
 
 ### Current Version
-- 12 skills (Atomic, Composite, Orchestration)
+- 13 skills (Atomic, Composite, Orchestration)
 - 12 workflows (Analysis, Execution, Loop modes, Validation)
 - 10 languages supported
 - Automated validation system
@@ -373,6 +375,8 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 - Added security tool integration (10 languages)
 - Added /validate workflow using maintain-consistency skill
 - Added CONFIGURATION CHANGE PROTOCOL to global_rules.md
+- Added SECRETS MANAGEMENT PROTOCOL to global_rules.md
+- Added manage-secrets skill for secrets architecture and best practices
 - Added change checklists and maintenance guide
 - Replaced .windsurfrules with language-specific dependency tools
 - Fixed enhance-prompt.md workflow template variable issue

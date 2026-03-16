@@ -9,6 +9,12 @@ description: Security audit or hardening
 When asked to audit, check, or harden code for security issues,
 vulnerabilities, or attack surface reduction.
 
+## Related Skills
+- **manage-secrets** — For proactive secrets infrastructure setup (architecture, tooling, migration)
+- **audit-security** — For reactive secrets vulnerability detection (scanning, reporting)
+
+Use **manage-secrets** to establish secrets infrastructure, then **audit-security** to verify.
+
 ## Process — follow in order
 1. Read the entire target scope — do not sample
 2. **Run automated security tools** first (see tools below)
