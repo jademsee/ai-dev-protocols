@@ -35,6 +35,47 @@ Git history is a first-class artifact. Every commit must be:
    without reviewing what's being staged
 7. Commit
 
+### Quick Commit Message Generation
+
+**Trigger:** "Generate a commit message", "One line commit message", "Git message"
+
+**Process:**
+1. Run `git diff --staged` and `git status` — read the full diff
+2. Detect the project's commit convention from last 20 commits
+3. Generate ONE line following the detected convention
+4. Output ONLY the commit message — no explanations
+
+**Output Format:**
+```
+<type>(<scope>): <subject>
+```
+
+**Rules:**
+- 50 characters max for subject
+- Imperative mood: "add", "fix", "remove" — not "added", "fixes"
+- No period at the end
+- Lowercase after the colon
+- Infer type from change:
+  - New functionality → `feat`
+  - Bug fix → `fix`
+  - Performance → `perf`
+  - Restructuring → `refactor`
+  - Tests → `test`
+  - Documentation → `docs`
+  - Build/deps/tooling → `chore`
+  - CI/CD → `ci`
+- Infer scope from affected module/directory
+
+**Examples:**
+```
+feat(auth): add refresh token rotation
+fix(payments): prevent double-charge on retry
+refactor(skills): add Related Skills sections to all skills
+docs(readme): update workflow count to 9
+chore(deps): update dependencies to latest versions
+test(api): add endpoint tests for user service
+```
+
 ### Commit Message Format
 
 **FIRST: Detect the project's existing convention**
