@@ -29,18 +29,16 @@ docs/ (shared across all tools)
 ```
 .kilocode/
 ├── rules/
-│   ├── engineering-principles.md
-│   ├── secrets-management.md
-│   └── improvement-loop.md
+│   └── master-rules.md          # Complete rules (single source of truth)
 ├── modes/
-│   └── [12 mode files].yaml
+│   └── [9 mode files].yaml
 ├── skills/
 │   └── [16 skill directories]/
 │       └── SKILL.md
 ├── PORTING_MANIFEST.md
 └── README.md
 
-AGENTS.md (root level)
+AGENTS.md (root level, points to .kilocode/rules/master-rules.md)
 docs/ (shared, not copied)
 ```
 
@@ -50,10 +48,8 @@ docs/ (shared, not copied)
 
 | Source | Target | Notes |
 |--------|--------|-------|
-| `memories/global_rules.md` | `AGENTS.md` | Cross-tool standard format |
-| `memories/global_rules.md` (Engineering Principles) | `.kilocode/rules/engineering-principles.md` | Project-level rule file |
-| `memories/global_rules.md` (Secrets Management) | `.kilocode/rules/secrets-management.md` | Project-level rule file |
-| `memories/global_rules.md` (Improvement Loop) | `.kilocode/rules/improvement-loop.md` | Project-level rule file |
+| `memories/global_rules.md` | `.kilocode/rules/master-rules.md` | Complete rules (single source of truth) |
+| `memories/global_rules.md` | `AGENTS.md` | Cross-tool discovery pointer |
 
 ### Skills (16 total)
 
@@ -148,32 +144,30 @@ All internal references have been updated:
 
 ## Files Created
 
-1. `AGENTS.md` — Root-level cross-tool configuration
-2. `.kilocode/rules/engineering-principles.md`
-3. `.kilocode/rules/secrets-management.md`
-4. `.kilocode/rules/improvement-loop.md`
-5. `.kilocode/modes/analyze.yaml`
-6. `.kilocode/modes/dry-run.yaml`
-7. `.kilocode/modes/enhance-prompt.yaml`
-8. `.kilocode/modes/loop.yaml`
-9. `.kilocode/modes/turbo-loop.yaml`
-10. `.kilocode/modes/improve-correctness.yaml`
-11. `.kilocode/modes/test.yaml`
-12. `.kilocode/modes/tune-performance.yaml`
-13. `.kilocode/modes/validate.yaml`
-14. `.kilocode/skills/[16 skills]/SKILL.md` — Copied
-15. `.kilocode/README.md`
-16. `docs/SKILLS_MAP.md` — Shared (not copied)
-17. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
-18. `docs/MAINTENANCE_GUIDE.md` — Shared (not copied)
-19. `.kilocode/PORTING_MANIFEST.md` — This file
+1. `AGENTS.md` — Root-level cross-tool discovery pointer
+2. `.kilocode/rules/master-rules.md` — Complete rules (single source of truth)
+3. `.kilocode/modes/analyze.yaml`
+4. `.kilocode/modes/dry-run.yaml`
+5. `.kilocode/modes/enhance-prompt.yaml`
+6. `.kilocode/modes/loop.yaml`
+7. `.kilocode/modes/turbo-loop.yaml`
+8. `.kilocode/modes/improve-correctness.yaml`
+9. `.kilocode/modes/test.yaml`
+10. `.kilocode/modes/tune-performance.yaml`
+11. `.kilocode/modes/validate.yaml`
+12. `.kilocode/skills/[16 skills]/SKILL.md` — Copied
+13. `.kilocode/README.md`
+14. `docs/SKILLS_MAP.md` — Shared (not copied)
+15. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
+16. `docs/MAINTENANCE_GUIDE.md` — Shared (not copied)
+17. `.kilocode/PORTING_MANIFEST.md` — This file
 
 ## Validation Checklist
 
 - [x] All 16 skills ported
 - [x] All 9 modes created
-- [x] AGENTS.md created with full content
-- [x] Rules directory populated
+- [x] AGENTS.md created as discovery pointer
+- [x] master-rules.md created with complete rules
 - [x] Documentation copied
 - [x] README updated for Kilo Code
 - [x] Porting manifest created

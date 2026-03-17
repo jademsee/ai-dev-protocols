@@ -7,9 +7,7 @@ This directory contains the Kilo Code AI coding assistant configuration, ported 
 ```
 .kilocode/
 ├── rules/                    # Project-level rules
-│   ├── engineering-principles.md
-│   ├── secrets-management.md
-│   └── improvement-loop.md
+│   └── master-rules.md       # Complete rules (single source of truth)
 ├── modes/                    # Custom modes (workflows)
 │   ├── analyze.yaml
 │   ├── dry-run.yaml
@@ -56,13 +54,16 @@ The following documentation is shared across all tool configs and located in `do
 
 ## AGENTS.md — Global Rules File
 
-`AGENTS.md` lives at the **repository root** (`/AGENTS.md`) and contains the core engineering principles and protocols for this project.
+`AGENTS.md` lives at the **repository root** (`/AGENTS.md`) and serves as a cross-tool discovery pointer. The actual rules content is in [`.kilocode/rules/master-rules.md`](rules/master-rules.md).
 
 ### Location
 
 ```
 <repo-root>/
-└── AGENTS.md   ← place here, not inside .kilocode/
+├── AGENTS.md              ← Cross-tool discovery pointer
+└── .kilocode/
+    └── rules/
+        └── master-rules.md  ← Actual rules content
 ```
 
 It must be at the root so all AI tools can discover it by walking up from the working directory.
@@ -73,33 +74,33 @@ It must be at the root so all AI tools can discover it by walking up from the wo
 |-------|------------------|--------------------|-------|
 | **Kilo Code** | ✅ Yes | `AGENTS.md` | Primary target for this config |
 | **Cursor** | ✅ Yes | `AGENTS.md` | Also reads `.cursorrules` and `.cursor/rules/` |
-| **Claude Code** | ❌ No | `CLAUDE.md` | Copy/rename `AGENTS.md` → `CLAUDE.md` at repo root |
-| **GitHub Copilot** | ❌ No | `.github/copilot-instructions.md` | Copy content into that file |
-| **Gemini CLI** | ❌ No | `GEMINI.md` | Copy/rename `AGENTS.md` → `GEMINI.md` at repo root |
+| **Claude Code** | ❌ No | `CLAUDE.md` | Copy content from `.kilocode/rules/master-rules.md` |
+| **GitHub Copilot** | ❌ No | `.github/copilot-instructions.md` | Copy content from `.kilocode/rules/master-rules.md` |
+| **Gemini CLI** | ❌ No | `GEMINI.md` | Copy content from `.kilocode/rules/master-rules.md` |
 | **Codex** | ❌ No | `.codex/config.toml` | Adapt content into TOML `instructions` field |
 | **Continue** | ❌ No | `~/.continue/config.yaml` | Add content to `systemMessage` in config |
 | **Aider** | ❌ No | `.aider.conf.yml` | Add content to custom prompts via `--message` |
 
 ### Using this config with other agents
 
-For agents that don't read `AGENTS.md` natively, copy the content to their expected file:
+For agents that don't read `AGENTS.md` natively, copy the content from `.kilocode/rules/master-rules.md` to their expected file:
 
 **Claude Code** — create `CLAUDE.md` at repo root:
 ```
-cp AGENTS.md CLAUDE.md
+cp .kilocode/rules/master-rules.md CLAUDE.md
 ```
 
 **GitHub Copilot** — create `.github/copilot-instructions.md`:
 ```
-cp AGENTS.md .github/copilot-instructions.md
+cp .kilocode/rules/master-rules.md .github/copilot-instructions.md
 ```
 
 **Gemini CLI** — create `GEMINI.md` at repo root:
 ```
-cp AGENTS.md GEMINI.md
+cp .kilocode/rules/master-rules.md GEMINI.md
 ```
 
-> ⚠️ These copies must be kept in sync manually when `AGENTS.md` is updated. See `CHANGE_CHECKLISTS.md` for the update protocol.
+> ⚠️ These copies must be kept in sync manually when `.kilocode/rules/master-rules.md` is updated. See `CHANGE_CHECKLISTS.md` for the update protocol.
 
 ## Usage
 
