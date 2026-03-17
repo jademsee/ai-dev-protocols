@@ -12,16 +12,13 @@ This directory contains the Kilo Code AI coding assistant configuration, ported 
 │   └── improvement-loop.md
 ├── modes/                    # Custom modes (workflows)
 │   ├── analyze.yaml
-│   ├── think.yaml
 │   ├── dry-run.yaml
 │   ├── enhance-prompt.yaml
-│   ├── quick.yaml
 │   ├── loop.yaml
 │   ├── turbo-loop.yaml
-│   ├── fix-correctness.yaml
+│   ├── improve-correctness.yaml
 │   ├── test.yaml
 │   ├── tune-performance.yaml
-│   ├── stop.yaml
 │   └── validate.yaml
 ├── skills/                   # Specialized skills
 │   ├── audit-security/
@@ -113,7 +110,7 @@ Invoke modes using slash commands:
 - `/enhance-prompt` — Transform prompts into actionable requests
 - `/loop` — Iterative improvements with approval gates
 - `/turbo-loop` — Autonomous improvement loop
-- `/fix-correctness` — Focus on correctness and concurrency only
+- `/improve-correctness` — Focus on correctness and concurrency only
 - `/test` — Test-driven improvement loop
 - `/tune-performance` — Performance optimization only
 - `/validate` — Comprehensive project validation

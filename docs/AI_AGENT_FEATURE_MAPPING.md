@@ -52,7 +52,7 @@ This document maps Windsurf/Cascade configuration features to equivalent capabil
 
 | Agent | Global Rules | Skills/Modes | Workflows | Config Location | Custom Options |
 |-------|-------------|--------------|-----------|-----------------|----------------|
-| **Windsurf/Cascade** | ✅ Strong (Custom) | ✅ Strong (Custom) | ✅ Strong (Custom + 1 Built-in) | `memories/global_rules.md`, `skills/`, `global_workflows/` | Custom: 12 workflows + Built-in: `/review` |
+| **Windsurf/Cascade** | ✅ Strong (Custom) | ✅ Strong (Custom) | ✅ Strong (Custom + 1 Built-in) | `memories/global_rules.md`, `skills/`, `global_workflows/` | Custom: 9 workflows + Built-in: `/review` |
 | **GitHub Copilot** | ✅ Strong | ⚠️ Limited | ⚠️ Limited | `.github/copilot-instructions.md` | Markdown instructions, Copilot Chat modes (explain, fix, test), Copilot Workspace |
 | **Cursor** | ✅ Strong | ⚠️ Limited | ⚠️ Limited | `.cursorrules`, `.cursor/rules/`, `AGENTS.md` | Markdown rules, file-specific, AGENTS.md support |
 | **Continue** | ✅ Strong | ✅ Strong | ⚠️ Partial | `~/.continue/config.yaml` | Custom slash commands, context providers, MCP |
@@ -185,7 +185,7 @@ Our workflows system provides 9 execution modes with varying autonomy levels and
 **Workflow Categories:**
 - **Analysis**: analyze, dry-run, enhance-prompt
 - **Execution**: loop, turbo-loop
-- **Improvement Loops**: fix-correctness, test, tune-performance
+- **Improvement Loops**: improve-correctness, test, tune-performance
 - **Validation**: validate
 - **Built-in**: review (Windsurf native)
 
@@ -198,7 +198,7 @@ Our workflows system provides 9 execution modes with varying autonomy levels and
 | **enhance-prompt** | ✅ `/enhance-prompt` (Custom) | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported |
 | **loop** | ✅ `/loop` (Custom) | Not supported | Not supported | Not supported | Custom mode or `/code` | Iterative agent | Agent mode | Not supported | Agent mode | Interactive mode |
 | **turbo-loop** | ✅ `/turbo-loop` (Custom) | Not supported | Not supported | Not supported | Custom mode | **Autonomous agent** | Agent mode | Not supported | Agent mode | `--yes` flag |
-| **fix-correctness** | ✅ `/fix-correctness` (Custom) | Not supported | Not supported | Not supported | Custom mode or `/debug` | QA agent | Not supported | Not supported | Not supported | Not supported |
+| **improve-correctness** | ✅ `/improve-correctness` (Custom) | Not supported | Not supported | Not supported | Custom mode or `/debug` | QA agent | Not supported | Not supported | Not supported | Not supported |
 | **test** | ✅ `/test` (Custom) | Not supported | Not supported | Not supported | Custom mode or skill | Testing agent | `/test` command | Not supported | Testing tools | `--test` flag |
 | **tune-performance** | ✅ `/tune-performance` (Custom) | Not supported | Not supported | Not supported | Custom mode or skill | Performance agent | Not supported | Not supported | Not supported | Not supported |
 | **validate** | ✅ `/validate` (Custom) | Not supported | Not supported | Not supported | Custom mode or skill | Validation agent | Not supported | Not supported | Not supported | Not supported |
@@ -330,7 +330,7 @@ Our workflows system provides 9 execution modes with varying autonomy levels and
 
 **Limited Workflows:**
 - Most agents lack structured workflow systems
-- Windsurf's 12 workflows are more comprehensive than any competitor
+- Windsurf's 9 workflows are more comprehensive than any competitor
 
 ### 4. Migration Considerations
 
@@ -393,13 +393,13 @@ Our workflows system provides 9 execution modes with varying autonomy levels and
 
 ### Windsurf/Cascade (Reference)
 - **Type**: Mostly custom configuration + 1 built-in workflow
-- **Strengths**: Most comprehensive skills (14 custom), workflows (12 custom + 1 built-in), structured documentation
+- **Strengths**: Most comprehensive skills (14 custom), workflows (9 custom + 1 built-in), structured documentation
 - **Unique Features**: maintain-consistency skill, validation workflow, SKILLS_MAP, CHANGE_CHECKLISTS
 - **Best For**: Rigorous engineering discipline, project-wide consistency
 - **Config**: `memories/global_rules.md`, `skills/*/SKILL.md`, `global_workflows/*.md`
 - **Custom Options**: Full YAML frontmatter system, Markdown-based skills/workflows, pre-submit checklists
 - **Built-in**: `/review` workflow (native to Windsurf)
-- **Note**: All 14 skills and 12 workflows are custom-created; `/review` is built into Windsurf
+- **Note**: All 14 skills and 9 workflows are custom-created; `/review` is built into Windsurf
 
 ### GitHub Copilot
 - **Strengths**: Ubiquitous, well-documented, simple, IDE-integrated, Copilot Chat with built-in modes (explain, fix, test, review)
@@ -469,7 +469,7 @@ Our workflows system provides 9 execution modes with varying autonomy levels and
 
 Our Windsurf/Cascade configuration provides broad coverage across:
 - Structured skills system (14 custom skills)
-- Workflow variety (12 custom + 1 built-in = 13 total execution modes)
+- Workflow variety (9 custom + 1 built-in = 10 total execution modes)
 - Documentation and organization (SKILLS_MAP, CHANGE_CHECKLISTS)
 
 **Closest Equivalents:**
@@ -493,8 +493,8 @@ This mapping serves as both a reference for understanding our configuration's po
 
 **Summary:**
 - **10 agents compared**: Windsurf/Cascade (reference) + 9 others
-- **3 feature categories mapped**: Global Rules, Skills (14 custom), Workflows (12 custom + 1 built-in)
+- **3 feature categories mapped**: Global Rules, Skills (14 custom), Workflows (9 custom + 1 built-in)
 - **Custom configuration options documented** for each agent
-- **Windsurf/Cascade coverage**: 13 total workflows, 14 skills
+- **Windsurf/Cascade coverage**: 10 total workflows, 14 skills
 - **Most similar structure**: Claude Code (skills with SKILL.md + YAML)
 - **Comparable agents**: Claude Code, Kilo Code; Antigravity [UNVERIFIED]

@@ -83,7 +83,7 @@ docs/ (shared, not copied)
 | `global_workflows/enhance-prompt.md` | `modes/enhance-prompt.yaml` | MD → YAML |
 | `global_workflows/loop.md` | `modes/loop.yaml` | MD → YAML |
 | `global_workflows/turbo-loop.md` | `modes/turbo-loop.yaml` | MD → YAML |
-| `global_workflows/fix-correctness.md` | `modes/fix-correctness.yaml` | MD → YAML |
+| `global_workflows/improve-correctness.md` | `modes/improve-correctness.yaml` | MD → YAML |
 | `global_workflows/test.md` | `modes/test.yaml` | MD → YAML |
 | `global_workflows/tune-performance.md` | `modes/tune-performance.yaml` | MD → YAML |
 | `global_workflows/validate.md` | `modes/validate.yaml` | MD → YAML |
@@ -123,7 +123,7 @@ All internal references have been updated:
 | Global engineering rules | ✅ Ported to AGENTS.md |
 | Project-level rules | ✅ Created in rules/ |
 | 14 specialized skills | ✅ Ported |
-| 12 workflows/modes | ✅ Converted to YAML |
+| 9 workflows/modes | ✅ Converted to YAML |
 | Multi-language support (10 languages) | ✅ Preserved |
 | Hard rules and pre-submit checklists | ✅ Preserved |
 | Change management protocols | ✅ Preserved |
@@ -144,7 +144,7 @@ All internal references have been updated:
 7. `.kilocode/modes/enhance-prompt.yaml`
 8. `.kilocode/modes/loop.yaml`
 9. `.kilocode/modes/turbo-loop.yaml`
-10. `.kilocode/modes/fix-correctness.yaml`
+10. `.kilocode/modes/improve-correctness.yaml`
 11. `.kilocode/modes/test.yaml`
 12. `.kilocode/modes/tune-performance.yaml`
 13. `.kilocode/modes/validate.yaml`

@@ -78,7 +78,7 @@ get_mode_tools() {
             echo "read edit write run" ;;
         validate)
             echo "read run grep listDir" ;;
-        *)  # loop, turbo-loop, fix-correctness, test, tune-performance
+        *)  # loop, turbo-loop, improve-correctness, test, tune-performance
             echo "read edit write run grep" ;;
     esac
 }

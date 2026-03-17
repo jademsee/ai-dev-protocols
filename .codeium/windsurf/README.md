@@ -37,7 +37,7 @@ This configuration enforces rigorous engineering discipline through:
 │   └── write-tests/              # Test writing
 ├── global_workflows/             # 12 execution workflows
 │   ├── analyze.md                # Analysis without changes
-│   ├── fix-correctness.md        # Correctness-only loop
+│   ├── improve-correctness.md    # Correctness-only loop
 │   ├── dry-run.md                # Planning without execution
 │   ├── enhance-prompt.md         # Prompt enhancement
 │   ├── loop.md                   # Standard improvement loop
@@ -121,7 +121,7 @@ Workflows control execution mode:
 **Improvement Loops:**
 - `/loop` - Standard improvement loop with approval gates
 - `/turbo-loop` - Autonomous loop without approval
-- `/fix-correctness` - Fix correctness and concurrency issues only
+- `/improve-correctness` - Improve correctness and concurrency issues only
 - `/test` - Test-driven red-green-refactor loop
 - `/tune-performance` - Optimize performance only
 
@@ -355,7 +355,7 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 
 ### Current Version
 - 14 skills (Atomic, Composite, Orchestration)
-- 12 workflows (Analysis, Execution, Loop modes, Validation)
+- 9 workflows (Analysis, Loops, Validation)
 - 10 languages supported
 - Automated validation system
 - Comprehensive change management
@@ -382,7 +382,7 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 - Renamed dry.md to dry-run.md
 - Renamed perf.md to tune-performance.md
 - Renamed skills for clarity: audit→audit-security, architect→design-architecture, create→create-item, git→manage-git
-- Renamed workflows for clarity: tune→tune-performance, turbo→turbo-loop, enhance→enhance-prompt, correct→fix-correctness
+- Renamed workflows for clarity: tune→tune-performance, turbo→turbo-loop, enhance→enhance-prompt, correct→improve-correctness
 
 ---
 

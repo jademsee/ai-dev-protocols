@@ -60,7 +60,7 @@ Run the validation workflow to ensure everything is configured correctly:
 ### Core Components
 
 - **14 Skills** - Specialized capabilities (debug, optimize, write-tests, manage-dependencies, etc.)
-- **12 Workflows** - Execution modes (analysis, loops, validation)
+- **9 Workflows** - Execution modes (analysis, loops, validation)
 - **Global Rules** - Engineering discipline (correctness > performance > elegance)
 - **Validation System** - Automated consistency checking
 

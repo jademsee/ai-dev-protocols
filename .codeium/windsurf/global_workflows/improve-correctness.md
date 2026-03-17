@@ -1,7 +1,7 @@
 ---
-description: Fix correctness, race conditions, and concurrency issues only
+description: Improve correctness, race conditions, and concurrency issues only
 ---
-## /fix-correctness
+## /improve-correctness
 Correctness-only loop. Ignore performance and clarity improvements.
 Run the improvement loop on the current file.
 Focus exclusively on: correctness, race conditions, and concurrency safety.

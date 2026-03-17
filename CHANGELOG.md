@@ -48,11 +48,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Atomic: debug, write-tests, write-docs, refactor, optimize, maintain-consistency, manage-secrets
   - Composite: develop-api, create-item, manage-git
   - Orchestration: design-architecture, recover-design, audit-security
-- **12 custom workflows** for execution control
-  - Analysis: analyze, think, dry-run, enhance-prompt
-  - Execution: quick
-  - Loops: loop, turbo-loop, fix-correctness, test, tune-performance
-  - Control: stop, validate
+- **9 custom workflows (Analysis, Loops, Validation)**
+  - Analysis: analyze, dry-run, enhance-prompt
+  - Loops: loop, turbo-loop, improve-correctness, test, tune-performance
+  - Validation: validate
 - **Global rules system** (memories/global_rules.md)
   - PROJECT PROFILE for context-dependent rules
   - SESSION START PROTOCOL
@@ -89,7 +88,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - tune → tune-performance
   - turbo → turbo-loop
   - enhance → enhance-prompt
-  - correct → fix-correctness
+  - correct → improve-correctness
   - dry → dry-run
 - Replaced .windsurfrules with language-specific dependency analysis tools
 - Removed cross-skill invocations (skills now use checklist references only)
@@ -126,7 +125,7 @@ If you're upgrading from an earlier version:
    - `/tune` → `/tune-performance`
    - `/turbo` → `/turbo-loop`
    - `/enhance` → `/enhance-prompt`
-   - `/correct` → `/fix-correctness`
+   - `/correct` → `/improve-correctness`
    - `/dry` → `/dry-run`
 
 3. **Language Support**: If using Ruby or PHP, migrate to supported languages or add custom tooling
