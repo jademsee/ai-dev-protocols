@@ -159,11 +159,11 @@ All internal references have been updated:
 
 ## Validation Checklist
 
-- [ ] All 16 skills ported
-- [ ] All 9 modes created
-- [ ] AGENTS.md created with full content
-- [ ] Rules directory populated
-- [ ] Documentation copied
-- [ ] README updated for Kilo Code
-- [ ] Porting manifest created
-- [ ] Internal references updated
+- [x] All 16 skills ported
+- [x] All 9 modes created
+- [x] AGENTS.md created with full content
+- [x] Rules directory populated
+- [x] Documentation copied
+- [x] README updated for Kilo Code
+- [x] Porting manifest created
+- [x] Internal references updated

@@ -8,8 +8,8 @@ This directory contains a comprehensive, production-grade configuration for Wind
 
 This configuration enforces rigorous engineering discipline through:
 - **Global Rules** - Core principles prioritizing correctness, performance, and architectural continuity
-- **Skills** - 14 specialized capabilities for different development tasks
-- **Workflows** - 12 execution modes with varying autonomy levels
+- **Skills** - Specialized capabilities for development, quality, security, documentation, and operations
+- **Workflows** - Execution modes with varying autonomy levels for analysis, improvement loops, and validation
 - **Maintenance System** - Automated validation and change management
 
 ---
@@ -20,38 +20,36 @@ This configuration enforces rigorous engineering discipline through:
 .codeium/windsurf/
 ├── memories/
 │   └── global_rules.md          # Core engineering principles and rules
-├── skills/                       # 14 specialized skills
-│   ├── develop-api/              # API endpoint creation
-│   ├── design-architecture/      # Design and governance
+├── skills/                       # Specialized skills
+│   ├── analyze-metrics/          # Runtime/process metrics visualization
 │   ├── audit-security/           # Security auditing
 │   ├── create-item/              # New module creation
 │   ├── debug/                    # Bug diagnosis and fixing
-│   ├── manage-git/               # Git lifecycle management
+│   ├── design-architecture/      # Design and governance
+│   ├── develop-api/              # API endpoint creation
 │   ├── maintain-consistency/     # Project-wide consistency validation
 │   ├── manage-dependencies/      # Dependency lifecycle management
+│   ├── manage-git/               # Git lifecycle management
 │   ├── manage-secrets/           # Secrets management architecture
 │   ├── optimize/                 # Performance optimization
 │   ├── recover-design/           # Reverse engineering
 │   ├── refactor/                 # Code restructuring
+│   ├── visualize-project/        # Codebase structure visualization
 │   ├── write-docs/               # Documentation
 │   └── write-tests/              # Test writing
-├── global_workflows/             # 12 execution workflows
+├── global_workflows/             # Execution workflows
 │   ├── analyze.md                # Analysis without changes
-│   ├── improve-correctness.md    # Correctness-only loop
 │   ├── dry-run.md                # Planning without execution
 │   ├── enhance-prompt.md         # Prompt enhancement
+│   ├── improve-correctness.md    # Correctness-only loop
 │   ├── loop.md                   # Standard improvement loop
-│   ├── quick.md                  # Minimal reasoning execution
-│   ├── stop.md                   # Exit improvement loop
 │   ├── test.md                   # Red-green-refactor loop
-│   ├── think.md                  # Deep reasoning mode
 │   ├── tune-performance.md       # Performance-only loop
 │   ├── turbo-loop.md             # Autonomous loop
 │   └── validate.md               # Project consistency validation
-├── SKILLS_MAP.md                 # Skill relationships and patterns
-├── CHANGE_CHECKLISTS.md          # Change impact checklists
-├── MAINTENANCE_GUIDE.md          # Maintenance protocols
 └── README.md                     # This file
+
+Note: SKILLS_MAP.md, CHANGE_CHECKLISTS.md, and MAINTENANCE_GUIDE.md are located in docs/ (shared across tools).
 ```
 
 ---
@@ -155,7 +153,7 @@ Workflows control execution mode:
 
 ### Comprehensive Skills
 
-**14 specialized skills** covering:
+**Specialized skills** covering:
 - Development: create-item, develop-api, refactor, optimize
 - Quality: debug, write-tests, audit-security, maintain-consistency
 - Security: manage-secrets, manage-dependencies
@@ -354,8 +352,8 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 ## Version History
 
 ### Current Version
-- 14 skills (Atomic, Composite, Orchestration)
-- 9 workflows (Analysis, Loops, Validation)
+- Skills covering development, quality, security, documentation, and operations
+- Workflows for analysis, improvement loops, and validation
 - 10 languages supported
 - Automated validation system
 - Comprehensive change management

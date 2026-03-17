@@ -21,6 +21,7 @@ This directory contains the Kilo Code AI coding assistant configuration, ported 
 │   ├── tune-performance.yaml
 │   └── validate.yaml
 ├── skills/                   # Specialized skills
+│   ├── analyze-metrics/
 │   ├── audit-security/
 │   ├── create-item/
 │   ├── debug/
@@ -33,6 +34,7 @@ This directory contains the Kilo Code AI coding assistant configuration, ported 
 │   ├── optimize/
 │   ├── recover-design/
 │   ├── refactor/
+│   ├── visualize-project/
 │   ├── write-docs/
 │   └── write-tests/
 ├── PORTING_MANIFEST.md       # Source-to-target mapping
@@ -133,6 +135,8 @@ Skills are automatically invoked based on trigger conditions. You can also expli
 - `use the design-architecture skill` — Plan and design architecture
 - `use the recover-design skill` — Reverse engineer existing code
 - `use the audit-security skill` — Security audit and hardening
+- `use the visualize-project skill` — Codebase structure visualization
+- `use the analyze-metrics skill` — Runtime/process metrics visualization
 
 ## Supported Languages
 

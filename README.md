@@ -59,8 +59,8 @@ Run the validation workflow to ensure everything is configured correctly:
 
 ### Core Components
 
-- **14 Skills** - Specialized capabilities (debug, optimize, write-tests, manage-dependencies, etc.)
-- **9 Workflows** - Execution modes (analysis, loops, validation)
+- **Skills** - Specialized capabilities for development, quality, security, documentation, and operations
+- **Workflows** - Execution modes for analysis, improvement loops, and validation
 - **Global Rules** - Engineering discipline (correctness > performance > elegance)
 - **Validation System** - Automated consistency checking
 
@@ -80,11 +80,11 @@ Run the validation workflow to ensure everything is configured correctly:
 
 | Document | Purpose |
 |----------|---------|
-| `@.codeium\windsurf\README.md` | Complete configuration guide |
-| `@.codeium\windsurf\SKILLS_MAP.md` | Skill relationships and patterns |
-| `@.codeium\windsurf\CHANGE_CHECKLISTS.md` | Change management checklists |
-| `@.codeium\windsurf\MAINTENANCE_GUIDE.md` | Maintenance protocols |
-| `@.codeium\windsurf\memories\global_rules.md` | Core engineering principles |
+| `docs/SKILLS_MAP.md` | Skill relationships and patterns |
+| `docs/CHANGE_CHECKLISTS.md` | Change management checklists |
+| `docs/MAINTENANCE_GUIDE.md` | Maintenance protocols |
+| `AGENTS.md` | Core engineering principles |
+| `.codeium/windsurf/README.md` | Complete configuration guide |
 
 ---
 
@@ -114,7 +114,7 @@ Run the validation workflow to ensure everything is configured correctly:
 
 **Required protocol for modifying this configuration:**
 
-1. Open `@.codeium\windsurf\CHANGE_CHECKLISTS.md`
+1. Open `docs/CHANGE_CHECKLISTS.md`
 2. Find the appropriate checklist
 3. Follow every step
 4. Run `/validate` workflow
@@ -136,7 +136,7 @@ Global rules enforce:
 
 ### Comprehensive Skills
 
-14 specialized skills with:
+Specialized skills with:
 - Clear trigger conditions
 - Step-by-step processes
 - Hard rules preventing mistakes
@@ -217,9 +217,9 @@ Performance-focused mode
 
 For issues:
 1. Run `/validate` workflow
-2. Check `@.codeium\windsurf\CHANGE_CHECKLISTS.md`
-3. Review `@.codeium\windsurf\MAINTENANCE_GUIDE.md`
-4. Consult `@.codeium\windsurf\SKILLS_MAP.md`
+2. Check `docs/CHANGE_CHECKLISTS.md`
+3. Review `docs/MAINTENANCE_GUIDE.md`
+4. Consult `docs/SKILLS_MAP.md`
 
 ---
 

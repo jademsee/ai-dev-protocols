@@ -21,7 +21,7 @@ If you **add a new skill**:
 - [ ] Add to SKILLS_MAP.md in appropriate category (Atomic/Composite/Orchestration)
 - [ ] Add to dependency matrix in SKILLS_MAP.md
 - [ ] Add to skill selection guide in SKILLS_MAP.md
-- [ ] Update skill count in any overview documentation
+- [ ] Add to directory listings in README files (do NOT add counts—use qualitative descriptions)
 - [ ] Consider if any workflows should invoke it
 
 If you **rename a skill**:
@@ -66,6 +66,7 @@ If you **add language-specific guidance** (tools, patterns):
 If you **add a new workflow**:
 - [ ] Document it in a workflows overview (create WORKFLOWS_MAP.md if needed)
 - [ ] Add to SKILLS_MAP.md workflow integration section
+- [ ] Add to directory listings in README files (do NOT add counts—use qualitative descriptions)
 - [ ] Ensure naming follows convention (verb.md or mode.md)
 
 If you **change workflow behavior**:
