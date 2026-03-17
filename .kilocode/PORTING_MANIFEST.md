@@ -80,15 +80,26 @@ docs/ (shared, not copied)
 
 | Source (Workflow) | Target (Mode) | Format Change |
 |-------------------|---------------|---------------|
-| `global_workflows/analyze.md` | `modes/analyze.yaml` | MD → YAML with `name`, `description`, `instructions`, `tools` |
-| `global_workflows/dry-run.md` | `modes/dry-run.yaml` | MD → YAML |
-| `global_workflows/enhance-prompt.md` | `modes/enhance-prompt.yaml` | MD → YAML |
-| `global_workflows/loop.md` | `modes/loop.yaml` | MD → YAML |
-| `global_workflows/turbo-loop.md` | `modes/turbo-loop.yaml` | MD → YAML |
-| `global_workflows/improve-correctness.md` | `modes/improve-correctness.yaml` | MD → YAML |
-| `global_workflows/test.md` | `modes/test.yaml` | MD → YAML |
-| `global_workflows/tune-performance.md` | `modes/tune-performance.yaml` | MD → YAML |
-| `global_workflows/validate.md` | `modes/validate.yaml` | MD → YAML |
+| `global_workflows/analyze.md` | `modes/analyze.yaml` | MD → YAML with Kilo Code schema (`slug`, `name`, `description`, `roleDefinition`, `groups`, `whenToUse`, `customInstructions`) |
+| `global_workflows/dry-run.md` | `modes/dry-run.yaml` | MD → YAML with Kilo Code schema |
+| `global_workflows/enhance-prompt.md` | `modes/enhance-prompt.yaml` | MD → YAML with Kilo Code schema |
+| `global_workflows/loop.md` | `modes/loop.yaml` | MD → YAML with Kilo Code schema |
+| `global_workflows/turbo-loop.md` | `modes/turbo-loop.yaml` | MD → YAML with Kilo Code schema |
+| `global_workflows/improve-correctness.md` | `modes/improve-correctness.yaml` | MD → YAML with Kilo Code schema |
+| `global_workflows/test.md` | `modes/test.yaml` | MD → YAML with Kilo Code schema |
+| `global_workflows/tune-performance.md` | `modes/tune-performance.yaml` | MD → YAML with Kilo Code schema |
+| `global_workflows/validate.md` | `modes/validate.yaml` | MD → YAML with Kilo Code schema |
+
+> **Schema Note:** Kilo Code modes require a specific YAML schema different from Windsurf workflows:
+> - `slug` (required) - Unique identifier matching pattern `/^[a-zA-Z0-9-]+$/`
+> - `name` (required) - Display name shown in UI
+> - `description` (required) - Short summary in mode selector
+> - `roleDefinition` (required) - Role/personality definition for system prompt
+> - `groups` (required) - Tool access groups: `read`, `edit`, `browser`, `command`, `mcp`
+> - `whenToUse` (optional) - Guidance for automated mode selection
+> - `customInstructions` (optional) - Detailed instructions
+>
+> The original porting used incorrect fields (`instructions`, `tools`) which caused modes to not load.
 
 ### Documentation
 

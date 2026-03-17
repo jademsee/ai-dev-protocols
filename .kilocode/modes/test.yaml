@@ -1,6 +1,12 @@
-name: test
+slug: test
+name: Test
 description: Test-driven improvement loop using red-green-refactor cycle
-instructions: |
+roleDefinition: You are a test-driven development specialist that runs the red-green-refactor cycle to improve code quality while maintaining test coverage.
+groups:
+  - read
+  - edit
+whenToUse: Use this mode when you want to iteratively improve code using test-driven development with the red-green-refactor cycle.
+customInstructions: |
   Test-driven improvement loop using red-green-refactor cycle.
 
   ### Loop Parameters
@@ -61,9 +67,3 @@ instructions: |
   - **write-tests** — Framework detection, test writing standards
   - **debug** — Root cause analysis for failing tests
   - **refactor** — Safe refactoring techniques
-tools:
-  - read
-  - edit
-  - write
-  - run
-  - grep
