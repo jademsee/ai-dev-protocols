@@ -17,6 +17,8 @@ Skills that operate independently and can be invoked without requiring other ski
 - **maintain-consistency** - Ensure all related files, tests, docs, and dependencies stay synchronized
 - **manage-dependencies** - Manage project dependencies across their full lifecycle
 - **manage-secrets** - Establish secrets management architecture and best practices
+- **visualize-project** - Generate visualizations for understanding codebase structure, dependencies, ownership, and architecture
+- **analyze-metrics** - Design and implement visualizations for performance, CI/CD health, dev velocity, and user analytics
 
 ### Composite Skills (Reference atomic skills in checklists)
 Skills that may reference other skills in their pre-submit checklists but don't invoke them directly.
@@ -144,6 +146,8 @@ Skills that analyze, plan, and may recommend other skills in their output.
 | recover-design | None       | -             | write-docs, design-architecture |
 | manage-dependencies | None  | design-architecture, create-item | audit-security |
 | manage-secrets | None       | audit-security | write-docs        |
+| visualize-project | None   | design-architecture | create-item |
+| analyze-metrics | None    | optimize | write-docs |
 | audit-security | None       | -             | debug, refactor   |
 
 ---
@@ -203,6 +207,8 @@ Skills that analyze, plan, and may recommend other skills in their output.
 - Setup or migrate secrets → `manage-secrets`
 - Manage or audit dependencies → `manage-dependencies`
 - Validate project integrity → `maintain-consistency` + `/validate` workflow
+- Design codebase visualizations → `visualize-project`
+- Design metrics dashboards → `analyze-metrics`
 
 ---
 

@@ -8,6 +8,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **analyze-metrics skill** - New Atomic skill for runtime/process metrics visualization
+  - Performance metrics (latency, throughput, memory, GC, error rates)
+  - CI/CD health (pipeline success, build time, flaky tests, rollbacks)
+  - Dev velocity (lead time, deployment frequency, cycle time, PR metrics)
+  - User analytics (funnels, feature adoption, DAU/WAU, error by segment)
+  - Privacy-first approach: aggregated team-level data only
+- **7 visualization scripts** in scripts/ directory
+  - `generate-dependency-graph.sh` - Multi-language dependency graph (JS, Go, Rust, Python, Java)
+  - `generate-ownership-heatmap.sh` - Git history ownership analysis with orphan detection
+  - `check-bus-factor.sh` - Bus factor risk detection with configurable threshold
+  - `generate-coupling-heatmap.sh` - Module coupling metrics (afferent, efferent, instability)
+  - `generate-layer-compliance.sh` - Architecture layer violation detection
+  - `create-onboarding-guide.sh` - Combined onboarding document with all visualizations
+  - `analyze-knowledge-transfer.sh` - Offboarding knowledge transfer analysis
+- Cross-reference between visualize-project and analyze-metrics skills
+- Event-driven automation workflows for visualization generation (PR, merge, team events)
+
+### Changed
+- **visualize-project skill** - Refactored to focus exclusively on codebase understanding
+  - Retained 4 core visualizations: dependency graph, code ownership, module coupling, layer compliance
+  - Added Mermaid output format with styling for violations and risks
+  - Added comprehensive event-driven trigger system (no scheduled jobs needed)
+  - Removed performance, CI/CD, dev velocity, and user analytics (moved to analyze-metrics)
+- Updated skill count from 14 to 16 across all documentation
+- Updated Atomic Skills category from 8 to 10 skills
+- Updated SKILLS_MAP.md with both skills in dependency matrix and selection guide
+- Updated PORTING_MANIFEST.md to reflect 16 skills
+
+### Added
 - **manage-dependencies skill** - New Atomic skill for full dependency lifecycle management
   - Dependency adoption decision framework extending global rules threshold
   - Lock file strategy for all 10 supported languages

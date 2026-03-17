@@ -11,7 +11,7 @@ This document maps the source Windsurf/Cascade configuration to the target Kilo 
 ├── memories/
 │   └── global_rules.md
 ├── skills/
-│   └── [14 skill directories]/
+│   └── [16 skill directories]/
 │       └── SKILL.md
 ├── global_workflows/
 │   └── [12 workflow files].md
@@ -35,7 +35,7 @@ docs/ (shared across all tools)
 ├── modes/
 │   └── [12 mode files].yaml
 ├── skills/
-│   └── [14 skill directories]/
+│   └── [16 skill directories]/
 │       └── SKILL.md
 ├── PORTING_MANIFEST.md
 └── README.md
@@ -55,7 +55,7 @@ docs/ (shared, not copied)
 | `memories/global_rules.md` (Secrets Management) | `.kilocode/rules/secrets-management.md` | Project-level rule file |
 | `memories/global_rules.md` (Improvement Loop) | `.kilocode/rules/improvement-loop.md` | Project-level rule file |
 
-### Skills (14 total)
+### Skills (16 total)
 
 | Source | Target | Format Change |
 |--------|--------|---------------|
@@ -73,6 +73,8 @@ docs/ (shared, not copied)
 | `skills/refactor/SKILL.md` | `skills/refactor/SKILL.md` | None (YAML+MD compatible) |
 | `skills/write-docs/SKILL.md` | `skills/write-docs/SKILL.md` | None (YAML+MD compatible) |
 | `skills/write-tests/SKILL.md` | `skills/write-tests/SKILL.md` | None (YAML+MD compatible) |
+| `skills/visualize-project/SKILL.md` | `skills/visualize-project/SKILL.md` | None (YAML+MD compatible) |
+| `skills/analyze-metrics/SKILL.md` | `skills/analyze-metrics/SKILL.md` | None (YAML+MD compatible) |
 
 ### Workflows → Modes (9 total)
 
@@ -122,7 +124,7 @@ All internal references have been updated:
 |---------|--------|
 | Global engineering rules | ✅ Ported to AGENTS.md |
 | Project-level rules | ✅ Created in rules/ |
-| 14 specialized skills | ✅ Ported |
+| 16 specialized skills | ✅ Ported |
 | 9 workflows/modes | ✅ Converted to YAML |
 | Multi-language support (10 languages) | ✅ Preserved |
 | Hard rules and pre-submit checklists | ✅ Preserved |
@@ -148,7 +150,7 @@ All internal references have been updated:
 11. `.kilocode/modes/test.yaml`
 12. `.kilocode/modes/tune-performance.yaml`
 13. `.kilocode/modes/validate.yaml`
-14. `.kilocode/skills/[14 skills]/SKILL.md` — Copied
+14. `.kilocode/skills/[16 skills]/SKILL.md` — Copied
 15. `.kilocode/README.md`
 16. `docs/SKILLS_MAP.md` — Shared (not copied)
 17. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
@@ -157,7 +159,7 @@ All internal references have been updated:
 
 ## Validation Checklist
 
-- [ ] All 14 skills ported
+- [ ] All 16 skills ported
 - [ ] All 9 modes created
 - [ ] AGENTS.md created with full content
 - [ ] Rules directory populated
