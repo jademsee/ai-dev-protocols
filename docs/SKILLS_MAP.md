@@ -219,14 +219,6 @@ Loop iteration:
 4. Repeat
 ```
 
-### `/think` workflow + skills
-```
-Deep analysis:
-1. Use recover-design approach to understand
-2. Use design-architecture approach to evaluate options
-3. Present findings before implementation
-```
-
 ---
 
 ## Maintenance Notes

@@ -176,17 +176,17 @@ Our skills system provides 14 specialized capabilities organized into Atomic, Co
 
 ## Workflows System Mapping
 
-Our workflows system provides 12 execution modes with varying autonomy levels and focus areas.
+Our workflows system provides 9 execution modes with varying autonomy levels and focus areas.
 
 ### Windsurf/Cascade Configuration
 
-**Location:** `global_workflows/` directory (12 custom .md files) + 1 built-in workflow
+**Location:** `global_workflows/` directory (9 custom .md files) + 1 built-in workflow
 
 **Workflow Categories:**
-- **Analysis**: analyze, think, dry-run, enhance
-- **Execution**: quick
-- **Improvement Loops**: loop, turbo, correct, test, tune
-- **Control**: stop, validate
+- **Analysis**: analyze, dry-run, enhance-prompt
+- **Execution**: loop, turbo-loop
+- **Improvement Loops**: fix-correctness, test, tune-performance
+- **Validation**: validate
 - **Built-in**: review (Windsurf native)
 
 ### Agent Equivalents
@@ -194,16 +194,13 @@ Our workflows system provides 12 execution modes with varying autonomy levels an
 | Workflow | Windsurf/Cascade | GitHub Copilot | Cursor | Continue | Kilo Code | Antigravity | Claude Code | Codex | Gemini CLI | Aider |
 |----------|-----------------|---------------|--------|----------|-----------|-------------|-------------|-------|------------|-------|
 | **analyze** | ✅ `/analyze` (Custom) | Not supported | Composer mode | Chat mode | ✅ Built-in `/ask` mode | Analysis agent | `/analyze` command | Chat mode | Agent mode | `--message "analyze"` |
-| **think** | ✅ `/think` (Custom) | Not supported | Not supported | Not supported | ✅ Built-in `/architect` mode | Reasoning agent | Not supported | Not supported | Not supported | Not supported |
 | **dry-run** | ✅ `/dry-run` (Custom) | Not supported | Not supported | Not supported | ✅ Built-in `/architect` mode | Planning agent | `/plan` command | `--dry-run` flag | Not supported | `--dry-run` flag |
 | **enhance-prompt** | ✅ `/enhance-prompt` (Custom) | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported |
-| **quick** | ✅ `/quick` (Custom) | Inline completion | Inline completion | Autocomplete | ✅ Built-in `/code` mode | Quick agent | Inline | Inline | Inline | Direct mode |
 | **loop** | ✅ `/loop` (Custom) | Not supported | Not supported | Not supported | Custom mode or `/code` | Iterative agent | Agent mode | Not supported | Agent mode | Interactive mode |
 | **turbo-loop** | ✅ `/turbo-loop` (Custom) | Not supported | Not supported | Not supported | Custom mode | **Autonomous agent** | Agent mode | Not supported | Agent mode | `--yes` flag |
 | **fix-correctness** | ✅ `/fix-correctness` (Custom) | Not supported | Not supported | Not supported | Custom mode or `/debug` | QA agent | Not supported | Not supported | Not supported | Not supported |
 | **test** | ✅ `/test` (Custom) | Not supported | Not supported | Not supported | Custom mode or skill | Testing agent | `/test` command | Not supported | Testing tools | `--test` flag |
 | **tune-performance** | ✅ `/tune-performance` (Custom) | Not supported | Not supported | Not supported | Custom mode or skill | Performance agent | Not supported | Not supported | Not supported | Not supported |
-| **stop** | ✅ `/stop` (Custom) | Manual | Manual | Manual | Stop command | Stop agent | Stop command | Manual | Manual | Ctrl+C |
 | **validate** | ✅ `/validate` (Custom) | Not supported | Not supported | Not supported | Custom mode or skill | Validation agent | Not supported | Not supported | Not supported | Not supported |
 | **review** | ✅ `/review` (Built-in) | Not supported | Not supported | Not supported | ✅ Built-in `/review` mode | Not supported | Not supported | Not supported | Not supported | Not supported |
 | **orchestrator** | Not supported | Not supported | Not supported | Not supported | ✅ Built-in `/orchestrator` mode | **Autonomous agent** | Not supported | Not supported | Not supported | Not supported |
@@ -212,7 +209,7 @@ Our workflows system provides 12 execution modes with varying autonomy levels an
 
 | Agent | Workflows Config Location | Format | Notes | Custom Options |
 |-------|--------------------------|--------|-------|----------------|
-| **Windsurf/Cascade** | `global_workflows/*.md` + built-in | Markdown + YAML frontmatter | 12 custom + 1 built-in workflow | Custom: 12 workflows in files; Built-in: `/review` (native to Windsurf) |
+| **Windsurf/Cascade** | `global_workflows/*.md` + built-in | Markdown + YAML frontmatter | 9 custom + 1 built-in workflow | Custom: 9 workflows in files; Built-in: `/review` (native to Windsurf) |
 | **GitHub Copilot** | Not supported | N/A | No workflow system | None - no workflow concept |
 | **Cursor** | Composer mode (built-in) | UI | Limited to Composer vs Chat | Built-in modes only, no custom workflows |
 | **Continue** | Not supported | N/A | Chat vs autocomplete only | None - no workflow concept |

@@ -74,21 +74,18 @@ docs/ (shared, not copied)
 | `skills/write-docs/SKILL.md` | `skills/write-docs/SKILL.md` | None (YAML+MD compatible) |
 | `skills/write-tests/SKILL.md` | `skills/write-tests/SKILL.md` | None (YAML+MD compatible) |
 
-### Workflows → Modes (12 total)
+### Workflows → Modes (9 total)
 
 | Source (Workflow) | Target (Mode) | Format Change |
 |-------------------|---------------|---------------|
 | `global_workflows/analyze.md` | `modes/analyze.yaml` | MD → YAML with `name`, `description`, `instructions`, `tools` |
-| `global_workflows/think.md` | `modes/think.yaml` | MD → YAML |
 | `global_workflows/dry-run.md` | `modes/dry-run.yaml` | MD → YAML |
 | `global_workflows/enhance-prompt.md` | `modes/enhance-prompt.yaml` | MD → YAML |
-| `global_workflows/quick.md` | `modes/quick.yaml` | MD → YAML |
 | `global_workflows/loop.md` | `modes/loop.yaml` | MD → YAML |
 | `global_workflows/turbo-loop.md` | `modes/turbo-loop.yaml` | MD → YAML |
 | `global_workflows/fix-correctness.md` | `modes/fix-correctness.yaml` | MD → YAML |
 | `global_workflows/test.md` | `modes/test.yaml` | MD → YAML |
 | `global_workflows/tune-performance.md` | `modes/tune-performance.yaml` | MD → YAML |
-| `global_workflows/stop.md` | `modes/stop.yaml` | MD → YAML |
 | `global_workflows/validate.md` | `modes/validate.yaml` | MD → YAML |
 
 ### Documentation
@@ -143,28 +140,25 @@ All internal references have been updated:
 3. `.kilocode/rules/secrets-management.md`
 4. `.kilocode/rules/improvement-loop.md`
 5. `.kilocode/modes/analyze.yaml`
-6. `.kilocode/modes/think.yaml`
-7. `.kilocode/modes/dry-run.yaml`
-8. `.kilocode/modes/enhance-prompt.yaml`
-9. `.kilocode/modes/quick.yaml`
-10. `.kilocode/modes/loop.yaml`
-11. `.kilocode/modes/turbo-loop.yaml`
-12. `.kilocode/modes/fix-correctness.yaml`
-13. `.kilocode/modes/test.yaml`
-14. `.kilocode/modes/tune-performance.yaml`
-15. `.kilocode/modes/stop.yaml`
-16. `.kilocode/modes/validate.yaml`
-17. `.kilocode/skills/[14 skills]/SKILL.md` — Copied
-18. `.kilocode/README.md`
-19. `docs/SKILLS_MAP.md` — Shared (not copied)
-20. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
-21. `docs/MAINTENANCE_GUIDE.md` — Shared (not copied)
-22. `.kilocode/PORTING_MANIFEST.md` — This file
+6. `.kilocode/modes/dry-run.yaml`
+7. `.kilocode/modes/enhance-prompt.yaml`
+8. `.kilocode/modes/loop.yaml`
+9. `.kilocode/modes/turbo-loop.yaml`
+10. `.kilocode/modes/fix-correctness.yaml`
+11. `.kilocode/modes/test.yaml`
+12. `.kilocode/modes/tune-performance.yaml`
+13. `.kilocode/modes/validate.yaml`
+14. `.kilocode/skills/[14 skills]/SKILL.md` — Copied
+15. `.kilocode/README.md`
+16. `docs/SKILLS_MAP.md` — Shared (not copied)
+17. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
+18. `docs/MAINTENANCE_GUIDE.md` — Shared (not copied)
+19. `.kilocode/PORTING_MANIFEST.md` — This file
 
 ## Validation Checklist
 
 - [ ] All 14 skills ported
-- [ ] All 12 modes created
+- [ ] All 9 modes created
 - [ ] AGENTS.md created with full content
 - [ ] Rules directory populated
 - [ ] Documentation copied

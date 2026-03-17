@@ -187,6 +187,96 @@ function, class, or feature.
 **Integration:**
 - **integration_test** — Flutter integration tests
 
+## Test Framework Detection
+
+When running tests, detect the framework using this 4-step hierarchy.
+
+**Supported Languages:** JavaScript/TypeScript, Python, Go, Rust, Java, C#/.NET, C/C++, Swift, Kotlin, Dart/Flutter
+
+### Step 1: Check for Test Runner Config Files
+
+**JavaScript/TypeScript:**
+| File | Framework | Run Command |
+|------|-----------|-------------|
+| `jest.config.js/ts/mjs` | Jest | `npm test` or `npx jest` |
+| `vitest.config.js/ts` | Vitest | `npx vitest` |
+| `.mocharc.js/json/yaml` | Mocha | `npx mocha` |
+| `karma.conf.js` | Karma | `npx karma start` |
+| `playwright.config.ts` | Playwright | `npx playwright test` |
+| `cypress.config.js/ts` | Cypress | `npx cypress run` |
+| `ava.config.js/cjs/mjs` | AVA | `npx ava` |
+
+**Python:**
+| File | Framework | Run Command |
+|------|-----------|-------------|
+| `pytest.ini` | pytest | `pytest` |
+| `pyproject.toml [tool.pytest]` | pytest | `pytest` |
+| `setup.cfg [tool:pytest]` | pytest | `pytest` |
+| `tox.ini` | tox+pytest | `tox` |
+
+**Rust:**
+| File | Framework | Run Command |
+|------|-----------|-------------|
+| `Cargo.toml` | cargo test | `cargo test` |
+
+**Go:**
+| File | Framework | Run Command |
+|------|-----------|-------------|
+| `go.mod` | go test | `go test ./...` |
+
+**Java/Kotlin:**
+| File | Framework | Run Command |
+|------|-----------|-------------|
+| `pom.xml` | Maven/JUnit | `mvn test` |
+| `build.gradle` or `build.gradle.kts` | Gradle/JUnit | `./gradlew test` |
+
+**C#/.NET:**
+| File | Framework | Run Command |
+|------|-----------|-------------|
+| `*.csproj` | dotnet test (xUnit/NUnit/MSTest) | `dotnet test` |
+| `*.sln` | dotnet test | `dotnet test` |
+
+**C/C++:**
+| File | Framework | Run Command |
+|------|-----------|-------------|
+| `CMakeLists.txt` with CTest | CTest | `ctest` |
+| `Makefile` with test target | make test | `make test` |
+| `meson.build` | Meson test | `meson test` |
+
+**Swift:**
+| File | Framework | Run Command |
+|------|-----------|-------------|
+| `Package.swift` | XCTest | `swift test` |
+| `*.xcodeproj` or `*.xcworkspace` | XCTest | `xcodebuild test` |
+
+**Dart/Flutter:**
+| File | Framework | Run Command |
+|------|-----------|-------------|
+| `pubspec.yaml` | dart test | `dart test` |
+| `pubspec.yaml` (Flutter project) | flutter test | `flutter test` |
+
+### Step 2: Check Package Manager Files
+- **package.json**: Check `scripts.test`, `devDependencies` for jest/vitest/mocha/ava
+- **pyproject.toml**: Check `[tool.poetry.dev-dependencies]` or `[project.optional-dependencies]`
+- **pubspec.yaml**: Check `dev_dependencies` for `test:` or `flutter_test:`
+
+### Step 3: Check Directory Structure
+- `__tests__/`, `*.test.js/ts`, `*.spec.js/ts` → JavaScript/TypeScript
+- `tests/`, `test_*.py`, `*_test.py` → Python
+- `*_test.go` → Go
+- `src/test/` → Java/Kotlin
+- `test/` (with Dart files) → Dart/Flutter
+- `Tests/` (with Swift files) → Swift
+
+### Step 4: Detect from CI Config
+Read existing CI config (`.github/workflows/*.yml`, `.gitlab-ci.yml`, `Jenkinsfile`, `azure-pipelines.yml`) for actual test commands being used.
+
+**Report format:** "Detected: [framework] via [config file/method]. Run command: [cmd]"
+**If ambiguous:** List all detected and ask which to use.
+**If none detected:** Ask user for framework and run command.
+
+---
+
 ## Concurrency Testing [CONDITIONAL: skip if module has no concurrency]
 
 ### Detection Check — Answer BEFORE proceeding:

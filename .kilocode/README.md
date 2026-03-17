@@ -109,16 +109,13 @@ cp AGENTS.md GEMINI.md
 Invoke modes using slash commands:
 
 - `/analyze` — Deep analysis mode, identify patterns and risks
-- `/think` — Maximum reasoning effort with multiple approaches
 - `/dry-run` — Plan only, no code changes
 - `/enhance-prompt` — Transform prompts into actionable requests
-- `/quick` — Execute directly with minimal reasoning
 - `/loop` — Iterative improvements with approval gates
 - `/turbo-loop` — Autonomous improvement loop
 - `/fix-correctness` — Focus on correctness and concurrency only
 - `/test` — Test-driven improvement loop
 - `/tune-performance` — Performance optimization only
-- `/stop` — Exit active loop and summarize
 - `/validate` — Comprehensive project validation
 
 ### Skills

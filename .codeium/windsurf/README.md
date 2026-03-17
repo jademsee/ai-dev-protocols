@@ -115,12 +115,8 @@ Workflows control execution mode:
 
 **Analysis & Planning:**
 - `/analyze` - Deep analysis without making changes
-- `/think` - Maximum reasoning with multiple approaches
 - `/dry-run` - Plan only, no code changes
 - `/enhance-prompt` - Transform prompts into actionable requests
-
-**Execution:**
-- `/quick` - Minimal reasoning, execute directly
 
 **Improvement Loops:**
 - `/loop` - Standard improvement loop with approval gates
@@ -129,8 +125,7 @@ Workflows control execution mode:
 - `/test` - Test-driven red-green-refactor loop
 - `/tune-performance` - Optimize performance only
 
-**Control & Validation:**
-- `/stop` - Exit active improvement loop
+**Validation:**
 - `/validate` - Validate project consistency and integrity
 
 ### Skills vs Workflows: What's the Difference?
