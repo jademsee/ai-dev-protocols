@@ -64,6 +64,73 @@ improve the design of an existing module or file.
 - Touching code outside the original module's directory
 - Deleting significant logic (default: >20 lines; always show diff first)
 
+## Refactoring Tools by Language
+
+### JavaScript/TypeScript
+- **Rename:** IDE rename tool (VS Code, WebStorm), `ts-morph`
+- **Extract:** IDE extract method/function, `vscode-js-refactor`
+- **Move:** `ts-morph` for programmatic moves, IDE move refactoring
+- **Dead Code:** `ts-prune`, `unimported`, `depcheck`
+
+### Python
+- **Rename:** IDE rename tool (PyCharm, VS Code), `rope`
+- **Extract:** IDE extract method, `rope`
+- **Move:** IDE move refactoring, `rope`
+- **Dead Code:** `vulture`, `pyflakes`, `autoflake`
+
+### Go
+- **Rename:** `gorename`, IDE rename (GoLand, VS Code)
+- **Extract:** IDE extract method, `godoctor`
+- **Move:** IDE move refactoring
+- **Dead Code:** `deadcode`, `staticcheck`
+
+### Rust
+- **Rename:** IDE rename (rust-analyzer, IntelliJ Rust)
+- **Extract:** IDE extract method, `rust-analyzer` assists
+- **Move:** IDE move refactoring
+- **Dead Code:** `cargo-udeps`, compiler warnings (`unused`)
+
+### Java
+- **Rename:** IDE rename (IntelliJ IDEA, Eclipse)
+- **Extract:** IDE extract method/class/interface
+- **Move:** IDE move refactoring
+- **Dead Code:** IDE unused code detection, `proguard`
+
+### C#/.NET
+- **Rename:** IDE rename (Visual Studio, VS Code)
+- **Extract:** IDE extract method/class/interface
+- **Move:** IDE move refactoring
+- **Dead Code:** IDE unused code detection, ReSharper
+
+### C/C++
+- **Rename:** IDE rename (CLion, Visual Studio), `clang-rename`
+- **Extract:** IDE extract method
+- **Move:** IDE move refactoring
+- **Dead Code:** `cppcheck`, compiler warnings (`-Wunused`)
+
+### Swift
+- **Rename:** IDE rename (Xcode)
+- **Extract:** IDE extract method
+- **Move:** IDE move refactoring
+- **Dead Code:** Xcode unused code warnings, SwiftLint
+
+### Kotlin
+- **Rename:** IDE rename (IntelliJ IDEA, Android Studio)
+- **Extract:** IDE extract method/class
+- **Move:** IDE move refactoring
+- **Dead Code:** IDE unused code detection, `detekt`
+
+### Dart/Flutter
+- **Rename:** IDE rename (VS Code, Android Studio)
+- **Extract:** IDE extract method/widget
+- **Move:** IDE move refactoring
+- **Dead Code:** `dart analyze`, `dart fix`
+
+## Related Skills
+- **write-tests** — Verify tests pass before and after refactoring
+- **debug** — If refactoring reveals unexpected behavior
+- **maintain-consistency** — Ensure all callers and docs updated
+
 ## Pre-Submit Check
 - [ ] Tests GREEN before and after
 - [ ] No behavior change — only structural change

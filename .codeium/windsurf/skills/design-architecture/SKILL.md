@@ -344,6 +344,13 @@ Phase 2: ...
   - Adds a new pattern to the codebase
   - Overrides an existing architectural rule
 
+## Related Skills
+- **create-item** — Implement modules designed by this skill
+- **develop-api** — Implement API endpoints designed by this skill
+- **refactor** — Execute refactoring plans designed by this skill
+- **recover-design** — Recover architecture from existing codebase
+- **write-docs** — Write ADRs and ARCHITECTURE.md
+
 ## Pre-Output Check
 - [ ] All affected modules identified
 - [ ] No new patterns introduced without ARCHITECTURE.md update

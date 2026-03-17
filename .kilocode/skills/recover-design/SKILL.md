@@ -433,6 +433,11 @@ Original purpose: [inferred from first commit and message]
 - ALWAYS note when the current code contradicts the inferred
   original intent — this is the most valuable finding
 
+## Related Skills
+- **write-docs** — Generate missing documentation from analysis
+- **design-architecture** — Design or audit architecture
+- **maintain-consistency** — Ensure documentation matches implementation
+
 ## Evidence Hierarchy
 When recovering design intent, weight evidence in this order:
 1. Tests — reveal intended behavior most honestly

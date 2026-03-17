@@ -360,6 +360,12 @@ Verify progress guarantees:
 - **Single-threaded tests only** — concurrency bugs won't appear
 - **Ignoring race detector warnings** — they indicate real bugs
 
+## Related Skills
+- **debug** — Write regression tests after fixing bugs
+- **refactor** — Verify refactoring doesn't break behavior
+- **optimize** — Verify optimization doesn't regress correctness
+- **create-item** — Write tests for new modules
+
 ## Pre-Submit Check
 - [ ] All new tests pass
 - [ ] No existing tests broken

@@ -569,6 +569,11 @@ Then rotate ALL exposed credentials.
 - ALWAYS enable audit logging on production secret vaults
 - ALWAYS test secret rotation in staging before production
 
+## Related Skills
+- **audit-security** — Scan for leaked secrets and vulnerabilities
+- **manage-dependencies** — Handle secrets in dependency config
+- **write-docs** — Document secrets procedures and runbooks
+
 ## Pre-Submit Checklist
 
 Before completing this skill:

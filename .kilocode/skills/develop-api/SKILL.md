@@ -100,6 +100,12 @@ consumer registration
 - No endpoints without input validation
 - No new middleware without justification
 
+## Related Skills
+- **write-tests** — Write endpoint tests (happy path, error cases)
+- **write-docs** — Document API contract and usage
+- **create-item** — If creating new modules for the endpoint
+- **audit-security** — Verify endpoint security (auth, validation)
+
 ## Pre-Submit Check
 - [ ] Route registered correctly
 - [ ] Auth middleware applied

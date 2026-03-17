@@ -73,7 +73,7 @@ This extends the global rules threshold (≥500 LOC systems / ≥200 LOC dynamic
 | **Bus factor** | ≥2 active maintainers or corporate backing | Single-maintainer hobby project in critical path |
 | **LOC threshold** | Replaces ≥500 LOC (systems) or ≥200 LOC (dynamic) | Saves <50 LOC |
 
-### Priority Order (from AGENTS.md)
+### Priority Order (from global_rules.md)
 ```
 Standard library > existing internal code > new dependency
 ```
@@ -502,6 +502,11 @@ Standard library > existing internal code > new dependency
 - ALWAYS use frozen/locked install commands in CI
 - ALWAYS check license compliance before adopting a new dependency
 - ALWAYS read the changelog before upgrading a major version
+
+## Related Skills
+- **audit-security** — Scan dependencies for vulnerabilities
+- **manage-secrets** — Handle secrets in dependency config
+- **maintain-consistency** — Ensure lock files synchronized
 
 ## Pre-Submit Checklist
 

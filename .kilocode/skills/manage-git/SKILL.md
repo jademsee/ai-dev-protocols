@@ -381,6 +381,11 @@ git merge --no-ff feat/AUTH-123-refresh-token-rotation
 
 ---
 
+## Related Skills
+- **write-tests** — Verify tests pass before committing
+- **maintain-consistency** — Ensure all related files updated together
+- **debug** — Investigate failing tests before commit
+
 ## Pre-Operation Checklist
 
 Before any git operation that modifies shared history:

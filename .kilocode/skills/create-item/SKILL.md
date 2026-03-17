@@ -95,6 +95,12 @@ After creating the module, update:
 - NEVER use global state inside a module
 - NEVER skip writing tests for the new module
 
+## Related Skills
+- **write-tests** — Write tests for the new module
+- **write-docs** — Document the new module's purpose and API
+- **develop-api** — If creating API endpoints
+- **maintain-consistency** — Ensure module integrates properly
+
 ## Pre-Submit Check
 - [ ] No equivalent module already exists
 - [ ] Follows existing directory structure

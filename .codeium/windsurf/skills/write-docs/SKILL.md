@@ -118,6 +118,11 @@ Owner: [team or role]
 - ALWAYS test code examples in documentation before committing
 - ALWAYS update docs in the same PR as the code change
 
+## Related Skills
+- **write-tests** — Verify code examples in documentation work
+- **recover-design** — Generate missing documentation from codebase analysis
+- **maintain-consistency** — Keep documentation synchronized with code
+
 ## Pre-Submit Check
 - [ ] All public APIs documented
 - [ ] WHY is explained for non-obvious code

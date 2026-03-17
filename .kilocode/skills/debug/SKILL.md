@@ -56,6 +56,68 @@ State explicitly:
 - Prefer: eliminate sharing > immutability > synchronization
 - Document the invariant being protected in a comment
 
+## Debugging Tools by Language
+
+### JavaScript/TypeScript
+- **Debuggers:** Chrome DevTools, VS Code debugger, `node inspect`
+- **Logging:** `debug` package, `winston`, `pino`
+- **Runtime:** `node --inspect`, `NODE_DEBUG=*`
+- **Memory:** `node --inspect` + Chrome Memory tab, `heapdump`
+
+### Python
+- **Debuggers:** `pdb`, `ipdb`, VS Code debugger, PyCharm debugger
+- **Logging:** `logging` module, `structlog`, `loguru`
+- **Runtime:** `python -u` (unbuffered), `faulthandler`
+- **Memory:** `tracemalloc`, `memory_profiler`, `objgraph`
+
+### Go
+- **Debuggers:** `delve` (`dlv`), VS Code Go extension
+- **Logging:** `log` package, `slog`, `zerolog`
+- **Runtime:** `GODEBUG=gctrace=1`, `pprof`
+- **Concurrency:** `go run -race`, `goroutine` dumps
+
+### Rust
+- **Debuggers:** `rust-gdb`, `rust-lldb`, VS Code rust-analyzer
+- **Logging:** `log` crate, `env_logger`, `tracing`
+- **Runtime:** `RUST_BACKTRACE=1`, `RUST_LOG=debug`
+- **Memory:** `valgrind --leak-check=full`
+
+### Java
+- **Debuggers:** `jdb`, IntelliJ IDEA debugger, Eclipse debugger
+- **Logging:** `SLF4J`, `Log4j2`, `java.util.logging`
+- **Runtime:** `-agentlib:jdwp`, `jstack`, `jmap`
+- **Memory:** Eclipse MAT, VisualVM, `jhat`
+
+### C#/.NET
+- **Debuggers:** Visual Studio debugger, VS Code C# extension
+- **Logging:** `Microsoft.Extensions.Logging`, `Serilog`, `NLog`
+- **Runtime:** `dotnet-counters`, `dotnet-trace`
+- **Memory:** `dotnet-gcdump`, Visual Studio Memory Profiler
+
+### C/C++
+- **Debuggers:** `gdb`, `lldb`, Visual Studio debugger
+- **Logging:** `spdlog`, custom logging
+- **Runtime:** `valgrind`, AddressSanitizer (`-fsanitize=address`)
+- **Memory:** Valgrind memcheck, Dr. Memory
+
+### Swift
+- **Debuggers:** `lldb`, Xcode debugger
+- **Logging:** `os_log`, `print`, `debugPrint`
+- **Runtime:** Instruments (Allocations, Leaks)
+- **Memory:** Xcode Memory Graph Debugger
+
+### Kotlin
+- **Debuggers:** IntelliJ IDEA debugger, Android Studio debugger
+- **Logging:** `SLF4J`, `kotlin-logging`, `Timber` (Android)
+- **Runtime:** Same as Java
+- **Memory:** Same as Java
+
+### Dart/Flutter
+- **Debuggers:** VS Code Dart extension, Android Studio debugger
+- **Logging:** `dart:developer log()`, `logger` package
+- **Runtime:** `flutter run --debug`, DevTools
+- **Memory:** Flutter DevTools Memory tab
+
 ## Hard Rules
 - NEVER fix a symptom without understanding the root cause
 - NEVER make a fix that is "probably fine" — be certain
@@ -79,6 +141,11 @@ Risk: [any side effects or edge cases to watch]
 ## Regression Test
 [test that would have caught this bug]
 ```
+
+## Related Skills
+- **write-tests** — Add regression tests after fixing bugs
+- **refactor** — May be needed if fix requires structural changes
+- **audit-security** — For security vulnerability detection
 
 ## Pre-Submit Check
 - [ ] Root cause confirmed — not just symptom treated

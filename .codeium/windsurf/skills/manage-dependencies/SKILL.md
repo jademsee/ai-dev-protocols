@@ -503,6 +503,11 @@ Standard library > existing internal code > new dependency
 - ALWAYS check license compliance before adopting a new dependency
 - ALWAYS read the changelog before upgrading a major version
 
+## Related Skills
+- **audit-security** — Scan dependencies for vulnerabilities
+- **manage-secrets** — Handle secrets in dependency config
+- **maintain-consistency** — Ensure lock files synchronized
+
 ## Pre-Submit Checklist
 
 Before completing this skill:

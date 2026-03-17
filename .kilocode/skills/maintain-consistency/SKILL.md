@@ -503,15 +503,13 @@ After ensuring consistency:
 
 ---
 
-## Integration with Other Skills
-
-This skill works in conjunction with:
-- **refactor** - Ensures refactoring maintains consistency
-- **create** - Ensures new components integrate properly
-- **develop-api** - Ensures API changes update all consumers
-- **architect** - Validates architectural decisions are reflected everywhere
-- **write-tests** - Ensures test coverage for all changes
-- **write-docs** - Ensures documentation stays synchronized
+## Related Skills
+- **refactor** — Ensures refactoring maintains consistency
+- **create-item** — Ensures new components integrate properly
+- **develop-api** — Ensures API changes update all consumers
+- **design-architecture** — Validates architectural decisions are reflected everywhere
+- **write-tests** — Ensures test coverage for all changes
+- **write-docs** — Ensures documentation stays synchronized
 
 ---
 

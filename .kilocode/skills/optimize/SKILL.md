@@ -224,6 +224,11 @@ Option 2: [name]
 Recommendation: [which option and why]
 ```
 
+## Related Skills
+- **write-tests** — Verify no correctness regression after optimization
+- **refactor** — May be needed to enable optimization
+- **debug** — If performance issue reveals a bug
+
 ## Pre-Submit Check
 - [ ] All tests pass — no correctness regression
 - [ ] Change is limited to identified hot path
