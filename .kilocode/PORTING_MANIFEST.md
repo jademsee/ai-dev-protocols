@@ -9,12 +9,12 @@ This document maps the source Windsurf/Cascade configuration to the target Kilo 
 ```
 .codeium/windsurf/
 ├── memories/
-│   └── global_rules.md
+│   └── rules.md
 ├── skills/
 │   └── [16 skill directories]/
 │       └── SKILL.md
 ├── global_workflows/
-│   └── [12 workflow files].md
+│   └── [9 workflow files].md
 └── README.md
 
 docs/ (shared across all tools)
@@ -29,16 +29,16 @@ docs/ (shared across all tools)
 ```
 .kilocode/
 ├── rules/
-│   └── master-rules.md          # Complete rules (single source of truth)
-├── modes/
-│   └── [9 mode files].yaml
+│   └── rules.md              # Complete rules (same name as source)
+├── workflows/
+│   └── [9 workflow files].md
 ├── skills/
 │   └── [16 skill directories]/
 │       └── SKILL.md
 ├── PORTING_MANIFEST.md
 └── README.md
 
-AGENTS.md (root level, points to .kilocode/rules/master-rules.md)
+rules.md (root level, complete rules)
 docs/ (shared, not copied)
 ```
 
@@ -48,8 +48,7 @@ docs/ (shared, not copied)
 
 | Source | Target | Notes |
 |--------|--------|-------|
-| `memories/global_rules.md` | `.kilocode/rules/master-rules.md` | Complete rules (single source of truth) |
-| `memories/global_rules.md` | `AGENTS.md` | Cross-tool discovery pointer |
+| `memories/rules.md` | `.kilocode/rules/rules.md` | Complete rules (same name both tools) |
 
 ### Skills (16 total)
 
@@ -72,30 +71,23 @@ docs/ (shared, not copied)
 | `skills/visualize-project/SKILL.md` | `skills/visualize-project/SKILL.md` | None (YAML+MD compatible) |
 | `skills/analyze-metrics/SKILL.md` | `skills/analyze-metrics/SKILL.md` | None (YAML+MD compatible) |
 
-### Workflows → Modes (9 total)
+### Workflows (9 total)
 
-| Source (Workflow) | Target (Mode) | Format Change |
-|-------------------|---------------|---------------|
-| `global_workflows/analyze.md` | `modes/analyze.yaml` | MD → YAML with Kilo Code schema (`slug`, `name`, `description`, `roleDefinition`, `groups`, `whenToUse`, `customInstructions`) |
-| `global_workflows/dry-run.md` | `modes/dry-run.yaml` | MD → YAML with Kilo Code schema |
-| `global_workflows/enhance-prompt.md` | `modes/enhance-prompt.yaml` | MD → YAML with Kilo Code schema |
-| `global_workflows/loop.md` | `modes/loop.yaml` | MD → YAML with Kilo Code schema |
-| `global_workflows/turbo-loop.md` | `modes/turbo-loop.yaml` | MD → YAML with Kilo Code schema |
-| `global_workflows/improve-correctness.md` | `modes/improve-correctness.yaml` | MD → YAML with Kilo Code schema |
-| `global_workflows/test.md` | `modes/test.yaml` | MD → YAML with Kilo Code schema |
-| `global_workflows/tune-performance.md` | `modes/tune-performance.yaml` | MD → YAML with Kilo Code schema |
-| `global_workflows/validate.md` | `modes/validate.yaml` | MD → YAML with Kilo Code schema |
+| Source (Workflow) | Target (Workflow) | Format Change |
+|-------------------|-------------------|---------------|
+| `global_workflows/diagnose.md` | `workflows/diagnose.md` | YAML frontmatter + MD content |
+| `global_workflows/prescribe.md` | `workflows/prescribe.md` | YAML frontmatter + MD content |
+| `global_workflows/enhance-prompt.md` | `workflows/enhance-prompt.md` | YAML frontmatter + MD content |
+| `global_workflows/loop.md` | `workflows/loop.md` | YAML frontmatter + MD content |
+| `global_workflows/turbo-loop.md` | `workflows/turbo-loop.md` | YAML frontmatter + MD content |
+| `global_workflows/improve-correctness.md` | `workflows/improve-correctness.md` | YAML frontmatter + MD content |
+| `global_workflows/test.md` | `workflows/test.md` | YAML frontmatter + MD content |
+| `global_workflows/tune-performance.md` | `workflows/tune-performance.md` | YAML frontmatter + MD content |
+| `global_workflows/validate.md` | `workflows/validate.md` | YAML frontmatter + MD content |
 
-> **Schema Note:** Kilo Code modes require a specific YAML schema different from Windsurf workflows:
-> - `slug` (required) - Unique identifier matching pattern `/^[a-zA-Z0-9-]+$/`
-> - `name` (required) - Display name shown in UI
-> - `description` (required) - Short summary in mode selector
-> - `roleDefinition` (required) - Role/personality definition for system prompt
-> - `groups` (required) - Tool access groups: `read`, `edit`, `browser`, `command`, `mcp`
-> - `whenToUse` (optional) - Guidance for automated mode selection
-> - `customInstructions` (optional) - Detailed instructions
->
-> The original porting used incorrect fields (`instructions`, `tools`) which caused modes to not load.
+> **Format Note:** Kilo Code workflows use Markdown format with YAML frontmatter:
+> - `description` (required in frontmatter) - Short summary shown in workflow selector
+> - Content follows as Markdown steps
 
 ### Documentation
 
@@ -107,21 +99,25 @@ docs/ (shared, not copied)
 | `MAINTENANCE_GUIDE.md` | `MAINTENANCE_GUIDE.md` | Direct copy |
 | `AI_AGENT_FEATURE_MAPPING.md` | `docs/AI_AGENT_FEATURE_MAPPING.md` | Shared (cross-tool reference) |
 
-## Terminology Changes
+## Terminology
 
-| Windsurf/Cascade Term | Kilo Code Term |
-|-----------------------|---------------|
-| Workflow | Mode |
-| `/workflow-name` | `/mode-name` |
-| `global_rules.md` | `AGENTS.md` |
-| Windsurf | Kilo Code |
+Both Windsurf and Kilo Code now use the same terminology:
+
+| Term | Used By |
+|------|--------|
+| Workflow | Both tools |
+| `/workflow-name` | Both tools |
+| `rules.md` | Both tools |
+| `global_rules.md` | Deprecated (renamed to rules.md) |
+
+> **Note:** The unified workflow format (Markdown + YAML frontmatter) works on both tools, eliminating the need for format conversion.
 
 ## Reference Updates
 
 All internal references have been updated:
 
-- `global_rules.md` → `AGENTS.md`
-- Workflow names preserved as mode names
+- `global_rules.md` → `rules.md` (same name both tools)
+- Workflow format unified (no conversion needed)
 - Skill invocation patterns preserved
 - Cross-references to documentation preserved
 
@@ -129,10 +125,10 @@ All internal references have been updated:
 
 | Feature | Status |
 |---------|--------|
-| Global engineering rules | ✅ Ported to AGENTS.md |
+| Global engineering rules | ✅ Ported to rules.md |
 | Project-level rules | ✅ Created in rules/ |
 | 16 specialized skills | ✅ Ported |
-| 9 workflows/modes | ✅ Converted to YAML |
+| 9 workflows | ✅ Unified format (direct copy) |
 | Multi-language support (10 languages) | ✅ Preserved |
 | Hard rules and pre-submit checklists | ✅ Preserved |
 | Change management protocols | ✅ Preserved |
@@ -144,30 +140,28 @@ All internal references have been updated:
 
 ## Files Created
 
-1. `AGENTS.md` — Root-level cross-tool discovery pointer
-2. `.kilocode/rules/master-rules.md` — Complete rules (single source of truth)
-3. `.kilocode/modes/analyze.yaml`
-4. `.kilocode/modes/dry-run.yaml`
-5. `.kilocode/modes/enhance-prompt.yaml`
-6. `.kilocode/modes/loop.yaml`
-7. `.kilocode/modes/turbo-loop.yaml`
-8. `.kilocode/modes/improve-correctness.yaml`
-9. `.kilocode/modes/test.yaml`
-10. `.kilocode/modes/tune-performance.yaml`
-11. `.kilocode/modes/validate.yaml`
-12. `.kilocode/skills/[16 skills]/SKILL.md` — Copied
-13. `.kilocode/README.md`
-14. `docs/SKILLS_MAP.md` — Shared (not copied)
-15. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
-16. `docs/MAINTENANCE_GUIDE.md` — Shared (not copied)
-17. `.kilocode/PORTING_MANIFEST.md` — This file
+1. `.kilocode/rules/rules.md` — Complete rules (same name as source)
+2. `.kilocode/workflows/diagnose.md`
+3. `.kilocode/workflows/prescribe.md`
+4. `.kilocode/workflows/enhance-prompt.md`
+5. `.kilocode/workflows/loop.md`
+6. `.kilocode/workflows/turbo-loop.md`
+7. `.kilocode/workflows/improve-correctness.md`
+8. `.kilocode/workflows/test.md`
+9. `.kilocode/workflows/tune-performance.md`
+10. `.kilocode/workflows/validate.md`
+11. `.kilocode/skills/[16 skills]/SKILL.md` — Copied
+12. `.kilocode/README.md`
+13. `docs/SKILLS_MAP.md` — Shared (not copied)
+14. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
+15. `docs/MAINTENANCE_GUIDE.md` — Shared (not copied)
+16. `.kilocode/PORTING_MANIFEST.md` — This file
 
 ## Validation Checklist
 
 - [x] All 16 skills ported
-- [x] All 9 modes created
-- [x] AGENTS.md created as discovery pointer
-- [x] master-rules.md created with complete rules
+- [x] All 9 workflows created
+- [x] rules.md created with complete rules
 - [x] Documentation copied
 - [x] README updated for Kilo Code
 - [x] Porting manifest created

@@ -7,17 +7,17 @@ This directory contains the Kilo Code AI coding assistant configuration, ported 
 ```
 .kilocode/
 ├── rules/                    # Project-level rules
-│   └── master-rules.md       # Complete rules (single source of truth)
-├── modes/                    # Custom modes (workflows)
-│   ├── analyze.yaml
-│   ├── dry-run.yaml
-│   ├── enhance-prompt.yaml
-│   ├── loop.yaml
-│   ├── turbo-loop.yaml
-│   ├── improve-correctness.yaml
-│   ├── test.yaml
-│   ├── tune-performance.yaml
-│   └── validate.yaml
+│   └── rules.md              # Complete rules (same name as source)
+├── workflows/                # Custom workflows (slash commands)
+│   ├── diagnose.md
+│   ├── prescribe.md
+│   ├── enhance-prompt.md
+│   ├── loop.md
+│   ├── turbo-loop.md
+│   ├── improve-correctness.md
+│   ├── test.md
+│   ├── tune-performance.md
+│   └── validate.md
 ├── skills/                   # Specialized skills
 │   ├── analyze-metrics/
 │   ├── audit-security/
@@ -52,64 +52,14 @@ The following documentation is shared across all tool configs and located in `do
 
 > **Note:** Windsurf is the primary tool. All changes originate in `.codeium/windsurf/` first, then are ported to supported tools.
 
-## AGENTS.md — Global Rules File
-
-`AGENTS.md` lives at the **repository root** (`/AGENTS.md`) and serves as a cross-tool discovery pointer. The actual rules content is in [`.kilocode/rules/master-rules.md`](rules/master-rules.md).
-
-### Location
-
-```
-<repo-root>/
-├── AGENTS.md              ← Cross-tool discovery pointer
-└── .kilocode/
-    └── rules/
-        └── master-rules.md  ← Actual rules content
-```
-
-It must be at the root so all AI tools can discover it by walking up from the working directory.
-
-### Which agents read AGENTS.md natively
-
-| Agent | Reads AGENTS.md? | Native config file | Notes |
-|-------|------------------|--------------------|-------|
-| **Kilo Code** | ✅ Yes | `AGENTS.md` | Primary target for this config |
-| **Cursor** | ✅ Yes | `AGENTS.md` | Also reads `.cursorrules` and `.cursor/rules/` |
-| **Claude Code** | ❌ No | `CLAUDE.md` | Copy content from `.kilocode/rules/master-rules.md` |
-| **GitHub Copilot** | ❌ No | `.github/copilot-instructions.md` | Copy content from `.kilocode/rules/master-rules.md` |
-| **Gemini CLI** | ❌ No | `GEMINI.md` | Copy content from `.kilocode/rules/master-rules.md` |
-| **Codex** | ❌ No | `.codex/config.toml` | Adapt content into TOML `instructions` field |
-| **Continue** | ❌ No | `~/.continue/config.yaml` | Add content to `systemMessage` in config |
-| **Aider** | ❌ No | `.aider.conf.yml` | Add content to custom prompts via `--message` |
-
-### Using this config with other agents
-
-For agents that don't read `AGENTS.md` natively, copy the content from `.kilocode/rules/master-rules.md` to their expected file:
-
-**Claude Code** — create `CLAUDE.md` at repo root:
-```
-cp .kilocode/rules/master-rules.md CLAUDE.md
-```
-
-**GitHub Copilot** — create `.github/copilot-instructions.md`:
-```
-cp .kilocode/rules/master-rules.md .github/copilot-instructions.md
-```
-
-**Gemini CLI** — create `GEMINI.md` at repo root:
-```
-cp .kilocode/rules/master-rules.md GEMINI.md
-```
-
-> ⚠️ These copies must be kept in sync manually when `.kilocode/rules/master-rules.md` is updated. See `CHANGE_CHECKLISTS.md` for the update protocol.
-
 ## Usage
 
-### Modes (Workflows)
+### Workflows
 
-Invoke modes using slash commands:
+Invoke workflows using slash commands:
 
-- `/analyze` — Deep analysis mode, identify patterns and risks
-- `/dry-run` — Plan only, no code changes
+- `/diagnose` — Diagnose code structure, patterns, and risks
+- `/prescribe` — Prescribe prioritized improvements without code changes
 - `/enhance-prompt` — Transform prompts into actionable requests
 - `/loop` — Iterative improvements with approval gates
 - `/turbo-loop` — Autonomous improvement loop

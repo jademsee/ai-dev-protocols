@@ -56,7 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Access control patterns following least privilege principle
   - Compliance guidance for SOC2, HIPAA, PCI-DSS
   - Common pitfalls and solutions
-- **SECRETS MANAGEMENT PROTOCOL** in global_rules.md
+- **SECRETS MANAGEMENT PROTOCOL** in rules.md
   - 8 core rules for handling secrets, credentials, and sensitive configuration
   - 3 hard stops to prevent credential exposure
 - **Pattern 8: Secrets Management** invocation pattern in SKILLS_MAP.md
@@ -81,7 +81,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Analysis: analyze, dry-run, enhance-prompt
   - Loops: loop, turbo-loop, improve-correctness, test, tune-performance
   - Validation: validate
-- **Global rules system** (memories/global_rules.md)
+- **Global rules system** (memories/rules.md)
   - PROJECT PROFILE for context-dependent rules
   - SESSION START PROTOCOL
   - CHANGE MANAGEMENT PROTOCOL
@@ -155,7 +155,7 @@ If you're upgrading from an earlier version:
    - `/turbo` → `/turbo-loop`
    - `/enhance` → `/enhance-prompt`
    - `/correct` → `/improve-correctness`
-   - `/dry` → `/dry-run`
+   - `/dry` → `/prescribe`
 
 3. **Language Support**: If using Ruby or PHP, migrate to supported languages or add custom tooling
 
@@ -170,7 +170,7 @@ When adding changes to this project:
 1. Follow CHANGE_CHECKLISTS.md for the appropriate change type
 2. Update this CHANGELOG.md under [Unreleased]
 3. Run `/validate` workflow before committing
-4. Follow the CONFIGURATION CHANGE PROTOCOL in global_rules.md
+4. Follow the CONFIGURATION CHANGE PROTOCOL in rules.md
 
 ---
 

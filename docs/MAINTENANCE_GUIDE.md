@@ -43,8 +43,8 @@ Fix any errors before committing the change.
 
 **Comprehensive Review:**
 - [ ] Run `/validate` workflow
-- [ ] Review all skills for consistency with global_rules.md
-- [ ] Review all workflows for consistency with global_rules.md
+- [ ] Review all skills for consistency with rules.md
+- [ ] Review all workflows for consistency with rules.md
 - [ ] Check for orphaned files or deprecated content
 - [ ] Update tool recommendations if newer versions are available
 
@@ -69,7 +69,7 @@ Fix any errors before committing the change.
 - [ ] Review all workflows for effectiveness
 - [ ] Update tool recommendations based on ecosystem changes
 - [ ] Check for deprecated tools that should be replaced
-- [ ] Review global_rules.md for updates based on experience
+- [ ] Review rules.md for updates based on experience
 
 **Tool Updates:**
 - [ ] Research new profiling tools (optimize.md)
@@ -152,7 +152,7 @@ Fix any errors before committing the change.
 
 **Step-by-Step:**
 
-1. **Make the change to global_rules.md**
+1. **Make the change to rules.md**
 
 2. **Identify affected skills:**
    - Which skills enforce this rule?
@@ -192,7 +192,7 @@ Fix any errors before committing the change.
    - SKILLS_MAP.md
    - Other skills
    - Workflows
-   - global_rules.md
+   - rules.md
    - CHANGE_CHECKLISTS.md
 
 3. **Remove the file/directory**
@@ -214,11 +214,11 @@ Run this checklist monthly or after major changes:
 - [ ] Every skill has YAML frontmatter
 - [ ] Every skill has all required sections
 - [ ] No skills invoke other skills directly (only checklist references)
-- [ ] All skills align with global_rules.md
+- [ ] All skills align with rules.md
 
 **Workflow Validation:**
 - [ ] All workflows are documented
-- [ ] Workflows don't contradict global_rules.md
+- [ ] Workflows don't contradict rules.md
 - [ ] Workflow instructions are clear and actionable
 
 **Cross-Reference Validation:**
@@ -333,7 +333,7 @@ Expected output:
 4. Update SKILLS_MAP.md
 5. Run validation again
 
-### Problem: Skill contradicts global_rules.md
+### Problem: Skill contradicts rules.md
 
 **Solution:**
 1. Decide which should change (usually the skill)
@@ -373,7 +373,7 @@ Expected output:
    Run the `/validate` workflow to identify all consistency issues.
 
 2. **Fix errors in priority order:**
-   - P0: Missing core files (global_rules.md, SKILLS_MAP.md)
+   - P0: Missing core files (rules.md, SKILLS_MAP.md)
    - P1: Broken skill references
    - P2: Missing skills or workflows
    - P3: Warnings and inconsistencies

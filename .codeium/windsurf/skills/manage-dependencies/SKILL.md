@@ -73,7 +73,7 @@ This extends the global rules threshold (≥500 LOC systems / ≥200 LOC dynamic
 | **Bus factor** | ≥2 active maintainers or corporate backing | Single-maintainer hobby project in critical path |
 | **LOC threshold** | Replaces ≥500 LOC (systems) or ≥200 LOC (dynamic) | Saves <50 LOC |
 
-### Priority Order (from global_rules.md)
+### Priority Order (from rules.md)
 ```
 Standard library > existing internal code > new dependency
 ```

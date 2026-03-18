@@ -1,17 +1,9 @@
-# AI Development Protocols
-
-This document defines the core engineering principles and protocols for AI-assisted development.
-
-> **Cross-Tool Standard:** This file is read natively by Kilo Code and Cursor. For other AI coding agents (Claude Code, GitHub Copilot, Gemini CLI, etc.), copy this content to their expected config file. See `.kilocode/README.md` for per-agent instructions.
-
----
-
 # PROJECT PROFILE
 
 Set these per-project to gate context-dependent rules:
 
 - **Project Type**: systems | backend | frontend | data-science | mobile | scripting | library
-- **Concurrency Model**: multi-threaded | async-single-thread | single-thread
+- **Concurrency Model**: multi-threaded | async-single-thread | single-threaded
 - **Performance Sensitivity**: hot-path-critical | standard | non-critical
 - **Commit Convention**: conventional | ticket-first | freeform | squash-merge
 
@@ -46,16 +38,16 @@ When making changes that affect multiple files, ensure comprehensive synchroniza
 
 # CONFIGURATION CHANGE PROTOCOL
 
-When modifying Kilo Code configuration files (skills/, modes/, *.md):
+When modifying Windsurf/Cascade configuration files (skills/, global_workflows/, *.md):
 
 **MANDATORY STEPS - No exceptions:**
 
-1. **Make your changes** to skills, modes, or documentation
-2. **Run validation** - Execute `/validate` mode
+1. **Make your changes** to skills, workflows, or documentation
+2. **Run validation** - Execute `/validate` workflow
 3. **Fix ALL issues** - Address every error and warning reported
 4. **Verify consistency** - Ensure:
    - Skill directory names match YAML name fields
-   - Documentation references use correct skill/mode names
+   - Documentation references use correct skill/workflow names
    - Counts in README match actual files
    - Cross-references are valid
    - YAML frontmatter is complete
@@ -64,8 +56,8 @@ When modifying Kilo Code configuration files (skills/, modes/, *.md):
 **Specific Requirements:**
 
 - **Adding a skill:** Follow CHANGE_CHECKLISTS.md → "Checklist 1: Modifying a Skill"
-- **Adding a mode:** Follow CHANGE_CHECKLISTS.md → "Checklist 2: Modifying a Mode"
-- **Changing this file:** Follow CHANGE_CHECKLISTS.md → "Checklist 3: Modifying Global Rules"
+- **Adding a workflow:** Follow CHANGE_CHECKLISTS.md → "Checklist 2: Modifying a Workflow"
+- **Changing rules.md:** Follow CHANGE_CHECKLISTS.md → "Checklist 3: Modifying Global Rules"
 - **Any config change:** Run `/validate` before committing
 
 **Validation is NOT optional** - It prevents:

@@ -11,8 +11,8 @@ This guide documents the recommended process for generating Kilo Code configurat
 | Layer | Script handles | AI handles |
 |-------|---------------|------------|
 | **Structure** | Directory creation, file copying | — |
-| **Format conversion** | Workflow MD → Mode YAML | — |
-| **Literal references** | `global_rules.md` → `AGENTS.md` | — |
+| **Format conversion** | — | — |
+| **Literal references** | `rules.md` (same name both tools) | — |
 | **Contextual references** | — | Prose that says "workflow" meaning "mode" |
 | **Content curation** | Raw section extraction | Reorganize, condense, rewrite |
 | **Edge cases** | — | YAML special chars, ambiguous replacements |
@@ -44,10 +44,10 @@ bash scripts/generate-kilocode.sh
 
 | Artifact | Source | Method |
 |----------|--------|--------|
-| `AGENTS.md` | `memories/global_rules.md` | Copy + header + sed replacements |
-| `.kilocode/rules/*.md` | `memories/global_rules.md` | Section extraction via awk |
+| `AGENTS.md` | `memories/rules.md` | Copy + header + sed replacements |
+| `.kilocode/rules/*.md` | `memories/rules.md` | Section extraction via awk |
 | `.kilocode/skills/*/SKILL.md` | `skills/*/SKILL.md` | Copy + reference fixes |
-| `.kilocode/modes/*.yaml` | `global_workflows/*.md` | Parse frontmatter → YAML conversion |
+| `.kilocode/workflows/*.md` | `global_workflows/*.md` | Direct copy + reference fixes |
 | `.kilocode/README.md` | — | Generated from artifact metadata |
 | Shared docs | `docs/*.md` | Not copied — referenced in place |
 
@@ -69,9 +69,9 @@ bash scripts/generate-kilocode.sh
   → skills/audit-security/
   → skills/create-item/
   ...
-[5/7] Converting workflows to modes...
-  → modes/analyze.yaml
-  → modes/dry-run.yaml
+[5/7] Copying workflows...
+  → workflows/diagnose.md
+  → workflows/prescribe.md
   ...
 [6/7] Copying documentation...
   → SKILLS_MAP.md
@@ -82,7 +82,7 @@ bash scripts/generate-kilocode.sh
 
 === Generation Complete ===
   Skills:  14
-  Modes:   12
+  Workflows:  9
   Rules:   3
   Docs:    3
   AGENTS:  1
@@ -101,13 +101,13 @@ Or prompt manually:
 ```
 Validate the .kilocode/ directory against the source .codeium/windsurf/ config.
 Check for:
-1. Stale references to global_rules.md that should be AGENTS.md
-2. Stale references to global_workflows/ that should be modes/
+1. Stale references to global_rules.md that should be rules.md
+2. Stale references to global_workflows/ that should be workflows/
 3. Windsurf-specific terminology that should be Kilo Code
-4. YAML syntax validity in all mode files
+4. YAML frontmatter completeness in all workflow files
 5. Skill YAML frontmatter completeness
 6. Cross-references between docs (CHANGE_CHECKLISTS.md, MAINTENANCE_GUIDE.md, SKILLS_MAP.md)
-7. README accuracy (file counts, directory tree, mode/skill lists)
+7. README accuracy (file counts, directory tree, workflow/skill lists)
 Do NOT make changes — report findings only.
 ```
 
@@ -131,7 +131,7 @@ Check these items that neither script nor AI reliably catches:
 - [ ] `AGENTS.md` cross-tool header is accurate and current
 - [ ] Agent compatibility table in README matches current tool versions
 - [ ] Rules files read naturally (not raw dumps)
-- [ ] Mode YAML `tools` lists match intended permissions
+- [ ] Workflow YAML frontmatter `description` fields are complete
 - [ ] No sensitive information leaked into committed files
 
 ### Phase 5: Commit
@@ -147,11 +147,11 @@ git commit -m "feat: port Windsurf/Cascade config to Kilo Code"
 
 These are things the script cannot do — the AI pass must handle them:
 
-1. **Contextual prose rewording** — The script replaces literal strings (`global_rules.md` → `AGENTS.md`) but can't reword prose like "Follow the workflow protocol" → "Follow the mode protocol" when the word "workflow" is used generically.
+1. **Contextual prose rewording** — The script replaces literal strings (`rules.md` same name both tools) but can't reword prose in rare cases where terminology differs.
 
-2. **Rules curation** — The script extracts raw sections from `global_rules.md` by H1 header boundaries. The hand-curated versions reorganize content under clearer headings. If you want curated rules files, ask the AI to rewrite them.
+2. **Rules curation** — The script extracts raw sections from `rules.md` by H1 header boundaries. The hand-curated versions reorganize content under clearer headings. If you want curated rules files, ask the AI to rewrite them.
 
-3. **AGENTS.md sed brittleness** — The script matches specific sentences in `global_rules.md` for replacement. If the source text changes, the sed patterns may silently fail (no error, just no replacement). Always validate after running.
+3. **AGENTS.md sed brittleness** — The script matches specific sentences in `rules.md` for replacement. If the source text changes, the sed patterns may silently fail (no error, just no replacement). Always validate after running.
 
 4. **New artifact types** — If Windsurf adds new config types beyond `skills/`, `global_workflows/`, and `memories/`, the script won't know about them. Update the script or handle manually.
 
@@ -185,11 +185,11 @@ git commit -m "chore: re-sync Kilo Code config from Windsurf"
 
 ### Script fails immediately
 
-Check that `.codeium/windsurf/memories/global_rules.md` exists. The script validates this on startup.
+Check that `.codeium/windsurf/memories/rules.md` exists. The script validates this on startup.
 
-### YAML parse errors in mode files
+### YAML parse errors in workflow files
 
-Check for unescaped special characters in workflow descriptions. The script quotes descriptions, but if the source contains nested quotes, manual escaping may be needed.
+Check for unescaped special characters in workflow descriptions within YAML frontmatter. The frontmatter uses standard YAML syntax.
 
 ### Missing references after script run
 

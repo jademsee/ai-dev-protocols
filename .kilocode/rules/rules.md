@@ -1,9 +1,17 @@
+# AI Development Protocols
+
+This document defines the core engineering principles and protocols for AI-assisted development.
+
+> **Cross-Tool Standard:** This file is read natively by Kilo Code and Cursor. For other AI coding agents (Claude Code, GitHub Copilot, Gemini CLI, etc.), copy this content to their expected config file. See `.kilocode/README.md` for per-agent instructions.
+
+---
+
 # PROJECT PROFILE
 
 Set these per-project to gate context-dependent rules:
 
 - **Project Type**: systems | backend | frontend | data-science | mobile | scripting | library
-- **Concurrency Model**: multi-threaded | async-single-thread | single-threaded
+- **Concurrency Model**: multi-threaded | async-single-thread | single-thread
 - **Performance Sensitivity**: hot-path-critical | standard | non-critical
 - **Commit Convention**: conventional | ticket-first | freeform | squash-merge
 
@@ -38,7 +46,7 @@ When making changes that affect multiple files, ensure comprehensive synchroniza
 
 # CONFIGURATION CHANGE PROTOCOL
 
-When modifying Windsurf/Cascade configuration files (skills/, global_workflows/, *.md):
+When modifying Kilo Code configuration files (skills/, workflows/, *.md):
 
 **MANDATORY STEPS - No exceptions:**
 
@@ -57,7 +65,7 @@ When modifying Windsurf/Cascade configuration files (skills/, global_workflows/,
 
 - **Adding a skill:** Follow CHANGE_CHECKLISTS.md → "Checklist 1: Modifying a Skill"
 - **Adding a workflow:** Follow CHANGE_CHECKLISTS.md → "Checklist 2: Modifying a Workflow"
-- **Changing global_rules.md:** Follow CHANGE_CHECKLISTS.md → "Checklist 3: Modifying Global Rules"
+- **Changing this file:** Follow CHANGE_CHECKLISTS.md → "Checklist 3: Modifying Global Rules"
 - **Any config change:** Run `/validate` before committing
 
 **Validation is NOT optional** - It prevents:

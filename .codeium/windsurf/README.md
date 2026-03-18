@@ -19,7 +19,7 @@ This configuration enforces rigorous engineering discipline through:
 ```
 .codeium/windsurf/
 ├── memories/
-│   └── global_rules.md          # Core engineering principles and rules
+│   └── rules.md              # Core engineering principles and rules
 ├── skills/                       # Specialized skills
 │   ├── analyze-metrics/          # Runtime/process metrics visualization
 │   ├── audit-security/           # Security auditing
@@ -38,8 +38,8 @@ This configuration enforces rigorous engineering discipline through:
 │   ├── write-docs/               # Documentation
 │   └── write-tests/              # Test writing
 ├── global_workflows/             # Execution workflows
-│   ├── analyze.md                # Analysis without changes
-│   ├── dry-run.md                # Planning without execution
+│   ├── diagnose.md             # Diagnosis without prescriptions
+│   ├── prescribe.md            # Planning without execution
 │   ├── enhance-prompt.md         # Prompt enhancement
 │   ├── improve-correctness.md    # Correctness-only loop
 │   ├── loop.md                   # Standard improvement loop
@@ -105,15 +105,15 @@ Skills are invoked **automatically by Cascade** based on your request. You don't
 - Detailed trigger conditions → `skills/*/SKILL.md`
 - Usage patterns and combinations → `SKILLS_MAP.md` → "Skill Invocation Patterns"
 
-**Note:** Skills are internal to Cascade. If you want to control *how* Cascade works (e.g., analysis mode, loop mode), use **workflows** (slash commands like `/analyze`, `/validate`).
+**Note:** Skills are internal to Cascade. If you want to control *how* Cascade works (e.g., diagnosis mode, loop mode), use **workflows** (slash commands like `/diagnose`, `/validate`).
 
 ### 4. Use Workflows
 
 Workflows control execution mode:
 
 **Analysis & Planning:**
-- `/analyze` - Deep analysis without making changes
-- `/dry-run` - Plan only, no code changes
+- `/diagnose` - Diagnose code without making changes
+- `/prescribe` - Prescribe improvements, no code changes
 - `/enhance-prompt` - Transform prompts into actionable requests
 
 **Improvement Loops:**
@@ -253,11 +253,64 @@ See `MAINTENANCE_GUIDE.md` for complete procedures.
 
 | Document | Purpose |
 |----------|---------|
-| `global_rules.md` | Core engineering principles and rules |
+| `rules.md` | Core engineering principles and rules |
 | `SKILLS_MAP.md` | Skill relationships and invocation patterns |
 | `CHANGE_CHECKLISTS.md` | Change impact checklists for consistency |
 | `MAINTENANCE_GUIDE.md` | Maintenance protocols and schedules |
 | `README.md` | This overview document |
+
+---
+
+## AGENTS.md — Cross-Tool Discovery
+
+`AGENTS.md` lives at the **repository root** (`/AGENTS.md`) and serves as a cross-tool discovery pointer. The actual rules content is in `memories/rules.md`.
+
+### Location
+
+```
+<repo-root>/
+├── AGENTS.md              ← Cross-tool discovery pointer
+└── .codeium/windsurf/
+    └── memories/
+        └── rules.md       ← Actual rules content
+```
+
+It must be at the root so all AI tools can discover it by walking up from the working directory.
+
+### Which agents read AGENTS.md natively
+
+| Agent | Reads AGENTS.md? | Native config file | Notes |
+|-------|------------------|--------------------|-------|
+| **Windsurf/Cascade** | ✅ Yes | `memories/rules.md` | Primary tool, source of truth |
+| **Kilo Code** | ✅ Yes | `AGENTS.md` | Ported from Windsurf config |
+| **Cursor** | ✅ Yes | `AGENTS.md` | Also reads `.cursorrules` and `.cursor/rules/` |
+| **Claude Code** | ❌ No | `CLAUDE.md` | Copy content from `memories/rules.md` |
+| **GitHub Copilot** | ❌ No | `.github/copilot-instructions.md` | Copy content from `memories/rules.md` |
+| **Gemini CLI** | ❌ No | `GEMINI.md` | Copy content from `memories/rules.md` |
+| **Codex** | ❌ No | `.codex/config.toml` | Adapt content into TOML `instructions` field |
+| **Continue** | ❌ No | `~/.continue/config.yaml` | Add content to `systemMessage` in config |
+| **Aider** | ❌ No | `.aider.conf.yml` | Add content to custom prompts via `--message` |
+
+### Using this config with other agents
+
+For agents that don't read `AGENTS.md` natively, copy the content from `memories/rules.md` to their expected file:
+
+**Claude Code** — create `CLAUDE.md` at repo root:
+```
+cp .codeium/windsurf/memories/rules.md CLAUDE.md
+```
+
+**GitHub Copilot** — create `.github/copilot-instructions.md`:
+```
+cp .codeium/windsurf/memories/rules.md .github/copilot-instructions.md
+```
+
+**Gemini CLI** — create `GEMINI.md` at repo root:
+```
+cp .codeium/windsurf/memories/rules.md GEMINI.md
+```
+
+> ⚠️ These copies must be kept in sync manually when `memories/rules.md` is updated. See `CHANGE_CHECKLISTS.md` for the update protocol.
 
 ---
 
@@ -291,7 +344,7 @@ Use the `/validate` workflow for comprehensive consistency checking:
 - After modifying any skill or workflow
 - After updating documentation
 - Before committing configuration changes
-- As part of the CONFIGURATION CHANGE PROTOCOL (see global_rules.md)
+- As part of the CONFIGURATION CHANGE PROTOCOL (see rules.md)
 
 ### Manual Validation
 
@@ -332,7 +385,7 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 ### Do:
 ✓ Run `/validate` before committing changes  
 ✓ Use CHANGE_CHECKLISTS.md for every change  
-✓ Follow CONFIGURATION CHANGE PROTOCOL (global_rules.md)  
+✓ Follow CONFIGURATION CHANGE PROTOCOL (rules.md)  
 ✓ Keep language coverage consistent  
 ✓ Update SKILLS_MAP.md when patterns change  
 ✓ Keep skills atomic and focused  
@@ -363,21 +416,21 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 - Removed Ruby and PHP support (now 10 languages)
 - Added maintain-consistency skill for project-wide change management
 - Added /validate workflow for consistency checking
-- Added CHANGE MANAGEMENT PROTOCOL to global_rules.md
+- Added CHANGE MANAGEMENT PROTOCOL to rules.md
 - Added SKILLS_MAP.md for relationship mapping
 - Added concurrency testing guidance
 - Added performance profiling tools (10 languages)
 - Added security tool integration (10 languages)
 - Added /validate workflow using maintain-consistency skill
-- Added CONFIGURATION CHANGE PROTOCOL to global_rules.md
-- Added SECRETS MANAGEMENT PROTOCOL to global_rules.md
+- Added CONFIGURATION CHANGE PROTOCOL to rules.md
+- Added SECRETS MANAGEMENT PROTOCOL to rules.md
 - Added manage-secrets skill for secrets architecture and best practices
 - Added manage-dependencies skill for full dependency lifecycle management
 - Added change checklists and maintenance guide
 - Replaced .windsurfrules with language-specific dependency tools
 - Fixed enhance-prompt.md workflow template variable issue
 - Removed cross-skill invocations (checklist references only)
-- Renamed dry.md to dry-run.md
+- Renamed dry.md to prescribe.md
 - Renamed perf.md to tune-performance.md
 - Renamed skills for clarity: audit→audit-security, architect→design-architecture, create→create-item, git→manage-git
 - Renamed workflows for clarity: tune→tune-performance, turbo→turbo-loop, enhance→enhance-prompt, correct→improve-correctness
@@ -391,7 +444,7 @@ For configuration issues:
 2. Check `CHANGE_CHECKLISTS.md` for guidance
 3. Review `MAINTENANCE_GUIDE.md` for procedures
 4. Consult `SKILLS_MAP.md` for architecture understanding
-5. Follow CONFIGURATION CHANGE PROTOCOL in global_rules.md
+5. Follow CONFIGURATION CHANGE PROTOCOL in rules.md
 
 ---
 

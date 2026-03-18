@@ -29,7 +29,7 @@ cp -r .codeium /path/to/your/project/
 
 **For other AI agents:**
 
-Adapt the principles from `@.codeium\windsurf\memories\global_rules.md` to your agent's configuration format.
+Adapt the principles from `@.codeium\windsurf\memories\rules.md` to your agent's configuration format.
 
 ### 2. Validate
 

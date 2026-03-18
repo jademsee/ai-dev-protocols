@@ -12,10 +12,10 @@
 #
 # What it does:
 #   1. Creates .kilocode/ directory structure
-#   2. Generates AGENTS.md from global_rules.md (with cross-tool header)
-#   3. Extracts rule files from global_rules.md sections
+#   2. Generates AGENTS.md from rules.md (with cross-tool header)
+#   3. Extracts rule files from rules.md sections
 #   4. Copies all skills (with reference fixes)
-#   5. Converts workflows (MD) to modes (YAML)
+#   5. Copies workflows (unified MD format)
 #   6. Links to shared docs in docs/ (CHANGE_CHECKLISTS, MAINTENANCE_GUIDE, SKILLS_MAP)
 #   7. Generates .kilocode/README.md
 #
@@ -32,7 +32,7 @@ WINDSURF_DIR="$REPO_ROOT/.codeium/windsurf"
 KILOCODE_DIR="$REPO_ROOT/.kilocode"
 DOCS_DIR="$REPO_ROOT/docs"
 AGENTS_MD="$REPO_ROOT/AGENTS.md"
-GLOBAL_RULES="$WINDSURF_DIR/memories/global_rules.md"
+GLOBAL_RULES="$WINDSURF_DIR/memories/rules.md"
 
 # ----- Validation -----
 if [[ ! -d "$WINDSURF_DIR" ]]; then
@@ -40,7 +40,7 @@ if [[ ! -d "$WINDSURF_DIR" ]]; then
     exit 1
 fi
 if [[ ! -f "$GLOBAL_RULES" ]]; then
-    echo "ERROR: global_rules.md not found at $GLOBAL_RULES" >&2
+    echo "ERROR: rules.md not found at $GLOBAL_RULES" >&2
     exit 1
 fi
 
@@ -67,34 +67,13 @@ extract_section() {
     fi
 }
 
-# Return space-separated tool names for a given mode.
-get_mode_tools() {
-    case "$1" in
-        analyze|think|dry-run)
-            echo "read grep listDir" ;;
-        enhance-prompt|stop)
-            echo "read" ;;
-        quick)
-            echo "read edit write run" ;;
-        validate)
-            echo "read run grep listDir" ;;
-        *)  # loop, turbo-loop, improve-correctness, test, tune-performance
-            echo "read edit write run grep" ;;
-    esac
-}
-
 # Replace stale Windsurf references with Kilo Code equivalents.
 # Works on a file path (reads file) or stdin if "-" is passed.
 fix_references() {
     local input="${1:--}"
     sed \
         -e 's/global_rules\.md/AGENTS.md/g' \
-        -e 's|global_workflows/|modes/|g' \
-        -e 's/global_workflows/modes/g' \
         -e 's/Windsurf\/Cascade/Kilo Code/g' \
-        -e 's/`\/validate` workflow/`\/validate` mode/g' \
-        -e 's/\/validate workflow/\/validate mode/g' \
-        -e 's/workflow files/mode files/g' \
         "$input"
 }
 
@@ -102,10 +81,10 @@ fix_references() {
 # Step 1: Directory structure
 # ===================================================================
 echo "[1/7] Creating directory structure..."
-mkdir -p "$KILOCODE_DIR"/{rules,modes,skills}
+mkdir -p "$KILOCODE_DIR"/{rules,workflows,skills}
 
 # ===================================================================
-# Step 2: Generate AGENTS.md from global_rules.md
+# Step 2: Generate AGENTS.md from rules.md
 # ===================================================================
 echo "[2/7] Generating AGENTS.md..."
 {
@@ -130,7 +109,7 @@ HEADER
 echo "  → AGENTS.md"
 
 # ===================================================================
-# Step 3: Extract rules from global_rules.md
+# Step 3: Extract rules from rules.md
 # ===================================================================
 echo "[3/7] Extracting rules..."
 
@@ -202,43 +181,20 @@ for skill_dir in "$WINDSURF_DIR"/skills/*/; do
 done
 
 # ===================================================================
-# Step 5: Convert workflows → modes
+# Step 5: Copy workflows (unified format)
 # ===================================================================
-echo "[5/7] Converting workflows to modes..."
-mode_count=0
+echo "[5/7] Copying workflows..."
+workflow_count=0
 for wf in "$WINDSURF_DIR"/global_workflows/*.md; do
     [[ -f "$wf" ]] || continue
     name="$(basename "$wf" .md)"
-    target="$KILOCODE_DIR/modes/$name.yaml"
+    target="$KILOCODE_DIR/workflows/$name.md"
 
-    # Extract description from YAML frontmatter (between --- markers)
-    description=$(awk '
-        /^---$/ { n++; next }
-        n==1 && /^description:/ { sub(/^description: */, ""); print; exit }
-    ' "$wf")
+    # Copy workflow file, fixing references
+    fix_references "$wf" > "$target"
 
-    # Extract body: everything after the ## /name header line
-    body=$(awk '/^## \// { found=1; next } found { print }' "$wf" \
-        | sed 's/global_rules\.md/AGENTS.md/g')
-
-    # Get tool list for this mode
-    tools=$(get_mode_tools "$name")
-
-    # Write YAML mode file
-    {
-        echo "name: $name"
-        echo "description: \"$description\""
-        echo "instructions: |"
-        # Indent body by 2 spaces for YAML block scalar
-        echo "$body" | sed 's/^/  /'
-        echo "tools:"
-        for tool in $tools; do
-            echo "  - $tool"
-        done
-    } > "$target"
-
-    echo "  → modes/$name.yaml"
-    mode_count=$((mode_count + 1))
+    echo "  → workflows/$name.md"
+    workflow_count=$((workflow_count + 1))
 done
 
 # ===================================================================
@@ -277,29 +233,29 @@ for ((i=0; i<${#skills[@]}; i++)); do
     fi
 done
 
-# Build dynamic mode tree for README
-mode_tree=""
-modes=()
-for f in "$KILOCODE_DIR"/modes/*.yaml; do
+# Build dynamic workflow tree for README
+workflow_tree=""
+workflows=()
+for f in "$KILOCODE_DIR"/workflows/*.md; do
     [[ -f "$f" ]] || continue
-    modes+=("$(basename "$f")")
+    workflows+=("$(basename "$f")")
 done
-for ((i=0; i<${#modes[@]}; i++)); do
-    if (( i == ${#modes[@]} - 1 )); then
-        mode_tree+="│   └── ${modes[$i]}"
+for ((i=0; i<${#workflows[@]}; i++)); do
+    if (( i == ${#workflows[@]} - 1 )); then
+        workflow_tree+="│   └── ${workflows[$i]}"
     else
-        mode_tree+="│   ├── ${modes[$i]}
+        workflow_tree+="│   ├── ${workflows[$i]}
 "
     fi
 done
 
-# Build mode usage list (name + description from YAML)
-mode_usage=""
-for f in "$KILOCODE_DIR"/modes/*.yaml; do
+# Build workflow usage list (name + description from YAML frontmatter)
+workflow_usage=""
+for f in "$KILOCODE_DIR"/workflows/*.md; do
     [[ -f "$f" ]] || continue
-    mname=$(awk '/^name:/{sub(/^name: */, ""); print; exit}' "$f")
-    mdesc=$(awk '/^description:/{sub(/^description: */, ""); print; exit}' "$f")
-    mode_usage+="- \`/$mname\` — $mdesc
+    wname=$(basename "$f" .md)
+    wdesc=$(awk '/^---$/{n++; next} n==1 && /^description:/{sub(/^description: */, ""); print; exit}' "$f")
+    workflow_usage+="- \`/$wname\` — $wdesc
 "
 done
 
@@ -326,8 +282,8 @@ This directory contains the Kilo Code AI coding assistant configuration, ported 
 │   ├── engineering-principles.md
 │   ├── secrets-management.md
 │   └── improvement-loop.md
-├── modes/                    # Custom modes (workflows)
-$mode_tree
+├── workflows/                # Custom workflows (slash commands)
+$workflow_tree
 ├── skills/                   # Specialized skills
 $skill_tree
 ├── SKILLS_MAP.md             # Skill relationships and invocation patterns
@@ -385,11 +341,11 @@ cp AGENTS.md GEMINI.md
 
 ## Usage
 
-### Modes (Workflows)
+### Workflows
 
-Invoke modes using slash commands:
+Invoke workflows using slash commands:
 
-$mode_usage
+$workflow_usage
 ### Skills
 
 Skills are automatically invoked based on trigger conditions. You can also explicitly invoke them:
@@ -397,7 +353,7 @@ Skills are automatically invoked based on trigger conditions. You can also expli
 $skill_usage
 ## Supported Languages
 
-All skills and modes support 10 languages:
+All skills and workflows support 10 languages:
 
 - JavaScript/TypeScript
 - Python
@@ -434,7 +390,7 @@ echo "  → README.md"
 echo ""
 echo "=== Generation Complete ==="
 echo "  Skills:  $skill_count"
-echo "  Modes:   $mode_count"
+echo "  Workflows: $workflow_count"
 echo "  Rules:   3"
 echo "  Docs:    $doc_count"
 echo "  AGENTS:  1"

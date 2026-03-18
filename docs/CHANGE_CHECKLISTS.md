@@ -10,7 +10,7 @@ This document provides systematic checklists for different types of changes to e
 
 **Files to Review:**
 - [ ] `SKILLS_MAP.md` - Update skill description, dependencies, or patterns
-- [ ] `global_rules.md` - Check if change affects global rules or examples
+- [ ] `rules.md` - Check if change affects global rules or examples
 - [ ] All workflow files in `global_workflows/` - Check for references to this skill
 - [ ] Other skills that may reference this one (check SKILLS_MAP.md for relationships)
 - [ ] Any project-specific `ARCHITECTURE.md` or custom rules that reference the skill
@@ -32,7 +32,7 @@ If you **rename a skill**:
 
 If you **change skill process or hard rules**:
 - [ ] Review if SKILLS_MAP.md patterns need updating
-- [ ] Check if global_rules.md examples reference this skill
+- [ ] Check if rules.md examples reference this skill
 - [ ] Verify no conflicts with other skills' processes
 
 If you **add language-specific guidance** (tools, patterns):
@@ -46,7 +46,7 @@ If you **add language-specific guidance** (tools, patterns):
 **Validation:**
 - [ ] No broken cross-references to other skills
 - [ ] Skill category in SKILLS_MAP.md is correct
-- [ ] Hard rules don't conflict with global_rules.md
+- [ ] Hard rules don't conflict with rules.md
 - [ ] Pre-submit checklist is complete and actionable
 - [ ] Run `/validate` workflow and fix all issues
 
@@ -58,7 +58,7 @@ If you **add language-specific guidance** (tools, patterns):
 
 **Files to Review:**
 - [ ] `SKILLS_MAP.md` - Update workflow integration section if needed
-- [ ] `global_rules.md` - Check if workflow references or contradicts global rules
+- [ ] `rules.md` - Check if workflow references or contradicts global rules
 - [ ] Other workflows - Check for similar patterns that should be consistent
 
 **Specific Updates:**
@@ -71,7 +71,7 @@ If you **add a new workflow**:
 
 If you **change workflow behavior**:
 - [ ] Update SKILLS_MAP.md if workflow-skill integration changed
-- [ ] Check if global_rules.md IMPROVEMENT LOOP PROTOCOL needs updating
+- [ ] Check if rules.md IMPROVEMENT LOOP PROTOCOL needs updating
 - [ ] Verify consistency with similar workflows (e.g., loop.md vs turbo.md)
 
 If you **reference a skill in a workflow**:
@@ -80,7 +80,7 @@ If you **reference a skill in a workflow**:
 - [ ] Avoid creating tight coupling (workflows orchestrate, don't invoke directly)
 
 **Validation:**
-- [ ] Workflow doesn't contradict global_rules.md
+- [ ] Workflow doesn't contradict rules.md
 - [ ] Workflow doesn't create circular dependencies with skills
 - [ ] Instructions are clear and actionable
 - [ ] Run `/validate` workflow and fix all issues
@@ -89,7 +89,7 @@ If you **reference a skill in a workflow**:
 
 ## Checklist 3: Modifying Global Rules
 
-### When You Change global_rules.md
+### When You Change rules.md
 
 **Files to Review:**
 - [ ] **ALL skills** - Verify no conflicts with new/changed rules
@@ -184,7 +184,7 @@ If you **change dependency rules**:
 - [ ] Search all workflows for references
 - [ ] Search all other skills for references
 - [ ] Search SKILLS_MAP.md for references
-- [ ] Search global_rules.md for examples using this skill
+- [ ] Search rules.md for examples using this skill
 
 **After Removal:**
 - [ ] Remove from SKILLS_MAP.md (all sections)
@@ -197,7 +197,7 @@ If you **change dependency rules**:
 
 **Before Removal:**
 - [ ] Check if SKILLS_MAP.md references it
-- [ ] Check if global_rules.md references it
+- [ ] Check if rules.md references it
 - [ ] Check if other workflows reference it
 
 **After Removal:**
@@ -227,7 +227,7 @@ If you **change dependency rules**:
 **Workflow Cross-References:**
 - [ ] Every workflow file is documented
 - [ ] Workflows don't create circular dependencies
-- [ ] Workflow instructions are consistent with global_rules.md
+- [ ] Workflow instructions are consistent with rules.md
 
 **Language Coverage:**
 - [ ] Same languages covered across design-architecture, optimize, audit-security, write-tests
@@ -244,9 +244,9 @@ If you **change dependency rules**:
 
 | You Changed...           | Check These Files...                                      |
 |--------------------------|-----------------------------------------------------------|
-| A skill                  | SKILLS_MAP.md, workflows, other skills, global_rules.md   |
-| A workflow               | SKILLS_MAP.md, global_rules.md, other workflows           |
-| global_rules.md          | ALL skills, ALL workflows, SKILLS_MAP.md                  |
+| A skill                  | SKILLS_MAP.md, workflows, other skills, rules.md   |
+| A workflow               | SKILLS_MAP.md, rules.md, other workflows           |
+| rules.md          | ALL skills, ALL workflows, SKILLS_MAP.md                  |
 | Added a language         | manage-dependencies.md, design-architecture.md, optimize.md, audit-security.md, write-tests.md |
 | SKILLS_MAP.md            | Verify all references are valid                           |
 | Removed something        | Search ALL files for references before removing           |
@@ -260,7 +260,7 @@ All changes to configuration files MUST be validated before committing:
 1. **Run `/validate` workflow** after any change
 2. **Fix all reported issues** (both errors and warnings)
 3. **Verify consistency** across all affected files
-4. **Follow CONFIGURATION CHANGE PROTOCOL** in global_rules.md
+4. **Follow CONFIGURATION CHANGE PROTOCOL** in rules.md
 
 The `/validate` workflow uses the maintain-consistency skill to:
 - Verify all referenced skills/workflows exist

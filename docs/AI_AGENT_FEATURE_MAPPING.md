@@ -52,11 +52,11 @@ This document maps Windsurf/Cascade configuration features to equivalent capabil
 
 | Agent | Global Rules | Skills/Modes | Workflows | Config Location | Custom Options |
 |-------|-------------|--------------|-----------|-----------------|----------------|
-| **Windsurf/Cascade** | ✅ Strong (Custom) | ✅ Strong (Custom) | ✅ Strong (Custom + 1 Built-in) | `memories/global_rules.md`, `skills/`, `global_workflows/` | Custom workflows + Built-in: `/review` |
+| **Windsurf/Cascade** | ✅ Strong (Custom) | ✅ Strong (Custom) | ✅ Strong (Custom + 1 Built-in) | `memories/rules.md`, `skills/`, `global_workflows/` | Custom workflows + Built-in: `/review` |
 | **GitHub Copilot** | ✅ Strong | ⚠️ Limited | ⚠️ Limited | `.github/copilot-instructions.md` | Markdown instructions, Copilot Chat modes (explain, fix, test), Copilot Workspace |
 | **Cursor** | ✅ Strong | ⚠️ Limited | ⚠️ Limited | `.cursorrules`, `.cursor/rules/`, `AGENTS.md` | Markdown rules, file-specific, AGENTS.md support |
 | **Continue** | ✅ Strong | ✅ Strong | ⚠️ Partial | `~/.continue/config.yaml` | Custom slash commands, context providers, MCP |
-| **Kilo Code** | ✅ Strong | ✅ Strong | ✅ Strong | `AGENTS.md`, `.kilocode/rules/`, `.kilocode/modes/`, `.kilocode/skills/` | Custom rules, YAML modes, skills system, custom tools, subagents |
+| **Kilo Code** | ✅ Strong | ✅ Strong | ✅ Strong | `AGENTS.md`, `.kilocode/rules/`, `.kilocode/workflows/`, `.kilocode/skills/` | Custom rules, Markdown workflows, skills system, custom tools, subagents |
 | **Antigravity** [UNVERIFIED] | ⚠️ Unverified | ⚠️ Unverified | ⚠️ Unverified | `~/.gemini/GEMINI.md`, Agent Manager UI | [UNVERIFIED] Markdown, UI builder |
 | **Claude Code** | ✅ Strong | ✅ Strong | ⚠️ Partial | `CLAUDE.md`, `.claude/skills/`, `.claude/settings.json` | Markdown context files, skills with YAML frontmatter |
 | **Codex** | ✅ Strong | ⚠️ Limited | ⚠️ Limited | `~/.codex/config.toml`, `.codex/config.toml` | TOML config, user + project levels |
@@ -88,7 +88,7 @@ Our global rules define core engineering principles, protocols, and behavioral g
 
 ### Windsurf/Cascade Configuration
 
-**Location:** `memories/global_rules.md`
+**Location:** `memories/rules.md`
 
 **Key Components:**
 1. Session Start Protocol
@@ -101,9 +101,9 @@ Our global rules define core engineering principles, protocols, and behavioral g
 
 | Feature | Windsurf/Cascade | GitHub Copilot | Cursor | Continue | Kilo Code | Antigravity | Claude Code | Codex | Gemini CLI | Aider |
 |---------|-----------------|---------------|--------|----------|-----------|-------------|-------------|-------|------------|-------|
-| **Custom Instructions** | `memories/global_rules.md` (Custom) | `.github/copilot-instructions.md` | `.cursorrules` | `config.yaml` → `systemMessage` | `AGENTS.md` | `GEMINI.md` | `CLAUDE.md` | `config.toml` → `instructions` | `GEMINI.md` | `.aider.conf.yml` |
-| **Repository-level Rules** | `memories/global_rules.md` (Custom) | `.github/copilot-instructions.md` | `.cursorrules` | Project-level `config.yaml` | `AGENTS.md` (root) | `GEMINI.md` (workspace) | `CLAUDE.md` (project root) | `.codex/config.toml` | `GEMINI.md` (workspace) | `.aider.conf.yml` |
-| **Global/User Rules** | `memories/global_rules.md` (Custom) | VS Code settings (Workspace/Global) | Cursor Settings → Rules | `~/.continue/config.yaml` | `~/.kilocode/skills/` (global) | `~/.gemini/GEMINI.md` | `~/.claude/skills/` | `~/.codex/config.toml` | `~/.gemini/GEMINI.md` | `~/.aider.conf.yml` |
+| **Custom Instructions** | `memories/rules.md` (Custom) | `.github/copilot-instructions.md` | `.cursorrules` | `config.yaml` → `systemMessage` | `AGENTS.md` | `GEMINI.md` | `CLAUDE.md` | `config.toml` → `instructions` | `GEMINI.md` | `.aider.conf.yml` |
+| **Repository-level Rules** | `memories/rules.md` (Custom) | `.github/copilot-instructions.md` | `.cursorrules` | Project-level `config.yaml` | `AGENTS.md` (root) | `GEMINI.md` (workspace) | `CLAUDE.md` (project root) | `.codex/config.toml` | `GEMINI.md` (workspace) | `.aider.conf.yml` |
+| **Global/User Rules** | `memories/rules.md` (Custom) | VS Code settings (Workspace/Global) | Cursor Settings → Rules | `~/.continue/config.yaml` | `~/.kilocode/skills/` (global) | `~/.gemini/GEMINI.md` | `~/.claude/skills/` | `~/.codex/config.toml` | `~/.gemini/GEMINI.md` | `~/.aider.conf.yml` |
 | **Session Protocol** | ✅ Built-in (Custom) | Not supported | Not supported | Via `systemMessage` | Via `AGENTS.md` | Via agent config | Via skills | Via `instructions` | Via config | Via `--message` |
 | **Change Management** | ✅ Built-in (Custom) | Via instructions | Via `.cursorrules` | Via `systemMessage` | Via `AGENTS.md` | Via rules | Via instructions | Via `instructions` | Via config | Via `--message` |
 | **Project Law/Principles** | ✅ Built-in (Custom) | Via instructions | Via `.cursorrules` | Via `systemMessage` | Via `AGENTS.md` | Via rules | Via instructions | Via `instructions` | Via config | Via `--message` |
@@ -157,7 +157,7 @@ Our skills system provides 14 specialized capabilities organized into Atomic, Co
 | **GitHub Copilot** | `.github/copilot-instructions.md` | Markdown | Define in instructions, no separate skills | Instructions only, no skill structure |
 | **Cursor** | `.cursorrules` (project), `.cursor/rules/*.md` (file-specific) | Markdown | Single file or directory-based rules | File-pattern matching rules, agent auto-selects from `.cursor/rules/` |
 | **Continue** | `~/.continue/config.yaml` → `slashCommands` | YAML | Custom slash commands act as skills | Define custom commands with prompts, context providers, MCP servers |
-| **Kilo Code** | Built-in modes + `.kilocode/modes/*.yaml` + `.kilocode/rules/` | YAML + Markdown | 6 built-in modes + custom modes + custom rules | Built-in: Code, Ask, Architect, Debug, Review, Orchestrator; Custom: YAML modes in `.kilocode/modes/`, skills in `.kilocode/skills/` and `.kilocode/skills-{mode}/`, rules in `.kilocode/rules/` and `.kilocode/rules-{mode}/` |
+| **Kilo Code** | Built-in modes + `.kilocode/workflows/*.md` + `.kilocode/rules/` | Markdown + YAML frontmatter | 6 built-in modes + custom workflows + custom rules | Built-in: Code, Ask, Architect, Debug, Review, Orchestrator; Custom: Markdown workflows in `.kilocode/workflows/`, skills in `.kilocode/skills/`, rules in `.kilocode/rules/` |
 | **Antigravity** | Agent Manager UI, `.antigravity/agents/` | YAML/UI | Agent-based, each agent is like a skill | Visual agent builder, parallel execution, custom tools |
 | **Claude Code** | `.claude/skills/*/SKILL.md` | Markdown + YAML frontmatter | Skill folders with SKILL.md files | Markdown skills with YAML frontmatter, scope definitions, reference files |
 | **Codex** | `~/.codex/config.toml`, `.codex/config.toml` | TOML | User + project config, limited skills | Basic instructions in TOML, user and project-level config |
@@ -193,8 +193,8 @@ Our workflows system provides 9 execution modes with varying autonomy levels and
 
 | Workflow | Windsurf/Cascade | GitHub Copilot | Cursor | Continue | Kilo Code | Antigravity | Claude Code | Codex | Gemini CLI | Aider |
 |----------|-----------------|---------------|--------|----------|-----------|-------------|-------------|-------|------------|-------|
-| **analyze** | ✅ `/analyze` (Custom) | Not supported | Composer mode | Chat mode | ✅ Built-in `/ask` mode | Analysis agent | `/analyze` command | Chat mode | Agent mode | `--message "analyze"` |
-| **dry-run** | ✅ `/dry-run` (Custom) | Not supported | Not supported | Not supported | ✅ Built-in `/architect` mode | Planning agent | `/plan` command | `--dry-run` flag | Not supported | `--dry-run` flag |
+| **diagnose** | ✅ `/diagnose` (Custom) | Not supported | Composer mode | Chat mode | ✅ Built-in `/ask` mode | Analysis agent | `/diagnose` command | Chat mode | Agent mode | `--message "diagnose"` |
+| **prescribe** | ✅ `/prescribe` (Custom) | Not supported | Not supported | Not supported | ✅ Built-in `/architect` mode | Planning agent | `/plan` command | `--dry-run` flag | Not supported | `--dry-run` flag |
 | **enhance-prompt** | ✅ `/enhance-prompt` (Custom) | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported |
 | **loop** | ✅ `/loop` (Custom) | Not supported | Not supported | Not supported | Custom mode or `/code` | Iterative agent | Agent mode | Not supported | Agent mode | Interactive mode |
 | **turbo-loop** | ✅ `/turbo-loop` (Custom) | Not supported | Not supported | Not supported | Custom mode | **Autonomous agent** | Agent mode | Not supported | Agent mode | `--yes` flag |
@@ -213,7 +213,7 @@ Our workflows system provides 9 execution modes with varying autonomy levels and
 | **GitHub Copilot** | Not supported | N/A | No workflow system | None - no workflow concept |
 | **Cursor** | Composer mode (built-in) | UI | Limited to Composer vs Chat | Built-in modes only, no custom workflows |
 | **Continue** | Not supported | N/A | Chat vs autocomplete only | None - no workflow concept |
-| **Kilo Code** | `.kilocode/modes/*.yaml`, `.kilocode/rules/` | YAML + Markdown | Custom modes = workflows, custom rules | Full custom modes with tools, instructions, role definitions; custom rules in `.kilocode/rules/` and mode-specific `.kilocode/rules-{mode}/` |
+| **Kilo Code** | `.kilocode/workflows/*.md`, `.kilocode/rules/` | Markdown + YAML frontmatter | Custom workflows with YAML frontmatter, custom rules | Full custom workflows with description frontmatter; custom rules in `.kilocode/rules/` |
 | **Antigravity** | Agent Manager UI | UI/YAML | Agents can be configured as workflows | Visual agent builder, parallel execution, custom workflows |
 | **Claude Code** | `.claude/workflows/` | Markdown | Limited workflow support | Markdown workflow files, command-based invocation |
 | **Codex** | Command-line flags | CLI | `--dry-run`, limited | CLI flags only, no workflow structure |
@@ -396,7 +396,7 @@ Our workflows system provides 9 execution modes with varying autonomy levels and
 - **Strengths**: Most comprehensive skills and workflows, structured documentation
 - **Unique Features**: maintain-consistency skill, validation workflow, SKILLS_MAP, CHANGE_CHECKLISTS
 - **Best For**: Rigorous engineering discipline, project-wide consistency
-- **Config**: `memories/global_rules.md`, `skills/*/SKILL.md`, `global_workflows/*.md`
+- **Config**: `memories/rules.md`, `skills/*/SKILL.md`, `global_workflows/*.md`
 - **Custom Options**: Full YAML frontmatter system, Markdown-based skills/workflows, pre-submit checklists
 - **Built-in**: `/review` workflow (native to Windsurf)
 - **Note**: All skills and workflows are custom-created; `/review` is built into Windsurf

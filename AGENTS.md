@@ -8,7 +8,7 @@
 
 All engineering principles, protocols, and guidelines have been consolidated into:
 
-**[`.kilocode/rules/master-rules.md`](.kilocode/rules/master-rules.md)**
+**[`.kilocode/rules/rules.md`](.kilocode/rules/rules.md)**
 
 This single source of truth contains:
 
@@ -32,13 +32,13 @@ The rules are organized into a single file:
 
 | File | Content |
 |------|---------|
-| [`master-rules.md`](.kilocode/rules/master-rules.md) | Complete rules (single source of truth) |
+| [`rules.md`](.kilocode/rules/rules.md) | Complete rules (single source of truth) |
 
 ---
 
 ## For Other AI Agents
 
-For agents that don't read `AGENTS.md` natively, copy the content from [`.kilocode/rules/master-rules.md`](.kilocode/rules/master-rules.md) to their expected config file:
+For agents that don't read `AGENTS.md` natively, copy the content from [`.kilocode/rules/rules.md`](.kilocode/rules/rules.md) to their expected config file:
 
 | Agent | Config File |
 |-------|-------------|
