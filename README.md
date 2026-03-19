@@ -151,6 +151,22 @@ Automated validation detects:
 - Orphaned files
 - Cross-reference integrity issues
 
+### Security-First
+
+Built-in secrets management with tiered access control:
+- **Schema pattern** — `.env.schema` provides AI-readable context without exposing values
+- **Pre-commit protection** — Gitleaks integration blocks accidental secret commits
+- **Validation tooling** — Scripts verify protection is properly configured
+
+**Security files included:**
+| File | Purpose |
+|------|---------|
+| `.env.schema` | Schema template (AI-readable, committed) |
+| `.gitleaks.toml` | Secret detection configuration |
+| `.pre-commit-config.yaml` | Pre-commit hooks for validation |
+| `scripts/validate-env-schema.sh` | Schema validation script |
+| `scripts/verify-secret-protection.sh` | Security verification checks |
+
 ---
 
 ## Task Prompts vs Execution Modes

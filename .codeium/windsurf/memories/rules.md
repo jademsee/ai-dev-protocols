@@ -85,6 +85,13 @@ When working with any project that handles secrets, credentials, or sensitive co
 - NEVER share production secrets via Slack, email, or unencrypted channels
 - NEVER grant production secret access without explicit justification
 
+**Implementation Files:**
+- `.env.schema` — Schema template (AI-readable, committed)
+- `.gitleaks.toml` — Secret detection configuration
+- `.pre-commit-config.yaml` — Pre-commit hooks
+- `scripts/validate-env-schema.sh` — Schema validation
+- `scripts/verify-secret-protection.sh` — Verification checks
+
 # PROCESS REQUIREMENT
 
 ## Process you MUST follow:

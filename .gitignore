@@ -28,3 +28,30 @@ scratch/
 test-output/
 temp/
 tmp/
+
+# =============================================================================
+# SECRETS - NEVER COMMIT
+# =============================================================================
+# Environment files with actual secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Secret files
+secrets.json
+secrets.yaml
+secrets.yml
+secrets.toml
+
+# Private keys and certificates
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+*.pkcs12
+
+# Allow schema and example files (safe for AI to read)
+!.env.schema
+!.env.example

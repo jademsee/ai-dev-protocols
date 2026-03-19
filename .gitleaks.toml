@@ -1,0 +1,52 @@
+# Gitleaks Configuration for Secret Detection
+# Docs: https://github.com/gitleaks/gitleaks
+
+title = "Secret Detection Configuration"
+
+# Use default rules plus custom rules below
+[extend]
+useDefault = true
+
+# Custom rules for project-specific patterns
+[[rules]]
+id = "env-file-content"
+description = "Environment file with potential secrets"
+regex = '''(?i)^(api[_-]?key|secret|password|token|credential|auth)[\s]*[=:][\s]*['"]?[^\s'"]+['"]?$'''
+tags = ["env", "secret"]
+
+[[rules]]
+id = "private-key-block"
+description = "Private key in PEM format"
+regex = '''-----BEGIN (?:RSA |EC |DSA |OPENSSH )?PRIVATE KEY-----'''
+tags = ["key", "private", "pem"]
+
+[[rules]]
+id = "aws-access-key"
+description = "AWS Access Key ID"
+regex = '''AKIA[0-9A-Z]{16}'''
+tags = ["aws", "key"]
+
+[[rules]]
+id = "generic-api-key"
+description = "Generic API key pattern"
+regex = '''(?i)(api[_-]?key|apikey|api[_-]?secret)[\s]*[=:][\s]*['"]?[a-zA-Z0-9_\-]{20,}['"]?'''
+tags = ["api", "key"]
+
+# Allowlist - files that are safe and should not trigger false positives
+[allowlist]
+description = "Files that are safe to commit"
+paths = [
+  '''.env\.schema''',
+  '''.env\.example''',
+  '''\.env\.schema$''',
+  '''\.env\.example$''',
+  '''gitleaks\.toml''',
+  '''validate-env-schema\.sh''',
+  '''verify-secret-protection\.sh''',
+  '''test.*''',
+  '''tests/.*''',
+  '''__tests__/.*''',
+]
+
+# Allowlist for specific commits if needed (use sparingly)
+# commits = []
