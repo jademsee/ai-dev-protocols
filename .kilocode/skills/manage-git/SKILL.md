@@ -262,8 +262,8 @@ git merge --no-ff feat/AUTH-123-refresh-token-rotation
 4. Rebase onto latest main
 5. Verify CI would pass
 6. Write the PR description (see format below)
-7. Self-review using code-review.md skill before requesting
-   others to review
+7. Self-review using maintain-consistency and audit-security skills before
+   requesting others to review
 
 ### PR Description Format
 ```markdown
