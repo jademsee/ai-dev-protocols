@@ -227,6 +227,50 @@ Loop iteration:
 
 ---
 
+## Sub-Agent Delegation by Skill
+
+Some skills benefit from sub-agent delegation for improved quality and context management.
+
+### Skills That Benefit from Delegation
+
+| Skill | Delegate To | Trigger |
+|-------|-------------|---------|
+| **debug** | Search agent | Locating bug across >3 files |
+| **debug** | Validation agent | Verifying fix correctness |
+| **write-tests** | Generation agent | Boilerplate test generation |
+| **write-docs** | Generation agent | API documentation from signatures |
+| **refactor** | Search agent | Finding all references to rename |
+| **refactor** | Validation agent | Verifying behavior preservation |
+| **audit-security** | Search agent | Scanning for vulnerability patterns |
+| **audit-security** | Validation agent | Independent security review |
+| **design-architecture** | Analysis agent | Impact analysis across modules |
+| **recover-design** | Analysis agent | Pattern extraction from codebase |
+| **maintain-consistency** | Search agent | Finding all related files |
+
+### Skills That Should NOT Delegate
+
+| Skill | Reason |
+|-------|--------|
+| **create-item** | Requires user interaction for decisions |
+| **develop-api** | Needs conversation context for requirements |
+| **manage-git** | Single-file, user-interactive |
+| **manage-secrets** | Security-sensitive, needs main agent oversight |
+
+### Using `/delegate` Workflow
+
+When a task matches delegation criteria, use the `/delegate` workflow:
+
+```
+/delegate [task description] to [sub-agent type]
+```
+
+Example:
+```
+/delegate "find all usages of AuthService" to search
+```
+
+---
+
 ## Maintenance Notes
 
 When adding a new skill:

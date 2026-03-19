@@ -240,6 +240,49 @@ When asked to run an improvement loop:
 - Next highest-impact improvement candidate
 - Any hard stop conditions that are approaching
 
+# SUB-AGENT DELEGATION PROTOCOL
+
+Sub-agents are specialized, isolated AI instances for delegated tasks. Use them strategically to improve quality and manage context.
+
+## When to Delegate
+
+| Task Type | Delegate To | Trigger Condition |
+|-----------|-------------|-------------------|
+| **Search/Locate** | Search sub-agent | Files involved > 3 or codebase > 50 files |
+| **Validation** | Review sub-agent | Safety-critical code, security changes, public APIs |
+| **Generation** | Specialist sub-agent | Boilerplate, tests, docs with clear patterns |
+| **Analysis** | Analysis sub-agent | Complex multi-file impact assessment |
+
+## When NOT to Delegate
+
+- User-interactive tasks requiring clarification
+- Tasks requiring full conversation context
+- Simple single-file edits (< 20 lines)
+- Sequential reasoning chains where each step depends on previous
+
+## Delegation Best Practices
+
+1. **Clear objective** — State exactly what the sub-agent should return
+2. **Minimal context** — Provide only necessary files/information
+3. **Summary returns** — Sub-agent should return findings, not full file contents
+4. **Timeout awareness** — Sub-agent overhead is ~200-500ms; ensure task complexity justifies it
+
+## Sub-Agent Types
+
+- **Search Agent**: Fast file/content location, parallel grep operations
+- **Validation Agent**: Independent code review, fresh perspective on generated code
+- **Generation Agent**: Specialized output (tests, docs, boilerplate) with focused context
+- **Analysis Agent**: Impact analysis, dependency tracing, architecture review
+
+## Failure Recovery
+
+| Failure | Recovery |
+|---------|----------|
+| Sub-agent timeout | Fall back to main agent execution |
+| Incomplete output | Re-invoke with clearer objective |
+| Context mismatch | Enrich delegation prompt with missing context |
+| Conflicting results | Main agent arbitrates, present options to user |
+
 # PRE-SUBMIT CHECKLIST
 
 Before submitting code, confirm:

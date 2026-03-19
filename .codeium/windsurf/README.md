@@ -37,7 +37,7 @@ This configuration enforces rigorous engineering discipline through:
 │   ├── visualize-project/        # Codebase structure visualization
 │   ├── write-docs/               # Documentation
 │   └── write-tests/              # Test writing
-├── global_workflows/             # Execution workflows
+├── global_workflows/             # Execution workflows — 10 total
 │   ├── diagnose.md             # Diagnosis without prescriptions
 │   ├── prescribe.md            # Planning without execution
 │   ├── enhance-prompt.md         # Prompt enhancement
@@ -46,7 +46,8 @@ This configuration enforces rigorous engineering discipline through:
 │   ├── test.md                   # Red-green-refactor loop
 │   ├── tune-performance.md       # Performance-only loop
 │   ├── turbo-loop.md             # Autonomous loop
-│   └── validate.md               # Project consistency validation
+│   ├── validate.md               # Project consistency validation
+│   └── delegate.md               # Sub-agent delegation
 └── README.md                     # This file
 
 Note: SKILLS_MAP.md, CHANGE_CHECKLISTS.md, and MAINTENANCE_GUIDE.md are located in docs/ (shared across tools).
@@ -125,6 +126,9 @@ Workflows control execution mode:
 
 **Validation:**
 - `/validate` - Validate project consistency and integrity
+
+**Delegation:**
+- `/delegate` - Delegate task to specialized sub-agent
 
 ### Skills vs Workflows: What's the Difference?
 
