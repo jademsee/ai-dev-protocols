@@ -19,7 +19,9 @@ error, crash, incorrect behavior, or test failure.
 6. Propose the fix — explain WHY it addresses the root cause
 7. WAIT for approval on non-trivial fixes
 8. Implement the minimal fix — do not improve unrelated code
-9. Write a test that would have caught this bug
+9. Check if a test exists for this case:
+   - If no test → invoke **write-tests** skill to add one
+   - If test exists but didn't catch bug → fix the test
 10. Verify the fix does not break existing tests
 
 ## Debugging Framework
