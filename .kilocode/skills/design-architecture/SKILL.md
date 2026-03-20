@@ -350,6 +350,7 @@ Phase 2: ...
 - **refactor** — Execute refactoring plans designed by this skill
 - **recover-design** — Recover architecture from existing codebase
 - **write-docs** — Write ADRs and ARCHITECTURE.md
+- **analyze-metrics** — Architecture metrics (coupling, cohesion, complexity)
 
 ## Pre-Output Check
 - [ ] All affected modules identified
