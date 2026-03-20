@@ -16,13 +16,6 @@ When asked to:
 - Scan for vulnerable, deprecated, or unmaintained dependencies
 - Optimize dependency tree size or build performance
 
-## Related Skills
-- **audit-security** — Scans for known CVEs in dependencies (reactive)
-- **manage-dependencies** — Manages the full dependency lifecycle (proactive)
-- **design-architecture** — Coherence audit checks dependency health and module boundaries
-
-Use **manage-dependencies** for lifecycle management, **audit-security** for vulnerability-focused scanning.
-
 ## Process — follow in order
 
 1. **Assess current state** (do NOT skip):
@@ -504,9 +497,12 @@ Standard library > existing internal code > new dependency
 - ALWAYS read the changelog before upgrading a major version
 
 ## Related Skills
-- **audit-security** — Scan dependencies for vulnerabilities
+- **audit-security** — Scan dependencies for vulnerabilities (reactive)
 - **manage-secrets** — Handle secrets in dependency config
 - **maintain-consistency** — Ensure lock files synchronized
+- **design-architecture** — Coherence audit checks dependency health and module boundaries
+
+Use **manage-dependencies** for lifecycle management, **audit-security** for vulnerability-focused scanning.
 
 ## Pre-Submit Checklist
 

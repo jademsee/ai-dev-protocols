@@ -14,12 +14,6 @@ When asked to:
 - Audit secrets sprawl or establish rotation policies
 - Prevent secrets from leaking to AI tools
 
-## Related Skills
-- **audit-security** — Detects secrets vulnerabilities (reactive scanning)
-- **manage-secrets** — Establishes secrets infrastructure (proactive setup)
-
-Use **manage-secrets** before **audit-security** in new projects.
-
 ## Process — follow in order
 
 1. **Assess current state** (do NOT skip):
@@ -570,9 +564,11 @@ Then rotate ALL exposed credentials.
 - ALWAYS test secret rotation in staging before production
 
 ## Related Skills
-- **audit-security** — Scan for leaked secrets and vulnerabilities
+- **audit-security** — Scan for leaked secrets and vulnerabilities (reactive)
 - **manage-dependencies** — Handle secrets in dependency config
 - **write-docs** — Document secrets procedures and runbooks
+
+Use **manage-secrets** before **audit-security** in new projects.
 
 ## Pre-Submit Checklist
 

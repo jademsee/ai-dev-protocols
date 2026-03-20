@@ -504,9 +504,12 @@ Standard library > existing internal code > new dependency
 - ALWAYS read the changelog before upgrading a major version
 
 ## Related Skills
-- **audit-security** — Scan dependencies for vulnerabilities
+- **audit-security** — Scan dependencies for vulnerabilities (reactive)
 - **manage-secrets** — Handle secrets in dependency config
 - **maintain-consistency** — Ensure lock files synchronized
+- **design-architecture** — Coherence audit checks dependency health and module boundaries
+
+Use **manage-dependencies** for lifecycle management, **audit-security** for vulnerability-focused scanning.
 
 ## Pre-Submit Checklist
 
