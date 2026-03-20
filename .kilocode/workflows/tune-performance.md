@@ -13,5 +13,5 @@ Performance-only loop. Tests must stay GREEN.
 3. Focus exclusively on: hot path performance, allocations, and cache locality
 4. Do not touch anything unrelated to performance
 5. Each iteration must profile before and after and report estimated improvement
-6. Follow Hard Stops from AGENTS.md
+6. Follow Hard Stops from rules.md
 7. Wait for my approval before each iteration

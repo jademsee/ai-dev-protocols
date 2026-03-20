@@ -1,3 +1,11 @@
+# AI Development Protocols
+
+This document defines the core engineering principles and protocols for AI-assisted development.
+
+> **Cross-Tool Standard:** This file is read natively by Windsurf, Kilo Code and Cursor. For other AI coding agents (Claude Code, GitHub Copilot, Gemini CLI, etc.), copy this content to their expected config file. See `.codeium/windsurf/README.md` for per-agent instructions.
+
+---
+
 # PROJECT PROFILE
 
 Set these per-project to gate context-dependent rules:
@@ -38,7 +46,7 @@ When making changes that affect multiple files, ensure comprehensive synchroniza
 
 # CONFIGURATION CHANGE PROTOCOL
 
-When modifying Windsurf/Cascade configuration files (skills/, global_workflows/, *.md):
+When modifying the configuration files (skills/, global_workflows/, workflows/, *.md):
 
 **MANDATORY STEPS - No exceptions:**
 

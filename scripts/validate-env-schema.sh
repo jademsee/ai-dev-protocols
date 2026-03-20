@@ -93,14 +93,14 @@ for var in $REQUIRED_VARS; do
         value=$(grep "^${var}=" "$ENV_FILE" | cut -d'=' -f2-)
         if [[ -n "$value" && "$value" != '""' && "$value" != "''" ]]; then
             echo -e "${GREEN}✓${NC} $var is set"
-            ((FOUND++))
+            FOUND=$((FOUND + 1))
         else
             echo -e "${YELLOW}⚠${NC} $var is empty"
-            ((MISSING++))
+            MISSING=$((MISSING + 1))
         fi
     else
         echo -e "${RED}✗${NC} $var is missing"
-        ((MISSING++))
+        MISSING=$((MISSING + 1))
     fi
 done
 

@@ -10,7 +10,7 @@ Fully autonomous loop, no approval gates.
 
 1. Run the improvement loop on the current file using Turbo Mode
 2. Invoke the **optimize** skill for each improvement
-3. Follow the IMPROVEMENT LOOP PROTOCOL in AGENTS.md
+3. Follow the IMPROVEMENT LOOP PROTOCOL in rules.md
 4. Do not wait for approval between iterations
 5. Stop immediately on any Hard Stop condition and report why
 

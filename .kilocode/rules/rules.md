@@ -2,7 +2,7 @@
 
 This document defines the core engineering principles and protocols for AI-assisted development.
 
-> **Cross-Tool Standard:** This file is read natively by Kilo Code and Cursor. For other AI coding agents (Claude Code, GitHub Copilot, Gemini CLI, etc.), copy this content to their expected config file. See `.kilocode/README.md` for per-agent instructions.
+> **Cross-Tool Standard:** This file is read natively by Windsurf, Kilo Code and Cursor. For other AI coding agents (Claude Code, GitHub Copilot, Gemini CLI, etc.), copy this content to their expected config file. See `.codeium/windsurf/README.md` for per-agent instructions.
 
 ---
 
@@ -11,7 +11,7 @@ This document defines the core engineering principles and protocols for AI-assis
 Set these per-project to gate context-dependent rules:
 
 - **Project Type**: systems | backend | frontend | data-science | mobile | scripting | library
-- **Concurrency Model**: multi-threaded | async-single-thread | single-thread
+- **Concurrency Model**: multi-threaded | async-single-thread | single-threaded
 - **Performance Sensitivity**: hot-path-critical | standard | non-critical
 - **Commit Convention**: conventional | ticket-first | freeform | squash-merge
 
@@ -46,7 +46,7 @@ When making changes that affect multiple files, ensure comprehensive synchroniza
 
 # CONFIGURATION CHANGE PROTOCOL
 
-When modifying Kilo Code configuration files (skills/, workflows/, *.md):
+When modifying the configuration files (skills/, global_workflows/, workflows/, *.md):
 
 **MANDATORY STEPS - No exceptions:**
 
@@ -65,7 +65,7 @@ When modifying Kilo Code configuration files (skills/, workflows/, *.md):
 
 - **Adding a skill:** Follow CHANGE_CHECKLISTS.md → "Checklist 1: Modifying a Skill"
 - **Adding a workflow:** Follow CHANGE_CHECKLISTS.md → "Checklist 2: Modifying a Workflow"
-- **Changing this file:** Follow CHANGE_CHECKLISTS.md → "Checklist 3: Modifying Global Rules"
+- **Changing rules.md:** Follow CHANGE_CHECKLISTS.md → "Checklist 3: Modifying Global Rules"
 - **Any config change:** Run `/validate` before committing
 
 **Validation is NOT optional** - It prevents:
