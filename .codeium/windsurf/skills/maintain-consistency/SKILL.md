@@ -486,6 +486,16 @@ After user approval:
 
 ---
 
+## Related Skills
+- **refactor** — Ensures refactoring maintains consistency
+- **create-item** — Ensures new components integrate properly
+- **develop-api** — Ensures API changes update all consumers
+- **design-architecture** — Validates architectural decisions are reflected everywhere
+- **write-tests** — Ensures test coverage for all changes
+- **write-docs** — Ensures documentation stays synchronized
+
+---
+
 ## Pre-Submit Checklist
 
 After ensuring consistency:
@@ -500,16 +510,6 @@ After ensuring consistency:
 - [ ] Dependency lock files updated
 - [ ] Configuration examples updated
 - [ ] Migration path documented (for breaking changes)
-
----
-
-## Related Skills
-- **refactor** — Ensures refactoring maintains consistency
-- **create-item** — Ensures new components integrate properly
-- **develop-api** — Ensures API changes update all consumers
-- **design-architecture** — Validates architectural decisions are reflected everywhere
-- **write-tests** — Ensures test coverage for all changes
-- **write-docs** — Ensures documentation stays synchronized
 
 ---
 

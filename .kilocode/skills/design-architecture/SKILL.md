@@ -352,7 +352,7 @@ Phase 2: ...
 - **write-docs** — Write ADRs and ARCHITECTURE.md
 - **analyze-metrics** — Architecture metrics (coupling, cohesion, complexity)
 
-## Pre-Output Check
+## Pre-Submit Check
 - [ ] All affected modules identified
 - [ ] No new patterns introduced without ARCHITECTURE.md update
 - [ ] All significant decisions have or will have an ADR

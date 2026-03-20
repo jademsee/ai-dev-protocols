@@ -422,21 +422,7 @@ git merge --no-ff feat/AUTH-123-refresh-token-rotation
 
 ---
 
-## Related Skills
-- **write-tests** — Verify tests pass before committing
-- **maintain-consistency** — Ensure all related files updated together
-- **debug** — Investigate failing tests before commit
-
-## Pre-Operation Checklist
-
-Before any git operation that modifies shared history:
-- [ ] On the correct branch
-- [ ] Working tree is clean (or changes are intentionally staged)
-- [ ] Latest remote changes have been fetched
-- [ ] Tests pass at the current HEAD
-- [ ] Not rebasing a branch others are working on
-
-## Hard Rules Summary
+## Hard Rules
 - NEVER commit directly to main/master/develop
 - NEVER commit secrets or credentials
 - NEVER use `--force` — always `--force-with-lease`
@@ -445,3 +431,17 @@ Before any git operation that modifies shared history:
 - NEVER use `git add .` without reviewing the staged diff
 - NEVER skip commit hooks with `--no-verify`
 - NEVER open a PR larger than 400 lines without splitting it
+
+## Related Skills
+- **write-tests** — Verify tests pass before committing
+- **maintain-consistency** — Ensure all related files updated together
+- **debug** — Investigate failing tests before commit
+
+## Pre-Submit Checklist
+
+Before any git operation that modifies shared history:
+- [ ] On the correct branch
+- [ ] Working tree is clean (or changes are intentionally staged)
+- [ ] Latest remote changes have been fetched
+- [ ] Tests pass at the current HEAD
+- [ ] Not rebasing a branch others are working on

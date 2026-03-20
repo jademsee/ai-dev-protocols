@@ -454,378 +454,38 @@ Architecture decision merged   | ✅        | ❌        | ✅       | ✅      
 ⚠️* = Only if PR has "refactor" label or touches core modules
 ```
 
-### CI/CD Workflows
+### CI/CD Integration
 
-#### Primary Workflow (PR-based)
+Configure automation using your CI/CD platform. Key integration points:
 
-```yaml
-# .github/workflows/codebase-viz.yml
-name: Codebase Visualization
+**PR-Based Workflow** (`.github/workflows/codebase-viz.yml` or equivalent):
+- Trigger on PR events + pushes to main
+- Watch paths: dependency files (`package.json`, `go.mod`, `Cargo.toml`), core modules, layer rules
+- Jobs: detect which graphs need regeneration → generate only affected graphs → upload artifacts → update PR description with Mermaid graphs
+- Fail PR if new layer compliance violations detected
 
-on:
-  pull_request:
-    types: [opened, synchronize, labeled]
-  push:
-    branches: [main]
-    paths:
-      - '**/package.json'
-      - '**/go.mod'
-      - '**/Cargo.toml'
-      - 'src/core/**'
-      - 'lib/core/**'
-      - '.dependency-cruiser.js'
-      - '.layer-rules.*'
+**Team Event Workflow** (`.github/workflows/team-events.yml` or equivalent):
+- Trigger on issue labels: `onboarding`, `offboarding`
+- Onboarding: generate all four visualizations + combined onboarding guide
+- Offboarding: analyze knowledge transfer needs, flag bus factor risks
+- Use helper scripts: `generate-dependency-graph.sh`, `generate-ownership-heatmap.sh`, `generate-coupling-heatmap.sh`, `generate-layer-compliance.sh`, `create-onboarding-guide.sh`, `analyze-knowledge-transfer.sh`, `check-bus-factor.sh`
 
-jobs:
-  detect-changes:
-    runs-on: ubuntu-latest
-    outputs:
-      needs_dep_graph: ${{ steps.check.outputs.dep_graph }}
-      needs_ownership: ${{ steps.check.outputs.ownership }}
-      needs_coupling: ${{ steps.check.outputs.coupling }}
-      needs_compliance: ${{ steps.check.outputs.compliance }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      
-      - id: check
-        run: |
-          # Check what needs to be generated
-          if git diff --name-only HEAD~1 HEAD | grep -qE '(package.json|go.mod|Cargo.toml|requirements.txt)'; then
-            echo "dep_graph=true" >> $GITHUB_OUTPUT
-          fi
-          
-          if [[ "${{ github.event_name }}" == "push" ]]; then
-            echo "ownership=true" >> $GITHUB_OUTPUT
-            echo "coupling=true" >> $GITHUB_OUTPUT
-          fi
-          
-          if git diff --name-only HEAD~1 HEAD | grep -qE '(src/core/|lib/core/)'; then
-            echo "coupling=true" >> $GITHUB_OUTPUT
-          fi
-          
-          # Always check compliance on PR
-          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
-            echo "compliance=true" >> $GITHUB_OUTPUT
-            echo "dep_graph=true" >> $GITHUB_OUTPUT
-          fi
-          
-          # Refactor label triggers comprehensive analysis
-          if [[ "${{ contains(github.event.pull_request.labels.*.name, 'refactor') }}" == "true" ]]; then
-            echo "coupling=true" >> $GITHUB_OUTPUT
-          fi
+**File Watcher Configuration** (`.github/CODEBASE_VIZ_CONFIG.json`):
+- Watch dependency files: `package.json`, `go.mod`, `Cargo.toml`, `requirements.txt`, `pom.xml`, `build.gradle`
+- Watch core module paths: `src/core/**`, `lib/core/**`, `internal/core/**`, `pkg/core/**`
+- Watch layer rule files: `.dependency-cruiser.js`, `archunit_rules.py`, `import_rules.toml`
+- Thresholds: coupling alert (15), bus factor critical (1), ownership concentration (0.8)
 
-  generate-dependency-graph:
-    needs: detect-changes
-    if: needs.detect-changes.outputs.needs_dep_graph == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      
-      - name: Generate Dependency Graph
-        run: |
-          npx dependency-cruiser --output-type mmd src > docs/architecture/dependency-graph.mmd
-          
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: dependency-graph
-          path: docs/architecture/dependency-graph.mmd
+**Pre-Commit Hooks:**
+- Check for dependency file changes → alert about upcoming graph regeneration
+- Check for core module changes → alert about coupling analysis
+- Run `dependency-cruiser --validate` if config exists → fail on violations
 
-  generate-ownership:
-    needs: detect-changes
-    if: needs.detect-changes.outputs.needs_ownership == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      
-      - name: Generate Ownership Heatmap
-        run: |
-          ./scripts/generate-ownership-heatmap.sh > docs/architecture/ownership-heatmap.mmd
-      
-      - name: Check bus factor
-        id: bus-factor
-        run: |
-          # Alert if critical modules have bus factor < 2
-          ./scripts/check-bus-factor.sh
+**IDE Integration (VS Code):**
+- Extensions: `bierner.markdown-mermaid` (Mermaid preview), `usernamehw.dependency-cruiser` (dependency validation), `eamodio.gitlens` (ownership analysis)
+- Optional: auto-generate dependency graph via VS Code task on save
 
-  generate-coupling:
-    needs: detect-changes
-    if: needs.detect-changes.outputs.needs_coupling == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Generate Coupling Heatmap
-        run: |
-          ./scripts/generate-coupling-heatmap.sh > docs/architecture/coupling-heatmap.mmd
-
-  check-compliance:
-    needs: detect-changes
-    if: needs.detect-changes.outputs.needs_compliance == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Check Layer Compliance
-        id: compliance
-        run: |
-          npx dependency-cruiser --validate --output-type mmd src/.dependency-cruiser.js > docs/architecture/layer-compliance.mmd
-          
-          # Check for new violations
-          VIOLATIONS=$(npx dependency-cruiser --validate src/.dependency-cruiser.js 2>&1 | grep -c "error" || true)
-          echo "violations=$VIOLATIONS" >> $GITHUB_OUTPUT
-          
-          if [ "$VIOLATIONS" -gt 0 ]; then
-            echo "::warning::$VIOLATIONS layer compliance violations detected"
-          fi
-      
-      - name: Fail on new violations
-        if: steps.compliance.outputs.violations > 0
-        run: exit 1
-
-  update-pr-description:
-    needs: [generate-dependency-graph, check-compliance]
-    if: always() && github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-      
-      - name: Update PR description
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const fs = require('fs');
-            const depGraph = fs.existsSync('dependency-graph/dependency-graph.mmd') 
-              ? fs.readFileSync('dependency-graph/dependency-graph.mmd', 'utf8') 
-              : null;
-            
-            let body = context.payload.pull_request.body || '';
-            
-            // Add or update visualization section
-            const vizSection = `
-            
-            ---
-            ## 📊 Codebase Visualizations
-            
-            ### Dependency Graph
-            \`\`\`mermaid
-            ${depGraph || '(no changes)'}
-            \`\`\`
-            `;
-            
-            // Update PR body
-            if (!body.includes('## 📊 Codebase Visualizations')) {
-              body += vizSection;
-            }
-            
-            await github.rest.pulls.update({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.issue.number,
-              body: body
-            });
-```
-
-#### Team Event Workflow
-
-```yaml
-# .github/workflows/team-events.yml
-name: Team Event Handlers
-
-on:
-  issues:
-    types: [opened, labeled]
-  workflow_dispatch:
-    inputs:
-      event_type:
-        description: 'Event type'
-        required: true
-        type: choice
-        options:
-          - onboarding
-          - offboarding
-          - architecture-review
-
-jobs:
-  handle-onboarding:
-    if: |
-      (github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'onboarding')) ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.event_type == 'onboarding')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      
-      - name: Generate Onboarding Report
-        run: |
-          # Generate all visualizations for new team member
-          ./scripts/generate-dependency-graph.sh > docs/architecture/dependency-graph.mmd
-          ./scripts/generate-ownership-heatmap.sh > docs/architecture/ownership-heatmap.mmd
-          ./scripts/generate-coupling-heatmap.sh > docs/architecture/coupling-heatmap.mmd
-          ./scripts/generate-layer-compliance.sh > docs/architecture/layer-compliance.mmd
-          
-          # Combine into onboarding guide
-          ./scripts/create-onboarding-guide.sh > docs/ONBOARDING_GUIDE.md
-      
-      - name: Comment on issue
-        if: github.event_name == 'issues'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: `👋 Onboarding visualizations generated!\n\nSee [docs/architecture/](https://github.com/${{ github.repository }}/tree/main/docs/architecture) for all graphs.`
-            });
-
-  handle-offboarding:
-    if: |
-      (github.event_name == 'issues' && contains(github.event.issue.labels.*.name, 'offboarding')) ||
-      (github.event_name == 'workflow_dispatch' && github.event.inputs.event_type == 'offboarding')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      
-      - name: Analyze knowledge transfer needs
-        run: |
-          # Identify modules owned by departing member
-          # Alert on bus factor risks
-          ./scripts/analyze-knowledge-transfer.sh ${{ github.event.issue.user.login }}
-```
-
-### File Watcher Configuration
-
-**Detect significant changes without full CI run:**
-
-```json
-// .github/CODEBASE_VIZ_CONFIG.json
-{
-  "watch": {
-    "dependency_files": [
-      "package.json", "package-lock.json",
-      "go.mod", "go.sum",
-      "Cargo.toml", "Cargo.lock",
-      "requirements.txt", "Pipfile",
-      "pom.xml", "build.gradle"
-    ],
-    "core_modules": [
-      "src/core/**",
-      "lib/core/**",
-      "internal/core/**",
-      "pkg/core/**"
-    ],
-    "layer_rules": [
-      ".dependency-cruiser.js",
-      ".dependency-cruiser.json",
-      "archunit_rules.py",
-      "import_rules.toml"
-    ]
-  },
-  "thresholds": {
-    "coupling_alert": 15,
-    "bus_factor_critical": 1,
-    "ownership_concentration": 0.8
-  },
-  "team_file": ".github/MEMBERS"
-}
-```
-
-### Pre-Commit Hooks
-
-```bash
-# .git/hooks/pre-commit
-#!/bin/bash
-
-set -e
-
-# Get list of changed files
-CHANGED_FILES=$(git diff --cached --name-only)
-
-# Check for dependency changes
-if echo "$CHANGED_FILES" | grep -qE '(package.json|go.mod|Cargo.toml)'; then
-  echo "📦 Dependency change detected - will generate dependency graph on push"
-fi
-
-# Check for core module changes
-if echo "$CHANGED_FILES" | grep -qE '(src/core/|lib/core/)'; then
-  echo "⚠️ Core module change - will generate coupling analysis on push"
-fi
-
-# Always check layer compliance
-if [ -f ".dependency-cruiser.js" ]; then
-  npx dependency-cruiser --validate .dependency-cruiser.js 2>/dev/null || {
-    echo "❌ Layer compliance violations detected"
-    echo "Run 'npx dependency-cruiser --validate' for details"
-    exit 1
-  }
-fi
-
-echo "✅ Pre-commit checks passed"
-```
-
-### IDE Integration
-
-**VS Code extension recommendations:**
-```json
-// .vscode/extensions.json
-{
-  "recommendations": [
-    "bierner.markdown-mermaid",
-    "usernamehw.dependency-cruiser",
-    "eamodio.gitlens"
-  ]
-}
-```
-
-**Auto-generate on save (optional):**
-```json
-// .vscode/tasks.json
-{
-  "version": "2.0.0",
-  "tasks": [{
-    "label": "Update Dependency Graph",
-    "type": "shell",
-    "command": "npx dependency-cruiser --output-type mmd src > docs/deps.mmd",
-    "problemMatcher": [],
-    "group": {
-      "kind": "build",
-      "isDefault": false
-    }
-  }]
-}
-```
-
-### Documentation Embedding
-
-**Embed in README.md for instant visibility:**
-```markdown
-## Architecture
-
-### Dependency Graph
-
-```mermaid
-%% Auto-generated by CI - do not edit manually
-graph TD
-    ...
-```
-
-Last updated: 2024-01-15 (commit abc123)
-```
-
-### Loading Strategy
+### Storage Strategy
 
 **Where to store generated graphs:**
 ```
@@ -844,7 +504,7 @@ docs/
 3. Developer opens `docs/architecture/` for detailed view
 4. Team events (onboarding, offboarding) trigger comprehensive reports
 
-### Summary: No Manual Triggers Needed
+### Automation Summary
 
 | Scenario | Automatic Trigger |
 |----------|-------------------|

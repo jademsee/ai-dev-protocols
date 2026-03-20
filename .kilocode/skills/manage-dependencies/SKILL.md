@@ -16,6 +16,12 @@ When asked to:
 - Scan for vulnerable, deprecated, or unmaintained dependencies
 - Optimize dependency tree size or build performance
 
+## Scope Boundary
+- **audit-security** — Scans for known CVEs in dependencies (reactive)
+- **design-architecture** — Coherence audit checks dependency health and module boundaries
+
+Use **manage-dependencies** for full lifecycle management, **audit-security** for vulnerability-focused scanning.
+
 ## Process — follow in order
 
 1. **Assess current state** (do NOT skip):
@@ -66,10 +72,9 @@ This extends the global rules threshold (≥500 LOC systems / ≥200 LOC dynamic
 | **Bus factor** | ≥2 active maintainers or corporate backing | Single-maintainer hobby project in critical path |
 | **LOC threshold** | Replaces ≥500 LOC (systems) or ≥200 LOC (dynamic) | Saves <50 LOC |
 
-### Priority Order (from rules.md)
-```
-Standard library > existing internal code > new dependency
-```
+### Priority Order
+See `rules.md` → DEPENDENCIES section for the full policy:
+`Standard library > existing internal code > new dependency`
 
 ---
 

@@ -447,3 +447,10 @@ When recovering design intent, weight evidence in this order:
 5. Comments — useful but may be stale
 6. Implementation — reveals what was done, not necessarily
    what was intended
+
+## Pre-Submit Check
+- [ ] OBSERVED vs INFERRED clearly labeled throughout
+- [ ] Multiple sources triangulated (not single-file conclusions)
+- [ ] Git history consulted for intent recovery
+- [ ] Gaps in evidence explicitly flagged
+- [ ] All output follows the specified format for the mode used
