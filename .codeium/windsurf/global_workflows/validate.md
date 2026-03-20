@@ -128,6 +128,11 @@ Comprehensive project validation using the maintain-consistency skill.
 [Prioritized list of fixes]
 ```
 
+## Related Skills
+
+- **maintain-consistency** — Cross-file consistency validation
+- **write-tests** — Test framework detection and validation
+
 ## Important
 
 - Do NOT make any changes - only report findings

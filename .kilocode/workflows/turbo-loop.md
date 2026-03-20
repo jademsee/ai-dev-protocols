@@ -9,9 +9,10 @@ Fully autonomous loop, no approval gates.
 ## Steps
 
 1. Run the improvement loop on the current file using Turbo Mode
-2. Follow the IMPROVEMENT LOOP PROTOCOL in AGENTS.md
-3. Do not wait for approval between iterations
-4. Stop immediately on any Hard Stop condition and report why
+2. Invoke the **optimize** skill for each improvement
+3. Follow the IMPROVEMENT LOOP PROTOCOL in AGENTS.md
+4. Do not wait for approval between iterations
+5. Stop immediately on any Hard Stop condition and report why
 
 **Iteration Limit:** Maximum 10 iterations (default). Stop after limit even if improvements remain. User may extend with `/turbo-loop 20`.
 
