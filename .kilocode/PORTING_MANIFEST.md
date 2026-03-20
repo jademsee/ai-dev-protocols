@@ -14,7 +14,7 @@ This document maps the source Windsurf/Cascade configuration to the target Kilo 
 │   └── [16 skill directories]/
 │       └── SKILL.md
 ├── global_workflows/
-│   └── [9 workflow files].md
+│   └── [10 workflow files].md
 └── README.md
 
 docs/ (shared across all tools)
@@ -31,7 +31,7 @@ docs/ (shared across all tools)
 ├── rules/
 │   └── rules.md              # Complete rules (same name as source)
 ├── workflows/
-│   └── [9 workflow files].md
+│   └── [10 workflow files].md
 ├── skills/
 │   └── [16 skill directories]/
 │       └── SKILL.md
@@ -71,7 +71,7 @@ docs/ (shared, not copied)
 | `skills/visualize-project/SKILL.md` | `skills/visualize-project/SKILL.md` | None (YAML+MD compatible) |
 | `skills/analyze-metrics/SKILL.md` | `skills/analyze-metrics/SKILL.md` | None (YAML+MD compatible) |
 
-### Workflows (9 total)
+### Workflows (10 total)
 
 | Source (Workflow) | Target (Workflow) | Format Change |
 |-------------------|-------------------|---------------|
@@ -84,6 +84,7 @@ docs/ (shared, not copied)
 | `global_workflows/test.md` | `workflows/test.md` | YAML frontmatter + MD content |
 | `global_workflows/tune-performance.md` | `workflows/tune-performance.md` | YAML frontmatter + MD content |
 | `global_workflows/validate.md` | `workflows/validate.md` | YAML frontmatter + MD content |
+| `global_workflows/delegate.md` | `workflows/delegate.md` | YAML frontmatter + MD content |
 
 > **Format Note:** Kilo Code workflows use Markdown format with YAML frontmatter:
 > - `description` (required in frontmatter) - Short summary shown in workflow selector
@@ -128,7 +129,7 @@ All internal references have been updated:
 | Global engineering rules | ✅ Ported to rules.md |
 | Project-level rules | ✅ Created in rules/ |
 | 16 specialized skills | ✅ Ported |
-| 9 workflows | ✅ Unified format (direct copy) |
+| 10 workflows | ✅ Unified format (direct copy) |
 | Multi-language support (10 languages) | ✅ Preserved |
 | Hard rules and pre-submit checklists | ✅ Preserved |
 | Change management protocols | ✅ Preserved |
@@ -150,17 +151,18 @@ All internal references have been updated:
 8. `.kilocode/workflows/test.md`
 9. `.kilocode/workflows/tune-performance.md`
 10. `.kilocode/workflows/validate.md`
-11. `.kilocode/skills/[16 skills]/SKILL.md` — Copied
-12. `.kilocode/README.md`
-13. `docs/SKILLS_MAP.md` — Shared (not copied)
-14. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
-15. `docs/MAINTENANCE_GUIDE.md` — Shared (not copied)
-16. `.kilocode/PORTING_MANIFEST.md` — This file
+11. `.kilocode/workflows/delegate.md`
+12. `.kilocode/skills/[16 skills]/SKILL.md` — Copied
+13. `.kilocode/README.md`
+14. `docs/SKILLS_MAP.md` — Shared (not copied)
+15. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
+16. `docs/MAINTENANCE_GUIDE.md` — Shared (not copied)
+17. `.kilocode/PORTING_MANIFEST.md` — This file
 
 ## Validation Checklist
 
 - [x] All 16 skills ported
-- [x] All 9 workflows created
+- [x] All 10 workflows created
 - [x] rules.md created with complete rules
 - [x] Documentation copied
 - [x] README updated for Kilo Code
