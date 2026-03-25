@@ -8,7 +8,7 @@ This directory contains the Kilo Code AI coding assistant configuration, ported 
 .kilocode/
 ├── rules/                    # Project-level rules
 │   └── rules.md              # Complete rules (same name as source)
-├── workflows/                # Custom workflows (slash commands) — 10 total
+├── workflows/                # Custom workflows (slash commands) — 9 total
 │   ├── diagnose.md
 │   ├── prescribe.md
 │   ├── enhance-prompt.md
@@ -17,8 +17,7 @@ This directory contains the Kilo Code AI coding assistant configuration, ported 
 │   ├── improve-correctness.md
 │   ├── test.md
 │   ├── tune-performance.md
-│   ├── validate.md
-│   └── delegate.md
+│   └── validate.md
 ├── skills/                   # Specialized skills — 16 total
 │   ├── analyze-metrics/
 │   ├── audit-security/
@@ -68,7 +67,6 @@ Invoke workflows using slash commands:
 - `/test` — Test-driven improvement loop
 - `/tune-performance` — Performance optimization only
 - `/validate` — Comprehensive project validation
-- `/delegate` — Delegate task to specialized sub-agent
 
 ### Skills
 
