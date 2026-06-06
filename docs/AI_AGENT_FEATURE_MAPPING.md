@@ -91,11 +91,13 @@ Our global rules define core engineering principles, protocols, and behavioral g
 **Location:** `memories/rules.md`
 
 **Key Components:**
-1. Session Start Protocol
-2. Change Management Protocol
-3. Configuration Change Protocol
-4. Process Requirements
-5. Project Law (correctness, performance, architecture)
+1. Identity & Reasoning Directive
+2. Project Profile (conditional rule gating)
+3. Conflict Resolution (safety-first hierarchy)
+4. TIER 1 — Invariants (always apply)
+5. TIER 2 — Process (session lifecycle)
+6. TIER 3 — Conditional Rules
+7. Protocols (delegated to workflows)
 
 ### Agent Equivalents
 

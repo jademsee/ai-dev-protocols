@@ -344,7 +344,7 @@ Use the `/validate` workflow for comprehensive consistency checking:
 - After modifying any skill or workflow
 - After updating documentation
 - Before committing configuration changes
-- As part of the CONFIGURATION CHANGE PROTOCOL (see rules.md)
+- As part of the TIER 2 "On Config Change" process (see rules.md)
 
 ### Manual Validation
 
@@ -385,7 +385,7 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 ### Do:
 ✓ Run `/validate` before committing changes  
 ✓ Use CHANGE_CHECKLISTS.md for every change  
-✓ Follow CONFIGURATION CHANGE PROTOCOL (rules.md)  
+✓ Follow TIER 2 "On Config Change" process (rules.md)  
 ✓ Keep language coverage consistent  
 ✓ Update SKILLS_MAP.md when patterns change  
 ✓ Keep skills atomic and focused  
@@ -416,14 +416,13 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 - Removed Ruby and PHP support (now 10 languages)
 - Added maintain-consistency skill for project-wide change management
 - Added /validate workflow for consistency checking
-- Added CHANGE MANAGEMENT PROTOCOL to rules.md
 - Added SKILLS_MAP.md for relationship mapping
 - Added concurrency testing guidance
 - Added performance profiling tools (10 languages)
 - Added security tool integration (10 languages)
 - Added /validate workflow using maintain-consistency skill
-- Added CONFIGURATION CHANGE PROTOCOL to rules.md
-- Added SECRETS MANAGEMENT PROTOCOL to rules.md
+- Added config change process to rules.md (TIER 2)
+- Added safety invariants to rules.md (TIER 1)
 - Added manage-secrets skill for secrets architecture and best practices
 - Added manage-dependencies skill for full dependency lifecycle management
 - Added change checklists and maintenance guide
@@ -444,7 +443,7 @@ For configuration issues:
 2. Check `CHANGE_CHECKLISTS.md` for guidance
 3. Review `MAINTENANCE_GUIDE.md` for procedures
 4. Consult `SKILLS_MAP.md` for architecture understanding
-5. Follow CONFIGURATION CHANGE PROTOCOL in rules.md
+5. Follow TIER 2 "On Config Change" process in rules.md
 
 ---
 

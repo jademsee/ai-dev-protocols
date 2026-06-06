@@ -73,7 +73,7 @@ This extends the global rules threshold (≥500 LOC systems / ≥200 LOC dynamic
 | **LOC threshold** | Replaces ≥500 LOC (systems) or ≥200 LOC (dynamic) | Saves <50 LOC |
 
 ### Priority Order
-See `rules.md` → DEPENDENCIES section for the full policy:
+See `rules.md` → TIER 1 (Architectural Law) for the full policy:
 `Standard library > existing internal code > new dependency`
 
 ---

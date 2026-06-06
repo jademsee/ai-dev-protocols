@@ -550,7 +550,7 @@ Then rotate ALL exposed credentials.
 ---
 
 ## Hard Rules
-> Extends `rules.md` → SECRETS MANAGEMENT PROTOCOL. Rules below are authoritative for this skill.
+> Extends `rules.md` → Safety invariants. Rules below are authoritative for this skill.
 
 - NEVER store secrets in source code, even in "private" repos
 - NEVER commit `.env` files to version control

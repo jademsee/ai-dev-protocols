@@ -71,7 +71,7 @@ If you **add a new workflow**:
 
 If you **change workflow behavior**:
 - [ ] Update SKILLS_MAP.md if workflow-skill integration changed
-- [ ] Check if rules.md IMPROVEMENT LOOP PROTOCOL needs updating
+- [ ] Check if rules.md Improvement Loop summary needs updating
 - [ ] Verify consistency with similar workflows (e.g., loop.md vs turbo.md)
 
 If you **reference a skill in a workflow**:
@@ -103,7 +103,7 @@ If you **add a new rule or principle**:
 - [ ] Update skills that should enforce the new rule
 - [ ] Add to relevant skill pre-submit checklists
 
-If you **change the IMPROVEMENT LOOP PROTOCOL**:
+If you **change the Improvement Loop summary**:
 - [ ] Update loop.md workflow
 - [ ] Update turbo.md workflow
 - [ ] Update correct.md, tune.md, test.md workflows
@@ -260,7 +260,7 @@ All changes to configuration files MUST be validated before committing:
 1. **Run `/validate` workflow** after any change
 2. **Fix all reported issues** (both errors and warnings)
 3. **Verify consistency** across all affected files
-4. **Follow CONFIGURATION CHANGE PROTOCOL** in rules.md
+4. **Follow TIER 2 "On Config Change" process** in rules.md
 
 The `/validate` workflow uses the maintain-consistency skill to:
 - Verify all referenced skills/workflows exist
