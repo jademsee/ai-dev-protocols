@@ -26,6 +26,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Event-driven automation workflows for visualization generation (PR, merge, team events)
 
 ### Changed
+- **rules.md** - Comprehensive optimization (230 → 200 lines)
+  - Added Honesty invariants: no fabrication, no false completion claims, state uncertainty
+  - Added completeness requirements: full end-to-end scope, no in-scope stubs, report reductions
+  - Added unset-profile defaults (single-threaded, standard) to close conditional-rule loophole
+  - Fixed contradictions: `<50 LOC` rejection vs Tier 1 thresholds; `[IF async]` vs profile values
+  - Replaced undefined "dynamic" with "all other types"; removed unverifiable "no hidden allocations"
+  - Consolidated 3 redundant don't-guess rules and 3 overlapping minimalism lists
+  - Synced AGENTS.md, .kilocode/rules/rules.md, and manage-dependencies/manage-git skills
+- **manage-git / manage-dependencies skills** - Aligned with rules.md AUTHORSHIP and Tier 1 dependency thresholds
 - **visualize-project skill** - Refactored to focus exclusively on codebase understanding
   - Retained 4 core visualizations: dependency graph, code ownership, module coupling, layer compliance
   - Added Mermaid output format with styling for violations and risks

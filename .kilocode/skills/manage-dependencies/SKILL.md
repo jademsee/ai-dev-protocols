@@ -58,7 +58,7 @@ Use **manage-dependencies** for full lifecycle management, **audit-security** fo
 ## Dependency Adoption Decision Framework
 
 Before adding ANY new dependency, evaluate against these criteria.
-This extends the global rules threshold (≥500 LOC systems / ≥200 LOC dynamic).
+This extends the global rules threshold (≥500 LOC systems / ≥200 LOC all other types).
 
 ### Mandatory Checks
 
@@ -70,10 +70,10 @@ This extends the global rules threshold (≥500 LOC systems / ≥200 LOC dynamic
 | **License** | MIT, Apache-2.0, BSD, ISC | GPL (in proprietary), SSPL, unlicensed |
 | **Alternatives** | Best-in-class for its niche | Equivalent exists in stdlib or internal code |
 | **Bus factor** | ≥2 active maintainers or corporate backing | Single-maintainer hobby project in critical path |
-| **LOC threshold** | Replaces ≥500 LOC (systems) or ≥200 LOC (dynamic) | Saves <50 LOC |
+| **LOC threshold** | Replaces ≥500 LOC (systems) or ≥200 LOC (all other types) | Below Tier 1 thresholds |
 
 ### Priority Order
-See `rules.md` → DEPENDENCIES section for the full policy:
+See `rules.md` → TIER 1 (Architecture) for the full policy:
 `Standard library > existing internal code > new dependency`
 
 ---

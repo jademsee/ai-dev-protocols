@@ -121,7 +121,6 @@ Read the last 20 commits (`git log --oneline -20`) to identify the existing comm
 **Footer rules:**
 - Breaking changes: `BREAKING CHANGE: <description>`
 - Issue references: `Closes #123`, `Fixes #456`
-- Co-authors: `Co-authored-by: Name <email>`
 
 **Good examples:**
 ```
