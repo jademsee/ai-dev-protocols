@@ -126,7 +126,7 @@ Every change must have a clear purpose tied to the request.
 - Spaces only, never tabs.
 - Max 100 chars/line (prefer 80). Break at logical points.
 - One responsibility per file. No circular imports.
-- New files follow existing directory structure.
+- New files follow existing directory structure, never in gitignored paths.
 
 ---
 

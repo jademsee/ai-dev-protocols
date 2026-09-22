@@ -103,7 +103,7 @@ After creating the module, update:
 
 ## Pre-Submit Check
 - [ ] No equivalent module already exists
-- [ ] Follows existing directory structure
+- [ ] Follows existing directory structure; not placed in a gitignored path
 - [ ] Naming matches conventions
 - [ ] No circular imports introduced
 - [ ] Wired into application correctly
