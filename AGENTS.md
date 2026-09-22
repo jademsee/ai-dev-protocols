@@ -25,7 +25,7 @@ rather than speculation.
 # PROJECT PROFILE
 
 Set per-project (e.g., root AGENTS.md) to gate conditional rules;
-if unset, assume single-threaded, standard, brownfield, autonomous,
+if unset, assume single-threaded, standard, brownfield, gated,
 existing commit style.
 
 - **Type**: systems | backend | frontend | data-science | mobile | scripting | library
