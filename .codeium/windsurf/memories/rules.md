@@ -1,6 +1,6 @@
 # AI Development Protocols
 
-<!-- Target: ≤220 lines. Last reviewed: 2026-09-21 -->
+<!-- Target: ≤280 lines. Last reviewed: 2026-09-22 -->
 
 > **Cross-Tool Standard:** Read natively by Windsurf, Kilo Code, and
 > Cursor. See `.codeium/windsurf/README.md` for other agents.
@@ -26,11 +26,14 @@ rather than speculation.
 # PROJECT PROFILE
 
 Set per-project (e.g., root AGENTS.md) to gate conditional rules;
-if unset, assume single-threaded, standard, existing commit style.
+if unset, assume single-threaded, standard, brownfield, autonomous,
+existing commit style.
 
 - **Type**: systems | backend | frontend | data-science | mobile | scripting | library
 - **Concurrency**: multi-threaded | async-single-thread | single-threaded
 - **Performance**: hot-path-critical | standard | non-critical
+- **Mode**: brownfield | greenfield
+- **Execution**: autonomous | gated
 - **Commits**: conventional | ticket-first | freeform | squash-merge
 
 Rules marked **[IF ...]** apply only when the profile matches.
@@ -86,6 +89,10 @@ When rules conflict, earlier items override later:
   writing new code; never introduce parallel implementations
   without explicit approval.
 - New code must integrate with, not duplicate, existing systems.
+- Before replacing or deleting functionality, verify what depends
+  on it (runtime behavior, callers, config, tests, build, docs);
+  do not remove functionality merely because it appears unused
+  from a single file.
 - No new dependencies unless justified (stdlib > internal >
   external): external only if mature, maintained, non-core, and
   replaces ≥500 LOC (systems) or ≥200 LOC (all other types).
@@ -101,6 +108,10 @@ Every change must have a clear purpose tied to the request.
   lines; existing mechanisms over new ones).
 - Do not gold-plate, over-engineer, prematurely optimize, or
   expand scope; never rewrite working code solely for style.
+- Read targeted, not exhaustive: inspect only task-relevant files;
+  never analyze ignored directories (dependencies, build
+  artifacts); for large files (~500+ lines), read structure
+  (exports, types, headings) before loading full contents.
 - Minimize agent effort: no unnecessary tool calls, searches,
   file reads, code generation, or tokens. Respond concisely:
   work performed, findings, remaining issues.
@@ -125,11 +136,17 @@ Every change must have a clear purpose tied to the request.
 
 1. Read the existing files relevant to the task; understand
    current behavior before changing it.
-2. If requirements are ambiguous or conflicting, ask. Never assume.
-3. For non-trivial tasks (architecture, public APIs, new
+2. Interpret the request by its overall objective, not merely
+   its wording; include related work the change needs to work.
+3. If requirements are ambiguous or conflicting, ask. Never assume.
+4. For non-trivial tasks (architecture, public APIs, new
    dependencies): present 2-3 options with tradeoffs, including
    the highest-performance; implement only after direction
    is clear.
+5. If the project defines an implementation plan or task ledger
+   (format: `docs/TASK_LEDGER.md`), read it first; treat it as
+   authoritative for scope, order, architecture, and dependencies,
+   and work its tasks in order.
 
 ## On Change
 
@@ -143,6 +160,33 @@ Impact scope:
 - Module refactor → imports + paths + references
 - Schema → migrations + models + API types + tests + docs
 - Dependencies → lock files + compatibility check
+
+## On Failure
+
+- Diagnose the actual cause; fix the underlying issue, not symptoms.
+- Persist independently: re-read the error, adjust, and retry
+  before asking the user for help.
+- Never hide errors by weakening validation, deleting tests,
+  suppressing warnings, or adding arbitrary workarounds.
+
+## On Recovery
+
+1. If resuming after an interruption (dirty tree or open ledger
+   rows), reconcile before new work: compare working tree,
+   ledger, and last commit to establish what was in flight.
+2. Either complete the in-flight task or revert it cleanly;
+   never build on unverified partial changes.
+3. Record the outcome (completed or reverted) as ledger evidence.
+
+## On Completion
+
+- Stay within the requested scope: report unrelated problems
+  discovered; do not fix them unprompted unless they block
+  the requested task.
+- Mark completed plan or ledger tasks with evidence (commit
+  SHA, PR, or closing artifact).
+- Provide a concise summary: work performed, verification run,
+  remaining issues.
 
 ## On Config Change (skills/, workflows/, *.md)
 
@@ -162,6 +206,35 @@ Impact scope:
 ---
 
 # TIER 3 — CONDITIONAL RULES
+
+## [IF greenfield]
+
+- Treat the stated specification as authoritative; execute it
+  chronologically, one task at a time, validating each before
+  checking it off.
+- Remove obsolete or unrelated implementation aggressively;
+  eliminate legacy compatibility unless the spec requires it.
+- The final system contains only what the specification needs.
+
+## [IF gated]
+
+- Execute exactly one task from the implementation plan per
+  user prompt.
+- After completing and validating a plan task, update the ledger,
+  stop, and hand off: summarize what was done and ask explicitly
+  whether to proceed to the next task. Await approval.
+
+## [IF autonomous]
+
+- Checkpoint at task boundaries: validate, then commit each
+  completed unit; commits are the only durable state, and each
+  must stay small, single-purpose, and green.
+- Record intent before work: mark the ledger row in-progress
+  before touching files so an interruption is discoverable,
+  never silent. With no ledger, the commit message is the record.
+- Break only at green checkpoints (validated, committed,
+  recorded) — never mid-change. When blocked or context degrades,
+  checkpoint and stop rather than push on.
 
 ## [IF hot-path-critical]
 

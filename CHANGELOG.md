@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Task ledger standard** (`docs/TASK_LEDGER.md`) - Canonical format for
+  plan-driven task tracking: sparse table (Task/Status/Note/Evidence),
+  closed status vocabulary (in-progress/blocked/done), write-ahead
+  update semantics tied to rules.md On Recovery / [IF autonomous]
+- **verify-task-ledger.sh** (`scripts/`) - Machine-checks ledger validity:
+  header shape, status vocabulary, evidence on done rows, notes on open
+  rows, duplicate task IDs; exits 1 on ledger drift
 - **analyze-metrics skill** - New Atomic skill for runtime/process metrics visualization
   - Performance metrics (latency, throughput, memory, GC, error rates)
   - CI/CD health (pipeline success, build time, flaky tests, rollbacks)
@@ -26,6 +33,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Event-driven automation workflows for visualization generation (PR, merge, team events)
 
 ### Changed
+- **rules.md** - Consolidated appended content into the tiered core (519 → 279 lines)
+  - Removed 14-section "GLOBAL AGENT RULES" that duplicated Tiers 1-2 nearly verbatim
+  - Removed unfilled template placeholders (`<e.g., Next.js 15...>`) and dangling headings
+  - Removed broken references to non-existent files (task-ledger.md, verify_task_ledger.py)
+  - Removed tool-specific content (DEVIN_LOG.md scratchpad, GLM 5.3 mentions) from the
+    cross-tool standard
+  - Resolved autonomy contradiction by adding profile flags: `Mode: brownfield | greenfield`
+    and `Execution: autonomous | gated`
+  - Integrated the non-duplicative ideas: preserve-existing-intent before deletion
+    (Architecture), targeted reading of large files (Minimalism), objective-over-wording
+    and plan/ledger compliance (On Task Start), On Failure persistence, On Completion
+    scope discipline and evidence-based ledger updates, [IF greenfield] and [IF gated]
+    conditional rules
+  - Added crash-safety for autonomous execution: On Recovery reconciliation protocol
+    (Tier 2) and [IF autonomous] checkpoint/write-ahead/break discipline (Tier 3)
+  - Synced AGENTS.md and .kilocode/rules/rules.md
 - **rules.md** - Comprehensive optimization (230 → 200 lines)
   - Added Honesty invariants: no fabrication, no false completion claims, state uncertainty
   - Added completeness requirements: full end-to-end scope, no in-scope stubs, report reductions

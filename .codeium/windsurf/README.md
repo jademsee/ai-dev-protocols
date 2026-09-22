@@ -256,6 +256,7 @@ See `MAINTENANCE_GUIDE.md` for complete procedures.
 | `rules.md` | Core engineering principles and rules |
 | `SKILLS_MAP.md` | Skill relationships and invocation patterns |
 | `CHANGE_CHECKLISTS.md` | Change impact checklists for consistency |
+| `TASK_LEDGER.md` | Task ledger format and update semantics |
 | `MAINTENANCE_GUIDE.md` | Maintenance protocols and schedules |
 | `README.md` | This overview document |
 
