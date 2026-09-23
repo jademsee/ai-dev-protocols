@@ -37,15 +37,12 @@ This configuration enforces rigorous engineering discipline through:
 │   ├── visualize-project/        # Codebase structure visualization
 │   ├── write-docs/               # Documentation
 │   └── write-tests/              # Test writing
-├── global_workflows/             # Execution workflows — 9 total
+├── global_workflows/             # Execution workflows — 6 total
 │   ├── diagnose.md             # Diagnosis without prescriptions
 │   ├── prescribe.md            # Planning without execution
 │   ├── enhance-prompt.md         # Prompt enhancement
-│   ├── improve-correctness.md    # Correctness-only loop
-│   ├── loop.md                   # Standard improvement loop
+│   ├── loop.md                   # Improvement loop (focus/autonomy args)
 │   ├── test.md                   # Red-green-refactor loop
-│   ├── tune-performance.md       # Performance-only loop
-│   ├── turbo-loop.md             # Autonomous loop
 │   └── validate.md               # Project consistency validation
 └── README.md                     # This file
 
@@ -117,11 +114,9 @@ Workflows control execution mode:
 - `/enhance-prompt` - Transform prompts into actionable requests
 
 **Improvement Loops:**
-- `/loop` - Standard improvement loop with approval gates
-- `/turbo-loop` - Autonomous loop without approval
-- `/improve-correctness` - Improve correctness and concurrency issues only
+- `/loop` - Improvement loop with approval gates; args: `correctness`,
+  `performance`, `turbo`, `[iterations]`
 - `/test` - Test-driven red-green-refactor loop
-- `/tune-performance` - Optimize performance only
 
 **Validation:**
 - `/validate` - Validate project consistency and integrity
@@ -133,7 +128,7 @@ Workflows control execution mode:
 | **Invocation** | Automatic (Cascade decides) | Manual (you choose) |
 | **Command** | Natural language request | Slash command (`/validate`) |
 | **Purpose** | Execute specific tasks | Control execution mode |
-| **Example** | "Fix this bug" triggers `debug` | `/turbo-loop` runs autonomous loop |
+| **Example** | "Fix this bug" triggers `debug` | `/loop turbo` runs autonomous loop |
 
 **Use Skills When:** You want Cascade to do something (fix, create, test, optimize)  
 **Use Workflows When:** You want to control HOW Cascade works (analysis-only, loop mode, validation)
@@ -414,6 +409,7 @@ See `MAINTENANCE_GUIDE.md` → "Validation Procedures" for manual checklist.
 - Project-wide consistency enforcement
 
 ### Recent Improvements
+- Consolidated turbo-loop, improve-correctness, and tune-performance into `/loop` arguments
 - Removed Ruby and PHP support (now 10 languages)
 - Added maintain-consistency skill for project-wide change management
 - Added /validate workflow for consistency checking

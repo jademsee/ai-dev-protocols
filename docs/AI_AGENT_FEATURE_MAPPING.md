@@ -178,16 +178,16 @@ Our skills system provides 14 specialized capabilities organized into Atomic, Co
 
 ## Workflows System Mapping
 
-Our workflows system provides 9 execution modes with varying autonomy levels and focus areas.
+Our workflows system provides 6 execution modes with varying autonomy levels and focus areas.
 
 ### Windsurf/Cascade Configuration
 
-**Location:** `global_workflows/` directory (9 custom .md files) + 1 built-in workflow
+**Location:** `global_workflows/` directory (6 custom .md files) + 1 built-in workflow
 
 **Workflow Categories:**
-- **Analysis**: analyze, dry-run, enhance-prompt
-- **Execution**: loop, turbo-loop
-- **Improvement Loops**: improve-correctness, test, tune-performance
+- **Analysis**: diagnose, prescribe, enhance-prompt
+- **Execution**: loop
+- **Improvement Loops**: test
 - **Validation**: validate
 - **Built-in**: review (Windsurf native)
 
@@ -198,11 +198,8 @@ Our workflows system provides 9 execution modes with varying autonomy levels and
 | **diagnose** | ✅ `/diagnose` (Custom) | Not supported | Composer mode | Chat mode | ✅ Built-in `/ask` mode | Analysis agent | `/diagnose` command | Chat mode | Agent mode | `--message "diagnose"` |
 | **prescribe** | ✅ `/prescribe` (Custom) | Not supported | Not supported | Not supported | ✅ Built-in `/architect` mode | Planning agent | `/plan` command | `--dry-run` flag | Not supported | `--dry-run` flag |
 | **enhance-prompt** | ✅ `/enhance-prompt` (Custom) | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported | Not supported |
-| **loop** | ✅ `/loop` (Custom) | Not supported | Not supported | Not supported | Custom mode or `/code` | Iterative agent | Agent mode | Not supported | Agent mode | Interactive mode |
-| **turbo-loop** | ✅ `/turbo-loop` (Custom) | Not supported | Not supported | Not supported | Custom mode | **Autonomous agent** | Agent mode | Not supported | Agent mode | `--yes` flag |
-| **improve-correctness** | ✅ `/improve-correctness` (Custom) | Not supported | Not supported | Not supported | Custom mode or `/debug` | QA agent | Not supported | Not supported | Not supported | Not supported |
+| **loop** | ✅ `/loop` (Custom, mode args) | Not supported | Not supported | Not supported | Custom mode or `/code` | Iterative agent | Agent mode | Not supported | Agent mode | Interactive mode |
 | **test** | ✅ `/test` (Custom) | Not supported | Not supported | Not supported | Custom mode or skill | Testing agent | `/test` command | Not supported | Testing tools | `--test` flag |
-| **tune-performance** | ✅ `/tune-performance` (Custom) | Not supported | Not supported | Not supported | Custom mode or skill | Performance agent | Not supported | Not supported | Not supported | Not supported |
 | **validate** | ✅ `/validate` (Custom) | Not supported | Not supported | Not supported | Custom mode or skill | Validation agent | Not supported | Not supported | Not supported | Not supported |
 | **review** | ✅ `/review` (Built-in) | Not supported | Not supported | Not supported | ✅ Built-in `/review` mode | Not supported | Not supported | Not supported | Not supported | Not supported |
 | **orchestrator** | Not supported | Not supported | Not supported | Not supported | ✅ Built-in `/orchestrator` mode | **Autonomous agent** | Not supported | Not supported | Not supported | Not supported |

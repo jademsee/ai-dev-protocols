@@ -71,7 +71,7 @@ docs/ (shared, not copied)
 | `skills/visualize-project/SKILL.md` | `skills/visualize-project/SKILL.md` | None (YAML+MD compatible) |
 | `skills/analyze-metrics/SKILL.md` | `skills/analyze-metrics/SKILL.md` | None (YAML+MD compatible) |
 
-### Workflows (9 total)
+### Workflows (6 total)
 
 | Source (Workflow) | Target (Workflow) | Format Change |
 |-------------------|-------------------|---------------|
@@ -79,10 +79,7 @@ docs/ (shared, not copied)
 | `global_workflows/prescribe.md` | `workflows/prescribe.md` | YAML frontmatter + MD content |
 | `global_workflows/enhance-prompt.md` | `workflows/enhance-prompt.md` | YAML frontmatter + MD content |
 | `global_workflows/loop.md` | `workflows/loop.md` | YAML frontmatter + MD content |
-| `global_workflows/turbo-loop.md` | `workflows/turbo-loop.md` | YAML frontmatter + MD content |
-| `global_workflows/improve-correctness.md` | `workflows/improve-correctness.md` | YAML frontmatter + MD content |
 | `global_workflows/test.md` | `workflows/test.md` | YAML frontmatter + MD content |
-| `global_workflows/tune-performance.md` | `workflows/tune-performance.md` | YAML frontmatter + MD content |
 | `global_workflows/validate.md` | `workflows/validate.md` | YAML frontmatter + MD content |
 
 > **Format Note:** Kilo Code workflows use Markdown format with YAML frontmatter:
@@ -128,7 +125,7 @@ All internal references have been updated:
 | Global engineering rules | ✅ Ported to rules.md |
 | Project-level rules | ✅ Created in rules/ |
 | 16 specialized skills | ✅ Ported |
-| 9 workflows | ✅ Unified format (direct copy) |
+| 6 workflows | ✅ Unified format (direct copy) |
 | Multi-language support (10 languages) | ✅ Preserved |
 | Hard rules and pre-submit checklists | ✅ Preserved |
 | Change management protocols | ✅ Preserved |
@@ -145,17 +142,14 @@ All internal references have been updated:
 3. `.kilocode/workflows/prescribe.md`
 4. `.kilocode/workflows/enhance-prompt.md`
 5. `.kilocode/workflows/loop.md`
-6. `.kilocode/workflows/turbo-loop.md`
-7. `.kilocode/workflows/improve-correctness.md`
-8. `.kilocode/workflows/test.md`
-9. `.kilocode/workflows/tune-performance.md`
-10. `.kilocode/workflows/validate.md`
-11. `.kilocode/skills/[16 skills]/SKILL.md` — Copied
-12. `.kilocode/README.md`
-13. `docs/SKILLS_MAP.md` — Shared (not copied)
-14. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
-15. `docs/MAINTENANCE_GUIDE.md` — Shared (not copied)
-16. `.kilocode/PORTING_MANIFEST.md` — This file
+6. `.kilocode/workflows/test.md`
+7. `.kilocode/workflows/validate.md`
+8. `.kilocode/skills/[16 skills]/SKILL.md` — Copied
+9. `.kilocode/README.md`
+10. `docs/SKILLS_MAP.md` — Shared (not copied)
+11. `docs/CHANGE_CHECKLISTS.md` — Shared (not copied)
+12. `docs/MAINTENANCE_GUIDE.md` — Shared (not copied)
+13. `.kilocode/PORTING_MANIFEST.md` — This file
 
 ## Validation Checklist
 

@@ -260,7 +260,7 @@ explicitly instructed. Preserve existing attribution exactly.
 
 # PROTOCOLS (details in workflows)
 
-## Improvement Loop → `/loop` or `/turbo-loop`
+## Improvement Loop → `/loop`
 
 Priority order per iteration:
 1. Correctness → 2. Concurrency → 3. Hot-path perf → 4. Clarity

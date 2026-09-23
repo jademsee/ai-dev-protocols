@@ -72,7 +72,7 @@ If you **add a new workflow**:
 If you **change workflow behavior**:
 - [ ] Update SKILLS_MAP.md if workflow-skill integration changed
 - [ ] Check if rules.md Improvement Loop summary needs updating
-- [ ] Verify consistency with similar workflows (e.g., loop.md vs turbo.md)
+- [ ] Verify consistency with similar workflows (e.g., loop.md vs test.md)
 
 If you **reference a skill in a workflow**:
 - [ ] Verify the skill exists
@@ -105,9 +105,7 @@ If you **add a new rule or principle**:
 
 If you **change the Improvement Loop summary**:
 - [ ] Update loop.md workflow
-- [ ] Update turbo.md workflow
-- [ ] Update correct.md, tune.md, test.md workflows
-- [ ] Update stop.md workflow
+- [ ] Update test.md workflow
 
 If you **change coding standards**:
 - [ ] Update create-item.md skill

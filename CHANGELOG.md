@@ -33,6 +33,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Event-driven automation workflows for visualization generation (PR, merge, team events)
 
 ### Changed
+- **Workflows** - Consolidated turbo-loop, improve-correctness, and
+  tune-performance into `/loop` arguments (`correctness`, `performance`,
+  `turbo`); 9 → 6 workflows, existing invocations unaffected
 - **rules.md** - Consolidated appended content into the tiered core (519 → 279 lines)
   - Removed 14-section "GLOBAL AGENT RULES" that duplicated Tiers 1-2 nearly verbatim
   - Removed unfilled template placeholders (`<e.g., Next.js 15...>`) and dangling headings
